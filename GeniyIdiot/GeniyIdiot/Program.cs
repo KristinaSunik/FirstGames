@@ -20,17 +20,23 @@ namespace GeniyIdiot
             
             return questions;
         }
-        static void Main(string[] args)
-        {
-            int questionsCount = 5;
-            string[] questions = GetQuestions(questionsCount);
 
+        static int[] GetAnswers(int questionsCount)
+        {
             int[] answers = new int[questionsCount];
             answers[0] = 6;
             answers[1] = 9;
             answers[2] = 25;
             answers[3] = 60;
             answers[4] = 2;
+            return answers;
+        }
+        static void Main(string[] args)
+        {
+            int questionsCount = 5;
+            string[] questions = GetQuestions(questionsCount);
+
+            int[] answers = GetAnswers(questionsCount);
 
             int countRigthAnswers = 0;
             Random random = new Random();

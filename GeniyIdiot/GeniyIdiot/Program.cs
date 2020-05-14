@@ -8,6 +8,7 @@ namespace GeniyIdiot
 {
     class Program
     {
+        // Получение вопросов
         static string[] GetQuestions(int questionsCount)
         {
             string[] questions = new string[questionsCount];

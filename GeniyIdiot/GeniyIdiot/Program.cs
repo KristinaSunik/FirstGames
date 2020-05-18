@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,17 +9,17 @@ namespace GeniyIdiot
 {
     class Program
     {
-       
+
         static void Main(string[] args)
         {
+            Console.WriteLine("Как Вас зовут?");
+            string name = Console.ReadLine();
             int questionsCount = 14;
             string[] questions = GetQuestions(questionsCount);
             int[] answers = GetAnswers(questionsCount);
             int countRightAnswers = 0;
             int[] randomQuestionIndex = new int[questionsCount];
             DifferentRandomNumbers(randomQuestionIndex, questionsCount);
-            Console.WriteLine("Как Вас зовут?");
-            string name = Console.ReadLine();
 
             for (int i = 0; i < questionsCount; i++)
             {
@@ -38,14 +39,26 @@ namespace GeniyIdiot
             int diagnosNumber = GetPointsOfDiagnoses(countRightAnswers, questionsCount, points);
             Console.WriteLine(name + ", Ваш диагноз: " + diagnoses[diagnosNumber]);
 
+
+
             string[] file = { name + "\n Количество правильных ответов: " +
                  countRightAnswers + "\n Диагноз:" + diagnoses[diagnosNumber] };
-            System.IO.File.WriteAllLines(@"D:\Result.txt", file);
+
+            string path = @"D:\Result.txt";
+            if (File.Exists(path))
+            {
+
+            }
+            else
+            {
+                System.IO.File.WriteAllLines(@"D:\Result.txt", file);
+            }
+
 
             Console.ReadKey();
         }
 
-
+        // проверка связи
 
         static string[] GetQuestions(int questionsCount)
         {

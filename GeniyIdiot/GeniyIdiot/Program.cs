@@ -38,11 +38,14 @@ namespace GeniyIdiot
             int diagnosNumber = GetPointsOfDiagnoses(countRightAnswers, questionsCount, points);
             Console.WriteLine("Имя:             \tКоличество правильных ответов:\t           Диагноз:");
             Console.WriteLine("{0}\t{1,30}\t{2,34}", name, countRightAnswers, diagnoses[diagnosNumber]);
+           
+            var results = new StreamWriter(@"D:\Results.txt", true);
+            results.WriteLine(name + "\n Количество правильных ответов: " +
+                 countRightAnswers + "\n Диагноз:" + diagnoses[diagnosNumber]);
+            results.Close();
 
-            string[] file = { name + "\n Количество правильных ответов: " +
-                 countRightAnswers + "\n Диагноз:" + diagnoses[diagnosNumber] };
 
-            System.IO.File.WriteAllLines(@"D:\Result.txt", file);
+  
             Console.ReadKey();
         }
 

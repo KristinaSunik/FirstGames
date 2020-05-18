@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -36,16 +37,42 @@ namespace GeniyIdiot
             int diagnosesCount = 6;
             string[] diagnoses = GetDiagnoses(diagnosesCount);
             int diagnosNumber = GetPointsOfDiagnoses(countRightAnswers, questionsCount, points);
-            Console.WriteLine("Имя:             \tКоличество правильных ответов:\t           Диагноз:");
-            Console.WriteLine("{0}\t{1,30}\t{2,34}", name, countRightAnswers, diagnoses[diagnosNumber]);
-           
+            Console.WriteLine(name + " , Ваш диагноз: " + diagnoses[diagnosNumber]);
+            
+            Console.WriteLine("Если вы хотите посмотреть результаты других участников нажмите 'Y'");
+            string answer = Console.ReadLine();
+            if (answer == "Y" || answer == "y")
+            {
+                Console.WriteLine("Имя:       \tКоличество правильных ответов:\t       Диагноз:");
+                String line; 
+                try
+                {
+                    StreamReader sr = new StreamReader("D:\\Results.txt");
+                    line = sr.ReadLine();
+                    while (line != null) 
+                    {
+                      Console.WriteLine(line);
+                        line = sr.ReadLine();
+                    }
+                   
+                    sr.Close();
+                    Console.ReadLine();
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }     
+            }
+
+
+
             var results = new StreamWriter(@"D:\Results.txt", true);
-            results.WriteLine(name + "\n Количество правильных ответов: " +
-                 countRightAnswers + "\n Диагноз:" + diagnoses[diagnosNumber]);
+            results.WriteLine(name + "\t                     " + countRightAnswers + "\t                          "
+                + diagnoses[diagnosNumber]);
             results.Close();
 
 
-  
+
             Console.ReadKey();
         }
 

@@ -42,11 +42,13 @@ namespace GeniyIdiot
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine("Если вы хотите посмотреть результаты других участников нажмите 'Q'");
-            Console.WriteLine();
             string answer = Console.ReadLine();
+            Console.WriteLine();
+            Console.WriteLine();
             if (answer == "Q" || answer == "q")
             {
-                Console.WriteLine("Имя:            \tКоличество правильных ответов:\t               Диагноз:");
+                Console.WriteLine("{0, 1 } {1,60} {2,38}",
+                "Имя", "Количество правильных ответов", "Диагноз:");
                 Console.WriteLine();
                 String line; 
                 try
@@ -56,6 +58,7 @@ namespace GeniyIdiot
                     while (line != null) 
                     {
                       Console.WriteLine(line);
+                        Console.WriteLine();
                         line = sr.ReadLine();
                     }
                    
@@ -68,11 +71,9 @@ namespace GeniyIdiot
                 }     
             }
 
-
-
             var results = new StreamWriter(@"D:\AllResults.txt", true);
-            results.WriteLine(name + "\t                     " + countRightAnswers + "\t                          "
-                + diagnoses[NumberOfDiagnose]);
+            results.WriteLine("{0, 1 } {1, 40} {2,50}", 
+                name,countRightAnswers.ToString(),diagnoses[NumberOfDiagnose]);
             results.Close();
 
 

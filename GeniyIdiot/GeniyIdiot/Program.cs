@@ -32,33 +32,19 @@ namespace GeniyIdiot
                     countRightAnswers++;
                 }
             }
-            Console.WriteLine("Количество правильных ответов: " + countRightAnswers);
             int points = 0;
             int diagnosesCount = 6;
             string[] diagnoses = GetDiagnoses(diagnosesCount);
             int diagnosNumber = GetPointsOfDiagnoses(countRightAnswers, questionsCount, points);
-            Console.WriteLine(name + ", Ваш диагноз: " + diagnoses[diagnosNumber]);
-
-
+            Console.WriteLine("Имя:             \tКоличество правильных ответов:\t           Диагноз:");
+            Console.WriteLine("{0}\t{1,30}\t{2,34}", name, countRightAnswers, diagnoses[diagnosNumber]);
 
             string[] file = { name + "\n Количество правильных ответов: " +
                  countRightAnswers + "\n Диагноз:" + diagnoses[diagnosNumber] };
 
-            string path = @"D:\Result.txt";
-            if (File.Exists(path))
-            {
-
-            }
-            else
-            {
-                System.IO.File.WriteAllLines(@"D:\Result.txt", file);
-            }
-
-
+            System.IO.File.WriteAllLines(@"D:\Result.txt", file);
             Console.ReadKey();
         }
-
-        // проверка связи
 
         static string[] GetQuestions(int questionsCount)
         {

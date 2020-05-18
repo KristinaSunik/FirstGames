@@ -17,11 +17,10 @@ namespace GeniyIdiot
             string name = Console.ReadLine();
             int questionsCount = 14;
             string[] questions = GetQuestions(questionsCount);
+            int[] randomQuestionIndex = new int[questionsCount];
+            randomQuestionIndex[questionsCount - 1] = DifferentRandomNumbers(randomQuestionIndex, questionsCount);
             int[] answers = GetAnswers(questionsCount);
             int countRightAnswers = 0;
-            int[] randomQuestionIndex = new int[questionsCount];
-            DifferentRandomNumbers(randomQuestionIndex, questionsCount);
-
             for (int i = 0; i < questionsCount; i++)
             {
                 Console.WriteLine("Вопрос № " + (i + 1));
@@ -33,21 +32,26 @@ namespace GeniyIdiot
                     countRightAnswers++;
                 }
             }
-            int points = 0;
             int diagnosesCount = 6;
             string[] diagnoses = GetDiagnoses(diagnosesCount);
-            int diagnosNumber = GetPointsOfDiagnoses(countRightAnswers, questionsCount, points);
-            Console.WriteLine(name + " , Ваш диагноз: " + diagnoses[diagnosNumber]);
-            
-            Console.WriteLine("Если вы хотите посмотреть результаты других участников нажмите 'Y'");
+            int pointsOfRightAnswers = 0;
+            int NumberOfDiagnose = GetPointsOfDiagnoses(countRightAnswers, questionsCount, pointsOfRightAnswers);
+            Console.WriteLine("Количество правильных ответов: " + countRightAnswers);
+            Console.WriteLine();
+            Console.WriteLine(name + ",  Ваш диагноз:  " + diagnoses[NumberOfDiagnose]);
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Если вы хотите посмотреть результаты других участников нажмите 'Q'");
+            Console.WriteLine();
             string answer = Console.ReadLine();
-            if (answer == "Y" || answer == "y")
+            if (answer == "Q" || answer == "q")
             {
-                Console.WriteLine("Имя:       \tКоличество правильных ответов:\t       Диагноз:");
+                Console.WriteLine("Имя:            \tКоличество правильных ответов:\t               Диагноз:");
+                Console.WriteLine();
                 String line; 
                 try
                 {
-                    StreamReader sr = new StreamReader("D:\\Results.txt");
+                    StreamReader sr = new StreamReader("D:\\AllResults.txt");
                     line = sr.ReadLine();
                     while (line != null) 
                     {
@@ -66,9 +70,9 @@ namespace GeniyIdiot
 
 
 
-            var results = new StreamWriter(@"D:\Results.txt", true);
+            var results = new StreamWriter(@"D:\AllResults.txt", true);
             results.WriteLine(name + "\t                     " + countRightAnswers + "\t                          "
-                + diagnoses[diagnosNumber]);
+                + diagnoses[NumberOfDiagnose]);
             results.Close();
 
 

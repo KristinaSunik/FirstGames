@@ -41,8 +41,15 @@ namespace GeniyIdiot
             int numberOfDiagnose = GetPointsOfDiagnoses(countRightAnswers, questionsCount, pointsOfRightAnswers);
             Console.WriteLine("Количество правильных ответов: " + countRightAnswers);
             Console.WriteLine();
-            Console.WriteLine(name + ",  Ваш диагноз:  " + diagnoses[NumberOfDiagnose]);
+            Console.WriteLine("{0, 1 } {1,60} {2,33}",
+                "Имя", "Количество правильных ответов", "Диагноз:");
+            Console.WriteLine("{0, 1 } {1,40} {2,50}",name , countRightAnswers, diagnoses[numberOfDiagnose]);
             Console.WriteLine();
+
+            var results = new StreamWriter(@"D:\AllResults.txt", true);
+            results.WriteLine("{0, 1 } {1, 40} {2,50}",
+                name, countRightAnswers.ToString(), diagnoses[numberOfDiagnose]);
+            results.Close();
             Console.WriteLine();
             Console.WriteLine("Если вы хотите посмотреть результаты других участников нажмите 'Q'");
             string answer = Console.ReadLine();
@@ -50,22 +57,22 @@ namespace GeniyIdiot
             Console.WriteLine();
             if (answer == "Q" || answer == "q")
             {
-                Console.WriteLine("{0, 1 } {1,60} {2,38}",
+                Console.WriteLine("{0, 1 } {1,60} {2,33}",
                 "Имя", "Количество правильных ответов", "Диагноз:");
                 Console.WriteLine();
                 String line; 
                 try
                 {
-                    StreamReader sr = new StreamReader("D:\\AllResults.txt");
-                    line = sr.ReadLine();
+                    StreamReader streamReader = new StreamReader("D:\\AllResults.txt");
+                    line = streamReader.ReadLine();
                     while (line != null) 
                     {
                       Console.WriteLine(line);
                         Console.WriteLine();
-                        line = sr.ReadLine();
+                        line = streamReader.ReadLine();
                     }
                    
-                    sr.Close();
+                    streamReader.Close();
                     Console.ReadLine();
                 }
                 catch(Exception e)
@@ -74,10 +81,6 @@ namespace GeniyIdiot
                 }     
             }
 
-            var results = new StreamWriter(@"D:\AllResults.txt", true);
-            results.WriteLine("{0, 1 } {1, 40} {2,50}", 
-                name,countRightAnswers.ToString(),diagnoses[NumberOfDiagnose]);
-            results.Close();
 
 
 

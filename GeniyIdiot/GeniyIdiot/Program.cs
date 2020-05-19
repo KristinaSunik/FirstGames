@@ -10,8 +10,6 @@ namespace GeniyIdiot
 {
     class Program
     {
-        public static bool OpenOrCreate { get; private set; }
-        public static bool Append { get; private set; }
 
         static void Main(string[] args)
         {
@@ -47,7 +45,7 @@ namespace GeniyIdiot
             Console.WriteLine();
             string path = @"D:\AllResults.txt";
             var results = new StreamWriter(path, true);
-            results.WriteLine("{0, 1 } {1, 40} {2,50}",
+            results.WriteLine("{0, 1 } {1, 50} {2,50}",
                 name, countRightAnswers.ToString(), diagnoses[numberOfDiagnose]);
             results.Close();
             Console.WriteLine();
@@ -57,8 +55,8 @@ namespace GeniyIdiot
             Console.WriteLine();
             if (answer == "Q" || answer == "q")
             {
-                Console.WriteLine("{0, 1 } {1,40} {2,50}",
-                "Имя", "Количество правильных ответов", "Диагноз:");
+                Console.WriteLine("{0, 1 } {1,50} {2,50}",
+                "Имя:", "Количество правильных ответов:", "Диагноз:");
                 Console.WriteLine();
                 String line; 
                 try

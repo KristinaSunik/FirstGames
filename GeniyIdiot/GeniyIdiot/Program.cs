@@ -15,18 +15,21 @@ namespace GeniyIdiot
         {
             Console.WriteLine("Как Вас зовут?");
             string name = Console.ReadLine();
-            int questionsCount = 14;
+            int questionsCount = 5;
             string[] questions = GetQuestions(questionsCount);
-            int[] randomQuestionIndex = new int[questionsCount];
-            randomQuestionIndex[questionsCount - 1] = DifferentRandomNumbers(randomQuestionIndex, questionsCount);
             int[] answers = GetAnswers(questionsCount);
+            List<string> listOfQuestions = new List<string>();
+            listOfQuestions.AddRange(questions);
             int countRightAnswers = 0;
             for (int i = 0; i < questionsCount; i++)
             {
+
                 Console.WriteLine("Вопрос № " + (i + 1));
-                Console.WriteLine(questions[randomQuestionIndex[i]]);
+                int randomQuestionIndex = GetRandomQuestionIndex(listOfQuestions);
+                Console.WriteLine(listOfQuestions[randomQuestionIndex]);
+                listOfQuestions.RemoveAt(randomQuestionIndex);
                 int userAnswer = GetUserAnswer();
-                int rightAnswer = answers[randomQuestionIndex[i]];
+                int rightAnswer = answers[randomQuestionIndex];
                 if (userAnswer == rightAnswer)
                 {
                     countRightAnswers++;
@@ -89,16 +92,6 @@ namespace GeniyIdiot
             questions[2] = "На двух руках 10 пальцев. Сколько пальцев на 5 руках?";
             questions[3] = "Укол делают каждые полчаса,  сколько нужно минут для трех  уколов?";
             questions[4] = "Пять свечей горело, две  потухли. Сколько свечей  осталось?";
-            questions[5] = "Сколько будет два плюс два  умноженное на два?";
-            questions[6] = "Бревно нужно распилить на 10  частей, сколько надо сделать  распилов?";
-            questions[7] = "На двух руках 10 пальцев. Сколько пальцев на 5 руках?";
-            questions[8] = "Укол делают каждые полчаса,  сколько нужно минут для трех  уколов?";
-            questions[9] = "Пять свечей горело, две  потухли. Сколько свечей  осталось?";
-            questions[10] = "Сколько будет два плюс два  умноженное на два?";
-            questions[11] = "Бревно нужно распилить на 10  частей, сколько надо сделать  распилов?";
-            questions[12] = "На двух руках 10 пальцев. Сколько пальцев на 5 руках?";
-            questions[13] = "Укол делают каждые полчаса,  сколько нужно минут для трех  уколов?";
-
             return questions;
         }
 
@@ -113,15 +106,6 @@ namespace GeniyIdiot
             answers[2] = 25;
             answers[3] = 60;
             answers[4] = 5;
-            answers[5] = 6;
-            answers[6] = 9;
-            answers[7] = 25;
-            answers[8] = 60;
-            answers[9] = 5;
-            answers[10] = 6;
-            answers[11] = 9;
-            answers[12] = 25;
-            answers[13] = 60;
 
             return answers;
 
@@ -144,21 +128,14 @@ namespace GeniyIdiot
 
 
 
-        static int DifferentRandomNumbers(int[] randomQuestionIndex, int questionsCount)
+        static int GetRandomQuestionIndex(List <string> listOfQuestions)
         {
             System.Random random = new System.Random();
-
-            for (int i = 0; i < questionsCount - 1; i++)
-            {
-                for (int j = questionsCount - 1; j > 0; j--)
-                {
-                    while (i != j && randomQuestionIndex[i] == randomQuestionIndex[j])
-                    {
-                        randomQuestionIndex[j] = random.Next(0, questionsCount);
-                    }
-                }
-            }
-            return randomQuestionIndex[questionsCount - 1];
+            int randomQuestionIndex;
+            int lengthOfList = listOfQuestions.Count;
+            randomQuestionIndex = random.Next(0, lengthOfList);
+            
+            return randomQuestionIndex;
         }
 
 

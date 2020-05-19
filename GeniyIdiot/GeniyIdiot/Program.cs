@@ -38,7 +38,7 @@ namespace GeniyIdiot
             int diagnosesCount = 6;
             string[] diagnoses = GetDiagnoses(diagnosesCount);
             int pointsOfRightAnswers = 0;
-            int NumberOfDiagnose = GetPointsOfDiagnoses(countRightAnswers, questionsCount, pointsOfRightAnswers);
+            int numberOfDiagnose = GetPointsOfDiagnoses(countRightAnswers, questionsCount, pointsOfRightAnswers);
             Console.WriteLine("Количество правильных ответов: " + countRightAnswers);
             Console.WriteLine();
             Console.WriteLine(name + ",  Ваш диагноз:  " + diagnoses[NumberOfDiagnose]);

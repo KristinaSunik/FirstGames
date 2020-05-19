@@ -47,8 +47,8 @@ namespace GeniyIdiot
                 "Имя", "Количество правильных ответов", "Диагноз:");
             Console.WriteLine("{0, 1 } {1,40} {2,50}",name , countRightAnswers, diagnoses[numberOfDiagnose]);
             Console.WriteLine();
-
-            var results = new StreamWriter(@"D:\AllResults.txt", true);
+            string path = @"D:\AllResults.txt";
+            var results = new StreamWriter(path, true);
             results.WriteLine("{0, 1 } {1, 40} {2,50}",
                 name, countRightAnswers.ToString(), diagnoses[numberOfDiagnose]);
             results.Close();
@@ -65,7 +65,7 @@ namespace GeniyIdiot
                 String line; 
                 try
                 {
-                    using (StreamReader streamReader = new StreamReader("D:\\AllResults.txt", true))
+                    using (StreamReader streamReader = new StreamReader(path, true))
                     {
                         line = streamReader.ReadLine();
                         while (!streamReader.EndOfStream)

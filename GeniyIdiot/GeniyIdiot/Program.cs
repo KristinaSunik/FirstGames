@@ -10,6 +10,8 @@ namespace GeniyIdiot
 {
     class Program
     {
+        public static bool OpenOrCreate { get; private set; }
+        public static bool Append { get; private set; }
 
         static void Main(string[] args)
         {
@@ -63,17 +65,15 @@ namespace GeniyIdiot
                 String line; 
                 try
                 {
-                    StreamReader streamReader = new StreamReader("D:\\AllResults.txt");
-                    line = streamReader.ReadLine();
-                    while (line != null) 
+                    using (StreamReader streamReader = new StreamReader("D:\\AllResults.txt", true))
                     {
-                      Console.WriteLine(line);
-                        Console.WriteLine();
                         line = streamReader.ReadLine();
+                        while (!streamReader.EndOfStream)
+                        {
+                            Console.WriteLine(streamReader.ReadLine());
+                        }
                     }
-                   
-                    streamReader.Close();
-                    Console.ReadLine();
+
                 }
                 catch(Exception e)
                 {

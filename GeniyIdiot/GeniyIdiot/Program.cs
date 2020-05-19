@@ -43,9 +43,7 @@ namespace GeniyIdiot
             int numberOfDiagnose = GetPointsOfDiagnoses(countRightAnswers, questionsCount, pointsOfRightAnswers);
             Console.WriteLine("Количество правильных ответов: " + countRightAnswers);
             Console.WriteLine();
-            Console.WriteLine("{0, 1 } {1,60} {2,33}",
-                "Имя", "Количество правильных ответов", "Диагноз:");
-            Console.WriteLine("{0, 1 } {1,40} {2,50}",name , countRightAnswers, diagnoses[numberOfDiagnose]);
+            Console.WriteLine(name + ", Ваш диагноз: " + diagnoses[numberOfDiagnose]);
             Console.WriteLine();
             string path = @"D:\AllResults.txt";
             var results = new StreamWriter(path, true);
@@ -59,7 +57,7 @@ namespace GeniyIdiot
             Console.WriteLine();
             if (answer == "Q" || answer == "q")
             {
-                Console.WriteLine("{0, 1 } {1,60} {2,33}",
+                Console.WriteLine("{0, 1 } {1,40} {2,50}",
                 "Имя", "Количество правильных ответов", "Диагноз:");
                 Console.WriteLine();
                 String line; 

@@ -39,7 +39,7 @@ namespace GeniyIdiot
             Console.WriteLine("Количество правильных ответов: " + countRightAnswers);
             Console.WriteLine(name + ", Ваш диагноз: " + diagnoses[numberOfDiagnose]);
             var path = @"D:\AllResults.txt";
-            SaveResults(path, name, countRightAnswers, diagnoses[numberOfDiagnose], numberOfDiagnose);
+            SaveResults(path, name, countRightAnswers, diagnoses, numberOfDiagnose);
             Console.WriteLine("Если вы хотите посмотреть результаты других участников нажмите 'Q'");
             var answer = Console.ReadLine();
             if (answer == "Q" || answer == "q")
@@ -62,7 +62,7 @@ namespace GeniyIdiot
 
 
 
-        static void SaveResults(string path, string name, int countRightAnswers, string diagnoses, int numberOfDiagnose)
+        static void SaveResults(string path, string name, int countRightAnswers, string [] diagnoses, int numberOfDiagnose)
         {
             var results = new StreamWriter(path, true);
             results.WriteLine("{0, 1 } {1, 50} {2,50}",

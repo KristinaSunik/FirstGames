@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,96 +9,116 @@ namespace GeniyIdiot
 {
     class Program
     {
-       
+
         static void Main(string[] args)
         {
-            int questionsCount = 14;
-            string[] questions = GetQuestions(questionsCount);
-            int[] answers = GetAnswers(questionsCount);
-            int countRightAnswers = 0;
-            int[] randomQuestionIndex = new int[questionsCount];
-            DifferentRandomNumbers(randomQuestionIndex, questionsCount);
             Console.WriteLine("Как Вас зовут?");
-            string name = Console.ReadLine();
-
+            var name = Console.ReadLine();
+            var questions = GetQuestions();
+            var answers = GetAnswers();
+            var countRightAnswers = 0;
+            var questionsCount = questions.Count;
             for (int i = 0; i < questionsCount; i++)
             {
                 Console.WriteLine("Вопрос № " + (i + 1));
-                Console.WriteLine(questions[randomQuestionIndex[i]]);
-                int userAnswer = GetUserAnswer();
-                int rightAnswer = answers[randomQuestionIndex[i]];
+                int randomQuestionIndex;
+                randomQuestionIndex = GetRandomQuestionIndex(questions);
+                Console.WriteLine(questions[randomQuestionIndex]);
+                var userAnswer = GetUserAnswer();
+                var rightAnswer = answers[randomQuestionIndex];
                 if (userAnswer == rightAnswer)
                 {
                     countRightAnswers++;
                 }
+                questions.RemoveAt(randomQuestionIndex);
+                answers.RemoveAt(randomQuestionIndex);
             }
+            var diagnosesCount = 6;
+            var diagnoses = GetDiagnoses(diagnosesCount);
+            var numberOfDiagnose = GetPointsOfDiagnoses(countRightAnswers, questionsCount);
             Console.WriteLine("Количество правильных ответов: " + countRightAnswers);
-            int points = 0;
-            int diagnosesCount = 6;
-            string[] diagnoses = GetDiagnoses(diagnosesCount);
-            int diagnosNumber = GetPointsOfDiagnoses(countRightAnswers, questionsCount, points);
-            Console.WriteLine(name + ", Ваш диагноз: " + diagnoses[diagnosNumber]);
-
-            string[] file = { name + "\n Количество правильных ответов: " +
-                 countRightAnswers + "\n Диагноз:" + diagnoses[diagnosNumber] };
-            System.IO.File.WriteAllLines(@"D:\Result.txt", file);
-
+            Console.WriteLine(name + ", Ваш диагноз: " + diagnoses[numberOfDiagnose]);
+            var path = @"D:\AllResults.txt";
+            SaveResults(path, name, countRightAnswers, diagnoses, numberOfDiagnose);
+            Console.WriteLine("Если вы хотите посмотреть результаты других участников нажмите 'Q'");
+            var answer = Console.ReadLine();
+            if (answer == "Q" || answer == "q")
+            {
+                ShowAllResults(path);
+            }
             Console.ReadKey();
         }
 
-
-
-        static string[] GetQuestions(int questionsCount)
+        static List<string> GetQuestions()
         {
-            string[] questions = new string[questionsCount];
-            questions[0] = "Сколько будет два плюс два  умноженное на два?";
-            questions[1] = "Бревно нужно распилить на 10  частей, сколько надо сделать  распилов?";
-            questions[2] = "На двух руках 10 пальцев. Сколько пальцев на 5 руках?";
-            questions[3] = "Укол делают каждые полчаса,  сколько нужно минут для трех  уколов?";
-            questions[4] = "Пять свечей горело, две  потухли. Сколько свечей  осталось?";
-            questions[5] = "Сколько будет два плюс два  умноженное на два?";
-            questions[6] = "Бревно нужно распилить на 10  частей, сколько надо сделать  распилов?";
-            questions[7] = "На двух руках 10 пальцев. Сколько пальцев на 5 руках?";
-            questions[8] = "Укол делают каждые полчаса,  сколько нужно минут для трех  уколов?";
-            questions[9] = "Пять свечей горело, две  потухли. Сколько свечей  осталось?";
-            questions[10] = "Сколько будет два плюс два  умноженное на два?";
-            questions[11] = "Бревно нужно распилить на 10  частей, сколько надо сделать  распилов?";
-            questions[12] = "На двух руках 10 пальцев. Сколько пальцев на 5 руках?";
-            questions[13] = "Укол делают каждые полчаса,  сколько нужно минут для трех  уколов?";
-
+            var questions = new List<string>();
+            questions.Add("Сколько будет два плюс два  умноженное на два?");
+            questions.Add("Бревно нужно распилить на 10  частей, сколько надо сделать  распилов?");
+            questions.Add("На двух руках 10 пальцев. Сколько пальцев на 5 руках?");
+            questions.Add("Укол делают каждые полчаса,  сколько нужно минут для трех  уколов?");
+            questions.Add("Пять свечей горело, две  потухли. Сколько свечей  осталось?");
             return questions;
         }
 
 
 
-
-        static int[] GetAnswers(int questionsCount)
+        static void SaveResults(string path, string name, int countRightAnswers, string [] diagnoses, int numberOfDiagnose)
         {
-            int[] answers = new int[questionsCount];
-            answers[0] = 6;
-            answers[1] = 9;
-            answers[2] = 25;
-            answers[3] = 60;
-            answers[4] = 5;
-            answers[5] = 6;
-            answers[6] = 9;
-            answers[7] = 25;
-            answers[8] = 60;
-            answers[9] = 5;
-            answers[10] = 6;
-            answers[11] = 9;
-            answers[12] = 25;
-            answers[13] = 60;
+            var results = new StreamWriter(path, true);
+            results.WriteLine("{0, 1 } {1, 50} {2,50}",
+                name, countRightAnswers.ToString(), diagnoses[numberOfDiagnose]);
+            results.Close();
+        }
 
+
+        static int GetRandomQuestionIndex(List<string> questions)
+        {
+            var lengthOfList = questions.Count;
+            System.Random random = new System.Random();
+            var randomQuestionIndex = random.Next(0, lengthOfList);
+            return randomQuestionIndex;
+        }
+
+
+        static void ShowAllResults(string path)
+        {
+            Console.WriteLine("{0, 1 } {1,50} {2,50}",
+               "Имя:", "Количество правильных ответов:", "Диагноз:");
+            Console.WriteLine();
+            String line;
+            try
+            {
+                using (StreamReader streamReader = new StreamReader(path, true))
+                {
+                    line = streamReader.ReadLine();
+                    while (!streamReader.EndOfStream)
+                    {
+                        Console.WriteLine(streamReader.ReadLine());
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        static List<int> GetAnswers()
+        {
+            var answers = new List<int>();
+            answers.Add(6);
+            answers.Add(9);
+            answers.Add(25);
+            answers.Add(60);
+            answers.Add(5);
             return answers;
-
         }
 
 
 
         static string[] GetDiagnoses(int diagnosesCount)
         {
-            string[] diagnoses = new string[diagnosesCount];
+            var diagnoses = new string[diagnosesCount];
             diagnoses[0] = "Идиот";
             diagnoses[1] = "Кретин";
             diagnoses[2] = "Дурак";
@@ -110,25 +131,6 @@ namespace GeniyIdiot
 
 
 
-        static int DifferentRandomNumbers(int[] randomQuestionIndex, int questionsCount)
-        {
-            System.Random random = new System.Random();
-
-            for (int i = 0; i < questionsCount - 1; i++)
-            {
-                for (int j = questionsCount - 1; j > 0; j--)
-                {
-                    while (i != j && randomQuestionIndex[i] == randomQuestionIndex[j])
-                    {
-                        randomQuestionIndex[j] = random.Next(0, questionsCount);
-                    }
-                }
-            }
-            return randomQuestionIndex[questionsCount - 1];
-        }
-
-
-
         static int GetUserAnswer()
         {
             int userAnswer;
@@ -136,15 +138,15 @@ namespace GeniyIdiot
             {
                 Console.WriteLine("Введите число: ");
             }
-
             return userAnswer;
         }
 
 
 
-        static int GetPointsOfDiagnoses(int countRightAnswers, int questionsCount, int points)
+        static int GetPointsOfDiagnoses(int countRightAnswers, int questionsCount)
         {
-            int percentageOfRightAnswers = countRightAnswers * 100 / questionsCount;
+            var points = 0;
+            var percentageOfRightAnswers = countRightAnswers * 100 / questionsCount;
             if (percentageOfRightAnswers <= 17)
             {
                 points = 0;
@@ -169,9 +171,7 @@ namespace GeniyIdiot
             {
                 points = 5;
             }
-
             return points;
-
         }
     }
 }

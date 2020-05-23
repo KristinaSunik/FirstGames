@@ -21,8 +21,9 @@ namespace GeniyIdiot
             for (int i = 0; i < questionsCount; i++)
             {
                 Console.WriteLine("Вопрос № " + (i + 1));
-                int randomQuestionIndex;
-                randomQuestionIndex = GetRandomQuestionIndex(questions);
+                System.Random random = new System.Random();
+                var lengthOfList = questions.Count;
+                var randomQuestionIndex = random.Next(0, lengthOfList);
                 Console.WriteLine(questions[randomQuestionIndex]);
                 var userAnswer = GetUserAnswer();
                 var rightAnswer = answers[randomQuestionIndex];
@@ -33,13 +34,13 @@ namespace GeniyIdiot
                 questions.RemoveAt(randomQuestionIndex);
                 answers.RemoveAt(randomQuestionIndex);
             }
-            var diagnosesCount = 6;
-            var diagnoses = GetDiagnoses(diagnosesCount);
+            var diagnoses = GetDiagnoses();
             var numberOfDiagnose = GetPointsOfDiagnoses(countRightAnswers, questionsCount);
+            var usersDiagnose = diagnoses[numberOfDiagnose];
             Console.WriteLine("Количество правильных ответов: " + countRightAnswers);
-            Console.WriteLine(name + ", Ваш диагноз: " + diagnoses[numberOfDiagnose]);
+            Console.WriteLine(name + ", Ваш диагноз: " + usersDiagnose);
             var path = @"D:\AllResults.txt";
-            SaveResults(path, name, countRightAnswers, diagnoses, numberOfDiagnose);
+            SaveResults(path, name, countRightAnswers, usersDiagnose);
             Console.WriteLine("Если вы хотите посмотреть результаты других участников нажмите 'Q'");
             var answer = Console.ReadLine();
             if (answer == "Q" || answer == "q")
@@ -62,23 +63,13 @@ namespace GeniyIdiot
 
 
 
-        static void SaveResults(string path, string name, int countRightAnswers, string [] diagnoses, int numberOfDiagnose)
+        static void SaveResults(string path, string name, int countRightAnswers, string usersDiagnose)
         {
             var results = new StreamWriter(path, true);
             results.WriteLine("{0, 1 } {1, 50} {2,50}",
-                name, countRightAnswers.ToString(), diagnoses[numberOfDiagnose]);
+                name, countRightAnswers.ToString(), usersDiagnose);
             results.Close();
         }
-
-
-        static int GetRandomQuestionIndex(List<string> questions)
-        {
-            var lengthOfList = questions.Count;
-            System.Random random = new System.Random();
-            var randomQuestionIndex = random.Next(0, lengthOfList);
-            return randomQuestionIndex;
-        }
-
 
         static void ShowAllResults(string path)
         {
@@ -116,16 +107,15 @@ namespace GeniyIdiot
 
 
 
-        static string[] GetDiagnoses(int diagnosesCount)
+        static List<string> GetDiagnoses()
         {
-            var diagnoses = new string[diagnosesCount];
-            diagnoses[0] = "Идиот";
-            diagnoses[1] = "Кретин";
-            diagnoses[2] = "Дурак";
-            diagnoses[3] = "Нормальный";
-            diagnoses[4] = "Талант";
-            diagnoses[5] = "Гений";
-
+            var diagnoses = new List<string>();
+            diagnoses.Add("Идиот");
+            diagnoses.Add("Кретин");
+            diagnoses.Add("Дурак");
+            diagnoses.Add("Нормальный");
+            diagnoses.Add("Талант");
+            diagnoses.Add("Гений");
             return diagnoses;
         }
 

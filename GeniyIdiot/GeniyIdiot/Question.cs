@@ -15,9 +15,5 @@ namespace GeniyIdiot
             Text = text;
             Answer = answer;
         }
-        public string Print()
-        {
-            return "Вопрос" + Text;
-        }
     }
 }

@@ -15,8 +15,8 @@ namespace GeniyIdiot
             Console.WriteLine("Как Вас зовут?");
             Person person = new Person();
             person.name = Console.ReadLine();
+
             var questions = GetQuestions();
-            var answers = GetAnswers();
             person.countRightAnswers = 0;
             var questionsCount = questions.Count;
             for (int i = 0; i < questionsCount; i++)
@@ -25,15 +25,14 @@ namespace GeniyIdiot
                 System.Random random = new System.Random();
                 var lengthOfList = questions.Count;
                 var randomQuestionIndex = random.Next(0, lengthOfList);
-                Console.WriteLine(questions[randomQuestionIndex]);
+                Console.WriteLine(questions[randomQuestionIndex].Text);
                 var userAnswer = GetUserAnswer();
-                var rightAnswer = answers[randomQuestionIndex];
+                var rightAnswer = questions[randomQuestionIndex].Answer;
                 if (userAnswer == rightAnswer)
                 {
                     person.countRightAnswers++;
                 }
                 questions.RemoveAt(randomQuestionIndex);
-                answers.RemoveAt(randomQuestionIndex);
             }
             var diagnoses = GetDiagnoses();
             var numberOfDiagnose = GetPointsOfDiagnoses(person.countRightAnswers, questionsCount);
@@ -51,14 +50,15 @@ namespace GeniyIdiot
             Console.ReadKey();
         }
 
-        static List<string> GetQuestions()
+
+        static List<Question> GetQuestions()
         {
-            var questions = new List<string>();
-            questions.Add("Сколько будет два плюс два  умноженное на два?");
-            questions.Add("Бревно нужно распилить на 10  частей, сколько надо сделать  распилов?");
-            questions.Add("На двух руках 10 пальцев. Сколько пальцев на 5 руках?");
-            questions.Add("Укол делают каждые полчаса,  сколько нужно минут для трех  уколов?");
-            questions.Add("Пять свечей горело, две  потухли. Сколько свечей  осталось?");
+            Question question1 = new Question("Сколько будет два плюс два  умноженное на два?", 6);
+            Question question2 = new Question("Бревно нужно распилить на 10  частей, сколько надо сделать  распилов?", 9);
+            Question question3 = new Question("На двух руках 10 пальцев. Сколько пальцев на 5 руках?", 25);
+            Question question4 = new Question("Укол делают каждые полчаса,  сколько нужно минут для трех  уколов?", 60);
+            Question question5 = new Question("Пять свечей горело, две  потухли. Сколько свечей  осталось?", 5);
+            var questions = new List<Question> { question1, question2, question3, question4, question5 };
             return questions;
         }
 
@@ -95,16 +95,6 @@ namespace GeniyIdiot
             }
         }
 
-        static List<int> GetAnswers()
-        {
-            var answers = new List<int>();
-            answers.Add(6);
-            answers.Add(9);
-            answers.Add(25);
-            answers.Add(60);
-            answers.Add(5);
-            return answers;
-        }
 
 
 

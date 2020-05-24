@@ -8,8 +8,8 @@ namespace GeniyIdiot
 {
     class Person
     {
-        public string Name;
-        public string Diagnose;
-        public int RightAnswers;
+        public string name;
+        public string diagnose;
+        public int countRightAnswers;
     }
 }

@@ -13,10 +13,11 @@ namespace GeniyIdiot
         static void Main(string[] args)
         {
             Console.WriteLine("Как Вас зовут?");
-            var name = Console.ReadLine();
+            Person person = new Person();
+            person.name = Console.ReadLine();
             var questions = GetQuestions();
             var answers = GetAnswers();
-            var countRightAnswers = 0;
+            person.countRightAnswers = 0;
             var questionsCount = questions.Count;
             for (int i = 0; i < questionsCount; i++)
             {
@@ -29,18 +30,18 @@ namespace GeniyIdiot
                 var rightAnswer = answers[randomQuestionIndex];
                 if (userAnswer == rightAnswer)
                 {
-                    countRightAnswers++;
+                    person.countRightAnswers++;
                 }
                 questions.RemoveAt(randomQuestionIndex);
                 answers.RemoveAt(randomQuestionIndex);
             }
             var diagnoses = GetDiagnoses();
-            var numberOfDiagnose = GetPointsOfDiagnoses(countRightAnswers, questionsCount);
-            var usersDiagnose = diagnoses[numberOfDiagnose];
-            Console.WriteLine("Количество правильных ответов: " + countRightAnswers);
-            Console.WriteLine(name + ", Ваш диагноз: " + usersDiagnose);
+            var numberOfDiagnose = GetPointsOfDiagnoses(person.countRightAnswers, questionsCount);
+            person.diagnose = diagnoses[numberOfDiagnose];
+            Console.WriteLine("Количество правильных ответов: " + person.countRightAnswers);
+            Console.WriteLine(person.name + ", Ваш диагноз: " + person.diagnose);
             var path = @"D:\AllResults.txt";
-            SaveResults(path, name, countRightAnswers, usersDiagnose);
+            SaveResults(path, person.name, person.countRightAnswers, person.diagnose);
             Console.WriteLine("Если вы хотите посмотреть результаты других участников нажмите 'Q'");
             var answer = Console.ReadLine();
             if (answer == "Q" || answer == "q")

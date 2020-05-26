@@ -10,12 +10,12 @@ namespace GeniyIdiot
     {
         public string Name;
         public string Diagnose;
-        public int CountRightAnswers;
-        public Person(string name, string diagnose, int countRightAnswers)
+        public int CountRightAnswers = 0;
+
+        public Person()
         {
-            Name = name;
-            Diagnose = diagnose;
-            CountRightAnswers = countRightAnswers;
         }
+
+      
     }
 }

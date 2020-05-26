@@ -14,10 +14,8 @@ namespace GeniyIdiot
         {
             Console.WriteLine("Как Вас зовут?");
             Person person = new Person();
-            person.name = Console.ReadLine();
-
+            person.Name = Console.ReadLine();
             var questions = GetQuestions();
-            person.countRightAnswers = 0;
             var questionsCount = questions.Count;
             for (int i = 0; i < questionsCount; i++)
             {
@@ -30,17 +28,17 @@ namespace GeniyIdiot
                 var rightAnswer = questions[randomQuestionIndex].Answer;
                 if (userAnswer == rightAnswer)
                 {
-                    person.countRightAnswers++;
+                    person.CountRightAnswers++;
                 }
                 questions.RemoveAt(randomQuestionIndex);
             }
             var diagnoses = GetDiagnoses();
-            var numberOfDiagnose = GetPointsOfDiagnoses(person.countRightAnswers, questionsCount);
-            person.diagnose = diagnoses[numberOfDiagnose];
-            Console.WriteLine("Количество правильных ответов: " + person.countRightAnswers);
-            Console.WriteLine(person.name + ", Ваш диагноз: " + person.diagnose);
+            var numberOfDiagnose = GetPointsOfDiagnoses(person.CountRightAnswers, questionsCount);
+            person.Diagnose = diagnoses[numberOfDiagnose];
+            Console.WriteLine("Количество правильных ответов: " + person.CountRightAnswers);
+            Console.WriteLine(person.Name + ", Ваш диагноз: " + person.Diagnose);
             var path = @"D:\AllResults.txt";
-            SaveResults(path, person.name, person.countRightAnswers, person.diagnose);
+            SaveResults(path, person.Name, person.CountRightAnswers, person.Diagnose);
             Console.WriteLine("Если вы хотите посмотреть результаты других участников нажмите 'Q'");
             var answer = Console.ReadLine();
             if (answer == "Q" || answer == "q")

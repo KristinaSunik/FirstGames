@@ -65,89 +65,89 @@ namespace GeniyIdiot
         static void SaveResults(string path, string name, int countRightAnswers, string usersDiagnose)
         {
             var results = new StreamWriter(path, true);
-            results.WriteLine("{0, 1 } {1, 50} {2,50}",
-                name, countRightAnswers.ToString(), usersDiagnose);
+            results.WriteLine(name + " " + countRightAnswers.ToString() + " " + usersDiagnose);
             results.Close();
         }
 
         static void ShowAllResults(string path)
         {
-            Console.WriteLine("{0, 1 } {1,50} {2,50}",
-               "Имя:", "Количество правильных ответов:", "Диагноз:");
-            Console.WriteLine();
-            String line;
             try
-            {
-                using (StreamReader streamReader = new StreamReader(path, true))
                 {
-                    line = streamReader.ReadLine();
-                    while (!streamReader.EndOfStream)
+                    using (StreamReader streamReader = new StreamReader(path, true))
                     {
-                        Console.WriteLine(streamReader.ReadLine());
+                       var line = streamReader.ReadToEnd().Split('\n');
+                        Console.WriteLine("{0,-25} {1,-30} {2, 20}\n", 
+                            "Имя:", "Количество правильных ответов:", "Диагноз:");
+                        for (int i = 0; i < line.Length - 1; i++)
+                        {
+                            var b = line[i].Split(' ');
+                            Console.WriteLine("{0,-25} {1,-30} {2, 20}\n", b[0], b[1], b[2]);
+                        }
                     }
                 }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
             }
-            catch (Exception e)
+
+
+
+
+            static List<string> GetDiagnoses()
             {
-                Console.WriteLine(e.Message);
+                var diagnoses = new List<string>();
+                diagnoses.Add("Идиот");
+                diagnoses.Add("Кретин");
+                diagnoses.Add("Дурак");
+                diagnoses.Add("Нормальный");
+                diagnoses.Add("Талант");
+                diagnoses.Add("Гений");
+                return diagnoses;
             }
-        }
 
 
 
-
-        static List<string> GetDiagnoses()
-        {
-            var diagnoses = new List<string>();
-            diagnoses.Add("Идиот");
-            diagnoses.Add("Кретин");
-            diagnoses.Add("Дурак");
-            diagnoses.Add("Нормальный");
-            diagnoses.Add("Талант");
-            diagnoses.Add("Гений");
-            return diagnoses;
-        }
-
-
-
-        static int GetUserAnswer()
-        {
-            int userAnswer;
-            while (!int.TryParse(Console.ReadLine(), out userAnswer))
+            static int GetUserAnswer()
             {
-                Console.WriteLine("Введите число: ");
+                int userAnswer;
+                while (!int.TryParse(Console.ReadLine(), out userAnswer))
+                {
+                    Console.WriteLine("Введите число: ");
+                }
+                return userAnswer;
             }
-            return userAnswer;
-        }
 
 
 
-        static int GetPointsOfDiagnoses(int percentageOfRightAnswers)
-        {
-            if (percentageOfRightAnswers <= 17)
+            static int GetPointsOfDiagnoses(int percentageOfRightAnswers)
             {
-                return 0;
-            }
-            else if (percentageOfRightAnswers > 17 && percentageOfRightAnswers <= 34)
-            {
-                return 1;
-            }
-            else if (percentageOfRightAnswers > 34 && percentageOfRightAnswers <= 51)
-            {
-                return 2;
-            }
-            else if (percentageOfRightAnswers > 51 && percentageOfRightAnswers <= 68)
-            {
-                return 3;
-            }
-            else if (percentageOfRightAnswers > 68 && percentageOfRightAnswers <= 85)
-            {
-                return 4;
-            }
-            else if (percentageOfRightAnswers > 85 && percentageOfRightAnswers <= 100)
-            {
-                return 5;
+
+                if (percentageOfRightAnswers <= 17)
+                {
+                    return 0;
+                }
+                else if (percentageOfRightAnswers > 17 && percentageOfRightAnswers <= 34)
+                {
+                    return 1;
+                }
+                else if (percentageOfRightAnswers > 34 && percentageOfRightAnswers <= 51)
+                {
+                    return 2;
+                }
+                else if (percentageOfRightAnswers > 51 && percentageOfRightAnswers <= 68)
+                {
+                    return 3;
+                }
+                else if (percentageOfRightAnswers > 68 && percentageOfRightAnswers <= 85)
+                {
+                    return 4;
+                }
+                else if (percentageOfRightAnswers > 85 && percentageOfRightAnswers <= 100)
+                {
+                    return 5;
+                }
+            return 3;
             }
         }
     }
-}

@@ -143,11 +143,10 @@ namespace GeniyIdiot
                 {
                     return 4;
                 }
-                else if (percentageOfRightAnswers > 85 && percentageOfRightAnswers <= 100)
-                {
-                    return 5;
-                }
-            return 3;
+
+                  return 5;
+                
+
             }
         }
     }

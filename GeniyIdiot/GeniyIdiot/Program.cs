@@ -32,7 +32,8 @@ namespace GeniyIdiot
                 questions.RemoveAt(randomQuestionIndex);
             }
             var diagnoses = GetDiagnoses();
-            var numberOfDiagnose = GetPointsOfDiagnoses(person.CountRightAnswers, questionsCount);
+            var percentageOfRightAnswers = person.CountRightAnswers * 100 / questionsCount;
+            var numberOfDiagnose = GetPointsOfDiagnoses(percentageOfRightAnswers);
             person.Diagnose = diagnoses[numberOfDiagnose];
             Console.WriteLine("Количество правильных ответов: " + person.CountRightAnswers);
             Console.WriteLine(person.Name + ", Ваш диагноз: " + person.Diagnose);
@@ -121,35 +122,32 @@ namespace GeniyIdiot
 
 
 
-        static int GetPointsOfDiagnoses(int countRightAnswers, int questionsCount)
+        static int GetPointsOfDiagnoses(int percentageOfRightAnswers)
         {
-            var points = 0;
-            var percentageOfRightAnswers = countRightAnswers * 100 / questionsCount;
             if (percentageOfRightAnswers <= 17)
             {
-                points = 0;
+                return 0;
             }
             else if (percentageOfRightAnswers > 17 && percentageOfRightAnswers <= 34)
             {
-                points = 1;
+                return 1;
             }
             else if (percentageOfRightAnswers > 34 && percentageOfRightAnswers <= 51)
             {
-                points = 2;
+                return 2;
             }
             else if (percentageOfRightAnswers > 51 && percentageOfRightAnswers <= 68)
             {
-                points = 3;
+                return 3;
             }
             else if (percentageOfRightAnswers > 68 && percentageOfRightAnswers <= 85)
             {
-                points = 4;
+                return 4;
             }
             else if (percentageOfRightAnswers > 85 && percentageOfRightAnswers <= 100)
             {
-                points = 5;
+                return 5;
             }
-            return points;
         }
     }
 }

@@ -21,8 +21,7 @@ namespace GeniyIdiot
             {
                 Console.WriteLine("Вопрос № " + (i + 1));
                 System.Random random = new System.Random();
-                var lengthOfList = questions.Count;
-                var randomQuestionIndex = random.Next(0, lengthOfList);
+                var randomQuestionIndex = random.Next(0, questions.Count);
                 Console.WriteLine(questions[randomQuestionIndex].Text);
                 var userAnswer = GetUserAnswer();
                 var rightAnswer = questions[randomQuestionIndex].Answer;

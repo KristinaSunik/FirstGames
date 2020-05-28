@@ -12,9 +12,11 @@ namespace GeniyIdiot
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Как Вас зовут?");
-            Person person = new Person();
-            person.Name = Console.ReadLine();
+            User user = new User();
+            Console.WriteLine("Ваша фамилия?");
+            user.Surname = Console.ReadLine();
+            Console.WriteLine("Ваше имя?");
+            user.Name = Console.ReadLine();
             var questions = GetQuestions();
             var questionsCount = questions.Count;
             for (int i = 0; i < questionsCount; i++)
@@ -27,18 +29,18 @@ namespace GeniyIdiot
                 var rightAnswer = questions[randomQuestionIndex].Answer;
                 if (userAnswer == rightAnswer)
                 {
-                    person.CountRightAnswers++;
+                    user.CountRightAnswers++;
                 }
                 questions.RemoveAt(randomQuestionIndex);
             }
             var diagnoses = GetDiagnoses();
-            var percentageOfRightAnswers = person.CountRightAnswers * 100 / questionsCount;
+            var percentageOfRightAnswers = user.CountRightAnswers * 100 / questionsCount;
             var numberOfDiagnose = GetPointsOfDiagnoses(percentageOfRightAnswers);
-            person.Diagnose = diagnoses[numberOfDiagnose];
-            Console.WriteLine("Количество правильных ответов: " + person.CountRightAnswers);
-            Console.WriteLine(person.Name + ", Ваш диагноз: " + person.Diagnose);
+            user.Diagnose = diagnoses[numberOfDiagnose];
+            Console.WriteLine("Количество правильных ответов: " + user.CountRightAnswers);
+            Console.WriteLine(user.Name + user.Surname  + ", Ваш диагноз: " + user.Diagnose);
             var path = @"D:\AllResults.txt";
-            SaveResults(path, person.Name, person.CountRightAnswers, person.Diagnose);
+            SaveResults(path, user);
             Console.WriteLine("Если вы хотите посмотреть результаты других участников нажмите 'Q'");
             var answer = Console.ReadLine();
             if (answer == "Q" || answer == "q")
@@ -62,10 +64,11 @@ namespace GeniyIdiot
 
 
 
-        static void SaveResults(string path, string name, int countRightAnswers, string usersDiagnose)
+        static void SaveResults(string path, User user)
         {
             var results = new StreamWriter(path, true);
-            results.WriteLine(name + " " + countRightAnswers.ToString() + " " + usersDiagnose);
+            results.WriteLine(user.Name + " "+ user.Surname + 
+                user.CountRightAnswers.ToString() + " " + user.Diagnose);
             results.Close();
         }
 
@@ -76,12 +79,12 @@ namespace GeniyIdiot
                     using (StreamReader streamReader = new StreamReader(path, true))
                     {
                        var line = streamReader.ReadToEnd().Split('\n');
-                        Console.WriteLine("{0,-25} {1,-30} {2, 20}\n", 
-                            "Имя:", "Количество правильных ответов:", "Диагноз:");
+                        Console.WriteLine("{0,-25} {0,-25} {1,-30} {2, 20}\n", 
+                            "Имя:", "Фамилия:","Количество правильных ответов:", "Диагноз:");
                         for (int i = 0; i < line.Length - 1; i++)
                         {
-                            var b = line[i].Split(' ');
-                            Console.WriteLine("{0,-25} {1,-30} {2, 20}\n", b[0], b[1], b[2]);
+                            var world = line[i].Split(' ');
+                            Console.WriteLine("{0,-25} {0,-25} {1,-30} {2, 20}\n", world[0], world[1], world[2], world[3]);
                         }
                     }
                 }

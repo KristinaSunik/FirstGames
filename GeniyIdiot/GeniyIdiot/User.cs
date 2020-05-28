@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace GeniyIdiot
 {
-    class Person
+    class User
     {
         public string Name;
         public string Diagnose;
+        public string Surname;
         public int CountRightAnswers = 0;
 
-        public Person()
+        public User()
         {
+
         }
 
       

@@ -51,7 +51,7 @@ namespace GeniyIdiot
         }
 
 
-        static List<Question> GetQuestions()
+         public static List<Question> GetQuestions()
         {
             Question question1 = new Question("Сколько будет два плюс два  умноженное на два?", 6);
             Question question2 = new Question("Бревно нужно распилить на 10  частей, сколько надо сделать  распилов?", 9);

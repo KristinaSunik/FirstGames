@@ -28,20 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label3 = new System.Windows.Forms.Label();
+            this.questionTextLabel = new System.Windows.Forms.Label();
             this.questionNumberLabel = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.nextQuestionButton = new System.Windows.Forms.Button();
+            this.UserAnswerTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // label3
+            // questionTextLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(90, 107);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 20);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "label3";
+            this.questionTextLabel.AutoSize = true;
+            this.questionTextLabel.Font = new System.Drawing.Font("Microsoft YaHei", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.questionTextLabel.Location = new System.Drawing.Point(41, 83);
+            this.questionTextLabel.Name = "questionTextLabel";
+            this.questionTextLabel.Size = new System.Drawing.Size(153, 27);
+            this.questionTextLabel.TabIndex = 0;
+            this.questionTextLabel.Text = "текст вопроса";
             // 
             // questionNumberLabel
             // 
@@ -54,29 +55,29 @@
             this.questionNumberLabel.Text = "Вопрос№1";
             this.questionNumberLabel.Click += new System.EventHandler(this.label4_Click);
             // 
-            // button2
+            // nextQuestionButton
             // 
-            this.button2.Location = new System.Drawing.Point(466, 130);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(181, 83);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.nextQuestionButton.Location = new System.Drawing.Point(405, 114);
+            this.nextQuestionButton.Name = "nextQuestionButton";
+            this.nextQuestionButton.Size = new System.Drawing.Size(181, 83);
+            this.nextQuestionButton.TabIndex = 2;
+            this.nextQuestionButton.Text = "далее";
+            this.nextQuestionButton.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // UserAnswerTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(64, 158);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(327, 26);
-            this.textBox2.TabIndex = 3;
+            this.UserAnswerTextBox.Location = new System.Drawing.Point(46, 142);
+            this.UserAnswerTextBox.Name = "UserAnswerTextBox";
+            this.UserAnswerTextBox.Size = new System.Drawing.Size(327, 26);
+            this.UserAnswerTextBox.TabIndex = 3;
             // 
             // GeniiIdiotWinFormsApp
             // 
-            this.ClientSize = new System.Drawing.Size(715, 244);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(610, 224);
+            this.Controls.Add(this.UserAnswerTextBox);
+            this.Controls.Add(this.nextQuestionButton);
             this.Controls.Add(this.questionNumberLabel);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.questionTextLabel);
             this.Name = "GeniiIdiotWinFormsApp";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -90,10 +91,10 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label questionTextLabel;
         private System.Windows.Forms.Label questionNumberLabel;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button nextQuestionButton;
+        private System.Windows.Forms.TextBox UserAnswerTextBox;
     }
 }
 

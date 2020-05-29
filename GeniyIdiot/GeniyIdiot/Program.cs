@@ -33,7 +33,7 @@ namespace GeniyIdiot
                 }
                 questions.RemoveAt(randomQuestionIndex);
             }
-            var numberOfDiagnose = Diagnos.Calculate(user , questionsCount);
+            var numberOfDiagnose = Diagnos.Calculate(user, questionsCount);
             var diagnoses = Diagnos.Get();
             user.Diagnose = diagnoses[numberOfDiagnose];
             Console.WriteLine("Количество правильных ответов: " + user.CountRightAnswers);
@@ -48,16 +48,7 @@ namespace GeniyIdiot
             }
             Console.ReadKey();
         }
-        static List<int> GetAnswers()
-        {
-            var answers = new List<int>();
-            answers.Add(6);
-            answers.Add(9);
-            answers.Add(25);
-            answers.Add(60);
-            answers.Add(5);
-            return answers;
-        }
+
         static int GetUserAnswer()
         {
             int userAnswer;
@@ -67,4 +58,5 @@ namespace GeniyIdiot
             }
             return userAnswer;
         }
+    }
 }

@@ -58,5 +58,13 @@ namespace GeniyIdiot
             answers.Add(5);
             return answers;
         }
-    }
+        static int GetUserAnswer()
+        {
+            int userAnswer;
+            while (!int.TryParse(Console.ReadLine(), out userAnswer))
+            {
+                Console.WriteLine("Введите число: ");
+            }
+            return userAnswer;
+        }
 }

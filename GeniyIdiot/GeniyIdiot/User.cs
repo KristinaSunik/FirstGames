@@ -11,11 +11,18 @@ namespace GeniyIdiot
         public string Name;
         public string Diagnose;
         public string Surname;
-        public int CountRightAnswers = 0;
+        public int CountRightAnswers;
 
-        public User()
+        public User(string name, string surname)
         {
+            Name = name;
+            Surname = surname;
+            CountRightAnswers = 0;
+        }
 
+        public void AcceptRightAnswer()
+        {
+            CountRightAnswers++;
         }
 
       

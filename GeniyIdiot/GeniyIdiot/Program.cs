@@ -12,12 +12,12 @@ namespace GeniyIdiot
 
         static void Main(string[] args)
         {
-            User user = new User();
             Console.WriteLine("Ваша фамилия?");
-            user.Surname = Console.ReadLine();
+            string surname = Console.ReadLine();
             Console.WriteLine("Ваше имя?");
-            user.Name = Console.ReadLine();
-            var questions = GetQuestions();
+            string name = Console.ReadLine();
+            User user = new User(name, surname);
+            var questions = QuestionStorage.Get();
             var questionsCount = questions.Count;
             for (int i = 0; i < questionsCount; i++)
             {
@@ -29,7 +29,7 @@ namespace GeniyIdiot
                 var rightAnswer = questions[randomQuestionIndex].Answer;
                 if (userAnswer == rightAnswer)
                 {
-                    user.CountRightAnswers++;
+                    user.AcceptRightAnswer();
                 }
                 questions.RemoveAt(randomQuestionIndex);
             }
@@ -38,118 +38,73 @@ namespace GeniyIdiot
             var numberOfDiagnose = GetPointsOfDiagnoses(percentageOfRightAnswers);
             user.Diagnose = diagnoses[numberOfDiagnose];
             Console.WriteLine("Количество правильных ответов: " + user.CountRightAnswers);
-            Console.WriteLine(user.Name + user.Surname  + ", Ваш диагноз: " + user.Diagnose);
+            Console.WriteLine(user.Name + user.Surname + ", Ваш диагноз: " + user.Diagnose);
             var path = @"D:\AllResults.txt";
-            SaveResults(path, user);
+            FileProvider.Add(path, user);
             Console.WriteLine("Если вы хотите посмотреть результаты других участников нажмите 'Q'");
             var answer = Console.ReadLine();
             if (answer == "Q" || answer == "q")
             {
-                ShowAllResults(path);
+                FileProvider.Get(path);
             }
             Console.ReadKey();
         }
 
 
-         public static List<Question> GetQuestions()
+
+        static List<string> GetDiagnoses()
         {
-            Question question1 = new Question("Сколько будет два плюс два  умноженное на два?", 6);
-            Question question2 = new Question("Бревно нужно распилить на 10  частей, сколько надо сделать  распилов?", 9);
-            Question question3 = new Question("На двух руках 10 пальцев. Сколько пальцев на 5 руках?", 25);
-            Question question4 = new Question("Укол делают каждые полчаса,  сколько нужно минут для трех  уколов?", 60);
-            Question question5 = new Question("Пять свечей горело, две  потухли. Сколько свечей  осталось?", 5);
-            var questions = new List<Question> { question1, question2, question3, question4, question5 };
-            return questions;
+            var diagnoses = new List<string>();
+            diagnoses.Add("Идиот");
+            diagnoses.Add("Кретин");
+            diagnoses.Add("Дурак");
+            diagnoses.Add("Нормальный");
+            diagnoses.Add("Талант");
+            diagnoses.Add("Гений");
+            return diagnoses;
         }
 
 
 
-        static void SaveResults(string path, User user)
+        static int GetUserAnswer()
         {
-            var results = new StreamWriter(path, true);
-            results.WriteLine(user.Name + " "+ user.Surname + " " +
-                user.CountRightAnswers.ToString() + " " + user.Diagnose);
-            results.Close();
+            int userAnswer;
+            while (!int.TryParse(Console.ReadLine(), out userAnswer))
+            {
+                Console.WriteLine("Введите число: ");
+            }
+            return userAnswer;
         }
 
-        static void ShowAllResults(string path)
+
+
+        static int GetPointsOfDiagnoses(int percentageOfRightAnswers)
         {
-            try
-                {
-                    using (StreamReader streamReader = new StreamReader(path, true))
-                    {
-                       var line = streamReader.ReadToEnd().Split('\n');
-                        Console.WriteLine("{0,-25} {1,-25} {2,-35} {3, 20}\n", 
-                            "Имя:", "Фамилия:","Количество правильных ответов:", "Диагноз:");
-                        for (int i = 0; i < line.Length - 1; i++)
-                        {
-                            var world = line[i].Split(' ');
-                            Console.WriteLine("{0,-25} {1,-25} {2,-35} {3, 20}\n", world[0], world[1], world[2], world[3]);
-                        }
-                    }
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-            }
 
-
-
-
-            static List<string> GetDiagnoses()
+            if (percentageOfRightAnswers <= 17)
             {
-                var diagnoses = new List<string>();
-                diagnoses.Add("Идиот");
-                diagnoses.Add("Кретин");
-                diagnoses.Add("Дурак");
-                diagnoses.Add("Нормальный");
-                diagnoses.Add("Талант");
-                diagnoses.Add("Гений");
-                return diagnoses;
+                return 0;
             }
-
-
-
-            static int GetUserAnswer()
+            else if (percentageOfRightAnswers > 17 && percentageOfRightAnswers <= 34)
             {
-                int userAnswer;
-                while (!int.TryParse(Console.ReadLine(), out userAnswer))
-                {
-                    Console.WriteLine("Введите число: ");
-                }
-                return userAnswer;
+                return 1;
             }
-
-
-
-            static int GetPointsOfDiagnoses(int percentageOfRightAnswers)
+            else if (percentageOfRightAnswers > 34 && percentageOfRightAnswers <= 51)
             {
-
-                if (percentageOfRightAnswers <= 17)
-                {
-                    return 0;
-                }
-                else if (percentageOfRightAnswers > 17 && percentageOfRightAnswers <= 34)
-                {
-                    return 1;
-                }
-                else if (percentageOfRightAnswers > 34 && percentageOfRightAnswers <= 51)
-                {
-                    return 2;
-                }
-                else if (percentageOfRightAnswers > 51 && percentageOfRightAnswers <= 68)
-                {
-                    return 3;
-                }
-                else if (percentageOfRightAnswers > 68 && percentageOfRightAnswers <= 85)
-                {
-                    return 4;
-                }
-
-                  return 5;
-                
-
+                return 2;
             }
+            else if (percentageOfRightAnswers > 51 && percentageOfRightAnswers <= 68)
+            {
+                return 3;
+            }
+            else if (percentageOfRightAnswers > 68 && percentageOfRightAnswers <= 85)
+            {
+                return 4;
+            }
+
+            return 5;
+
+
         }
     }
+}

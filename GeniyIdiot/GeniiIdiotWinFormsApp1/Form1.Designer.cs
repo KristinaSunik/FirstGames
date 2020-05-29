@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.questionNumberLabel = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -43,15 +43,16 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "label3";
             // 
-            // label4
+            // questionNumberLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(90, 39);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 20);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "label4";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.questionNumberLabel.AutoSize = true;
+            this.questionNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.questionNumberLabel.Location = new System.Drawing.Point(40, 24);
+            this.questionNumberLabel.Name = "questionNumberLabel";
+            this.questionNumberLabel.Size = new System.Drawing.Size(164, 32);
+            this.questionNumberLabel.TabIndex = 1;
+            this.questionNumberLabel.Text = "Вопрос№1";
+            this.questionNumberLabel.Click += new System.EventHandler(this.label4_Click);
             // 
             // button2
             // 
@@ -74,7 +75,7 @@
             this.ClientSize = new System.Drawing.Size(715, 244);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.questionNumberLabel);
             this.Controls.Add(this.label3);
             this.Name = "GeniiIdiotWinFormsApp";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -90,7 +91,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label questionNumberLabel;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox2;
     }

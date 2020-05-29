@@ -48,5 +48,15 @@ namespace GeniyIdiot
             }
             Console.ReadKey();
         }
+        static List<int> GetAnswers()
+        {
+            var answers = new List<int>();
+            answers.Add(6);
+            answers.Add(9);
+            answers.Add(25);
+            answers.Add(60);
+            answers.Add(5);
+            return answers;
+        }
     }
 }

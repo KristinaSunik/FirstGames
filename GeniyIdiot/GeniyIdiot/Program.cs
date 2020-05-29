@@ -33,9 +33,8 @@ namespace GeniyIdiot
                 }
                 questions.RemoveAt(randomQuestionIndex);
             }
-            var diagnoses = GetDiagnoses();
-            var percentageOfRightAnswers = user.CountRightAnswers * 100 / questionsCount;
-            var numberOfDiagnose = GetPointsOfDiagnoses(percentageOfRightAnswers);
+            var numberOfDiagnose = Diagnos.Calculate(user , questionsCount);
+            var diagnoses = Diagnos.Get();
             user.Diagnose = diagnoses[numberOfDiagnose];
             Console.WriteLine("Количество правильных ответов: " + user.CountRightAnswers);
             Console.WriteLine(user.Name + user.Surname + ", Ваш диагноз: " + user.Diagnose);
@@ -48,63 +47,6 @@ namespace GeniyIdiot
                 FileProvider.Get(path);
             }
             Console.ReadKey();
-        }
-
-
-
-        static List<string> GetDiagnoses()
-        {
-            var diagnoses = new List<string>();
-            diagnoses.Add("Идиот");
-            diagnoses.Add("Кретин");
-            diagnoses.Add("Дурак");
-            diagnoses.Add("Нормальный");
-            diagnoses.Add("Талант");
-            diagnoses.Add("Гений");
-            return diagnoses;
-        }
-
-
-
-        static int GetUserAnswer()
-        {
-            int userAnswer;
-            while (!int.TryParse(Console.ReadLine(), out userAnswer))
-            {
-                Console.WriteLine("Введите число: ");
-            }
-            return userAnswer;
-        }
-
-
-
-        static int GetPointsOfDiagnoses(int percentageOfRightAnswers)
-        {
-
-            if (percentageOfRightAnswers <= 17)
-            {
-                return 0;
-            }
-            else if (percentageOfRightAnswers > 17 && percentageOfRightAnswers <= 34)
-            {
-                return 1;
-            }
-            else if (percentageOfRightAnswers > 34 && percentageOfRightAnswers <= 51)
-            {
-                return 2;
-            }
-            else if (percentageOfRightAnswers > 51 && percentageOfRightAnswers <= 68)
-            {
-                return 3;
-            }
-            else if (percentageOfRightAnswers > 68 && percentageOfRightAnswers <= 85)
-            {
-                return 4;
-            }
-
-            return 5;
-
-
         }
     }
 }

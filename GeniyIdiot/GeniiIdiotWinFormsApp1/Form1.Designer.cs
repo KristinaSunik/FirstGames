@@ -1,6 +1,6 @@
 ﻿namespace GeniiIdiotWinFormsApp1
 {
-    partial class Form1
+    partial class GeniiIdiotWinFormsApp
     {
         /// <summary>
         /// Required designer variable.

@@ -1,8 +1,6 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace GeniyIdiot
 {
@@ -28,19 +26,19 @@ namespace GeniyIdiot
             {
                 return 0;
             }
-            else if (percentageOfRightAnswers > 17 && percentageOfRightAnswers <= 34)
+            if (percentageOfRightAnswers <= 34)
             {
                 return 1;
             }
-            else if (percentageOfRightAnswers > 34 && percentageOfRightAnswers <= 51)
+           if (percentageOfRightAnswers <= 51)
             {
                 return 2;
             }
-            else if (percentageOfRightAnswers > 51 && percentageOfRightAnswers <= 68)
+            if (percentageOfRightAnswers <= 68)
             {
                 return 3;
             }
-            else if (percentageOfRightAnswers > 68 && percentageOfRightAnswers <= 85)
+            if (percentageOfRightAnswers <= 85)
             {
                 return 4;
             }

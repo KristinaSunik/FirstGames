@@ -51,6 +51,7 @@
             this.label4.Size = new System.Drawing.Size(51, 20);
             this.label4.TabIndex = 1;
             this.label4.Text = "label4";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // button2
             // 
@@ -68,14 +69,14 @@
             this.textBox2.Size = new System.Drawing.Size(327, 26);
             this.textBox2.TabIndex = 3;
             // 
-            // Form1
+            // GeniiIdiotWinFormsApp
             // 
             this.ClientSize = new System.Drawing.Size(715, 244);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Name = "Form1";
+            this.Name = "GeniiIdiotWinFormsApp";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

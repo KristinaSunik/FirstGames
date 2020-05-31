@@ -31,7 +31,7 @@
             this.questionTextLabel = new System.Windows.Forms.Label();
             this.questionNumberLabel = new System.Windows.Forms.Label();
             this.nextQuestionButton = new System.Windows.Forms.Button();
-            this.UserAnswerTextBox = new System.Windows.Forms.TextBox();
+            this.userAnswerTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // questionTextLabel
@@ -66,15 +66,15 @@
             // 
             // UserAnswerTextBox
             // 
-            this.UserAnswerTextBox.Location = new System.Drawing.Point(46, 142);
-            this.UserAnswerTextBox.Name = "UserAnswerTextBox";
-            this.UserAnswerTextBox.Size = new System.Drawing.Size(327, 26);
-            this.UserAnswerTextBox.TabIndex = 3;
+            this.userAnswerTextBox.Location = new System.Drawing.Point(46, 142);
+            this.userAnswerTextBox.Name = "UserAnswerTextBox";
+            this.userAnswerTextBox.Size = new System.Drawing.Size(327, 26);
+            this.userAnswerTextBox.TabIndex = 3;
             // 
             // GeniiIdiotWinFormsApp
             // 
             this.ClientSize = new System.Drawing.Size(610, 224);
-            this.Controls.Add(this.UserAnswerTextBox);
+            this.Controls.Add(this.userAnswerTextBox);
             this.Controls.Add(this.nextQuestionButton);
             this.Controls.Add(this.questionNumberLabel);
             this.Controls.Add(this.questionTextLabel);
@@ -91,7 +91,7 @@
         private System.Windows.Forms.Label questionTextLabel;
         private System.Windows.Forms.Label questionNumberLabel;
         private System.Windows.Forms.Button nextQuestionButton;
-        private System.Windows.Forms.TextBox UserAnswerTextBox;
+        private System.Windows.Forms.TextBox userAnswerTextBox;
     }
 }
 

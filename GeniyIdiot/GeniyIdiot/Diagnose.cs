@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace GeniyIdiot
 {
-    class Diagnos
+    class Diagnose
     {
 
         public static List<string> Get()
@@ -18,7 +18,7 @@ namespace GeniyIdiot
             diagnoses.Add("Гений");
             return diagnoses;
         }
-        public static int Calculate(User user, int questionCount)
+        public static int CalculateNumberOfDiagnose(User user, int questionCount)
         {
             var percentageOfRightAnswers = user.CountRightAnswers * 100 / questionCount;
 

@@ -29,8 +29,8 @@ namespace GeniyIdiot
                 }
                 questions.RemoveAt(randomQuestionIndex);
             }
-            var numberOfDiagnose = Diagnos.Calculate(user, questionsCount);
-            var diagnoses = Diagnos.Get();
+            var numberOfDiagnose = Diagnose.CalculateNumberOfDiagnose(user, questionsCount);
+            var diagnoses = Diagnose.Get();
             user.Diagnose = diagnoses[numberOfDiagnose];
             Console.WriteLine("Количество правильных ответов: " + user.CountRightAnswers);
             Console.WriteLine(user.Name + user.Surname + ", Ваш диагноз: " + user.Diagnose);

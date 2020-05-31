@@ -79,5 +79,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GeniyIdiot\GeniyIdiot.csproj">
+      <Project>{825BABF0-2649-46A1-9189-3759C5EEF0CE}</Project>
+      <Name>GeniyIdiot</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

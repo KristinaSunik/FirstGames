@@ -10,6 +10,7 @@ namespace GeniiIdiotWinFormsApp1
         public List<Question> Questions;
         public int RandomQuestionIndex;
         public User User;
+        Random random = new Random();
 
         public GeniiIdiotWinFormsApp()
         {
@@ -20,9 +21,7 @@ namespace GeniiIdiotWinFormsApp1
         {
             User = new User();
             Questions = QuestionStorage.Get();
-            System.Random random = new System.Random();
-            RandomQuestionIndex = random.Next(0, Questions.Count);
-            questionTextLabel.Text = Questions[RandomQuestionIndex].Text;
+            PrintNextQuestion();
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -38,6 +37,14 @@ namespace GeniiIdiotWinFormsApp1
                 User.AcceptRightAnswer();
             }
             Questions.RemoveAt(RandomQuestionIndex);
+
+            PrintNextQuestion();
+        }
+
+        private void PrintNextQuestion()
+        {
+            RandomQuestionIndex = random.Next(0, Questions.Count);
+            questionTextLabel.Text = Questions[RandomQuestionIndex].Text;
         }
     }
 }

@@ -35,7 +35,9 @@ namespace GeniyIdiot
             Console.WriteLine("Количество правильных ответов: " + user.CountRightAnswers);
             Console.WriteLine(user.Name + user.Surname + ", Ваш диагноз: " + user.Diagnose);
             var path = @"D:\AllResults.txt";
-            FileProvider.Add(path, user);
+            var text = user.Name + " " + user.Surname + " " +
+                user.CountRightAnswers.ToString() + " " + user.Diagnose;
+            FileProvider.Add(path, text);
             Console.WriteLine("Если вы хотите посмотреть результаты других участников нажмите 'Q'");
             var answer = Console.ReadLine();
             if (answer == "Q" || answer == "q")

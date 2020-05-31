@@ -6,11 +6,10 @@ namespace GeniyIdiot
 {
     class FileProvider
     {
-        public static void Add(string path, User user)
+        public static void Add(string path, string text)
         {
             var results = new StreamWriter(path, true);
-            results.WriteLine(user.Name + " " + user.Surname + " " +
-                user.CountRightAnswers.ToString() + " " + user.Diagnose);
+            results.WriteLine(text);
             results.Close();
         }
 

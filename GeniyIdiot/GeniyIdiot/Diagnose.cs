@@ -18,27 +18,25 @@ namespace GeniyIdiot
             diagnoses.Add("Гений");
             return diagnoses;
         }
-        public static int CalculateNumberOfDiagnose(User user, int questionCount)
+        public static int CalculateNumberOfDiagnose(User user)
         {
-            var percentageOfRightAnswers = user.CountRightAnswers * 100 / questionCount;
-
-            if (percentageOfRightAnswers <= 17)
+            if (user.PercentageOfRightAnswers <= 17)
             {
                 return 0;
             }
-            if (percentageOfRightAnswers <= 34)
+            if (user.PercentageOfRightAnswers <= 34)
             {
                 return 1;
             }
-           if (percentageOfRightAnswers <= 51)
+           if (user.PercentageOfRightAnswers <= 51)
             {
                 return 2;
             }
-            if (percentageOfRightAnswers <= 68)
+            if (user.PercentageOfRightAnswers <= 68)
             {
                 return 3;
             }
-            if (percentageOfRightAnswers <= 85)
+            if (user.PercentageOfRightAnswers <= 85)
             {
                 return 4;
             }

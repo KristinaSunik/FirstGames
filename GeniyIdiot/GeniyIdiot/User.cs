@@ -8,12 +8,14 @@ namespace GeniyIdiot
         public string Diagnose;
         public string Surname;
         public int CountRightAnswers;
+        public int PercentageOfRightAnswers;
 
         public User()
         {
             Name = "Неизвест";
             Surname = "Неизвестный";
             CountRightAnswers = 0;
+            PercentageOfRightAnswers = 0;
         }
 
         public User(string name, string surname)
@@ -21,6 +23,7 @@ namespace GeniyIdiot
             Name = name;
             Surname = surname;
             CountRightAnswers = 0;
+            PercentageOfRightAnswers = 0;
         }
 
         public void AcceptRightAnswer()

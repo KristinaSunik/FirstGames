@@ -3,7 +3,7 @@
 
 namespace GeniyIdiot
 {
-    class Program
+   public class Program
     {
 
         static void Main(string[] args)
@@ -29,8 +29,9 @@ namespace GeniyIdiot
                 }
                 questions.RemoveAt(randomQuestionIndex);
             }
-            var numberOfDiagnose = Diagnose.CalculateNumberOfDiagnose(user, questionsCount);
+            user.PercentageOfRightAnswers = user.CountRightAnswers * 100 / questions.Count;
             var diagnoses = Diagnose.Get();
+            var numberOfDiagnose = Diagnose.CalculateNumberOfDiagnose(user);
             user.Diagnose = diagnoses[numberOfDiagnose];
             Console.WriteLine("Количество правильных ответов: " + user.CountRightAnswers);
             Console.WriteLine(user.Name + user.Surname + ", Ваш диагноз: " + user.Diagnose);

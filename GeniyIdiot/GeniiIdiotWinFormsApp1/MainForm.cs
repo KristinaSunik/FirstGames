@@ -7,7 +7,7 @@ namespace GeniiIdiotWinFormsApp1
 {
     public partial class GeniiIdiotWinFormsApp : Form
     {
-        public List<Question> Questions;
+        public static List<Question> Questions;
         public int RandomQuestionIndex;
         public User User;
         Random random = new Random();
@@ -43,8 +43,18 @@ namespace GeniiIdiotWinFormsApp1
 
         private void PrintNextQuestion()
         {
-            RandomQuestionIndex = random.Next(0, Questions.Count);
-            questionTextLabel.Text = Questions[RandomQuestionIndex].Text;
+            if (Questions.Count == 0)
+            {
+                var numberOfDiagnose = Diagnose.CalculateNumberOfDiagnose(User);
+                var diagnoses = Diagnose.Get();
+                User.Diagnose = diagnoses[numberOfDiagnose];
+                MessageBox.Show(User.Diagnose);
+            }
+            else
+            {
+                RandomQuestionIndex = random.Next(0, Questions.Count);
+                questionTextLabel.Text = Questions[RandomQuestionIndex].Text;
+            }
         }
     }
 }

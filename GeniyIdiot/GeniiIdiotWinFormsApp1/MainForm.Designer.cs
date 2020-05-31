@@ -63,11 +63,12 @@
             this.nextQuestionButton.TabIndex = 2;
             this.nextQuestionButton.Text = "далее";
             this.nextQuestionButton.UseVisualStyleBackColor = true;
+            this.nextQuestionButton.Click += new System.EventHandler(this.nextQuestionButton_Click);
             // 
-            // UserAnswerTextBox
+            // userAnswerTextBox
             // 
             this.userAnswerTextBox.Location = new System.Drawing.Point(46, 142);
-            this.userAnswerTextBox.Name = "UserAnswerTextBox";
+            this.userAnswerTextBox.Name = "userAnswerTextBox";
             this.userAnswerTextBox.Size = new System.Drawing.Size(327, 26);
             this.userAnswerTextBox.TabIndex = 3;
             // 

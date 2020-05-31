@@ -9,6 +9,13 @@ namespace GeniyIdiot
         public string Surname;
         public int CountRightAnswers;
 
+        public User()
+        {
+            Name = "Неизвест";
+            Surname = "Неизвестный";
+            CountRightAnswers = 0;
+        }
+
         public User(string name, string surname)
         {
             Name = name;

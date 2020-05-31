@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace GeniyIdiot
 {
-    class Diagnose
+    public class Diagnose
     {
 
         public static List<string> Get()

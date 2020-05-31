@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace GeniyIdiot
 {
-    class QuestionStorage
+   public class QuestionStorage
     {
         public static List<Question> Get()
         {

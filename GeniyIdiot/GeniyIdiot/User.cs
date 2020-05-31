@@ -2,7 +2,7 @@
 
 namespace GeniyIdiot
 {
-    class User
+    public class User
     {
         public string Name;
         public string Diagnose;

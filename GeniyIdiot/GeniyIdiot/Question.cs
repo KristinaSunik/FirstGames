@@ -2,7 +2,7 @@
 
 namespace GeniyIdiot
 {
-    class Question
+   public class Question
     {
         public string Text;
         public int Answer;

@@ -4,7 +4,7 @@ using System.IO;
 
 namespace GeniyIdiot
 {
-    class FileProvider
+    public class FileProvider
     {
         public static void Add(string path, string text)
         {

@@ -13,7 +13,8 @@ namespace GeniiIdiotWinFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            var questions = GetQuestions();
+            var questions = QuestionStorage.Get();
+
         }
 
         private void label4_Click(object sender, EventArgs e)

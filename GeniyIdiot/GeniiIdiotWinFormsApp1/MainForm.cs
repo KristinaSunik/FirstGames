@@ -1,4 +1,5 @@
-﻿using GeniyIdiot;
+﻿
+using GeniyIdiotCommon;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;

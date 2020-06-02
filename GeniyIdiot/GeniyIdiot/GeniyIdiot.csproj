@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GeniiIdiotCommon\GeniyIdiotCommon.csproj">
+      <Project>{2ef6b4fb-7a08-4e87-8918-99a3a40228f1}</Project>
+      <Name>GeniyIdiotCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

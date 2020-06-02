@@ -1,9 +1,10 @@
 ﻿using System;
+using System.IO;
 
 
 namespace GeniyIdiot
 {
-   public class Program
+    public class Program
     {
 
         static void Main(string[] args)
@@ -29,15 +30,15 @@ namespace GeniyIdiot
                 }
                 questions.RemoveAt(randomQuestionIndex);
             }
-            user.PercentageOfRightAnswers = user.CountRightAnswers * 100 / questions.Count;
+            user.PercentageOfRightAnswers = user.CountRightAnswers * 100 / questionsCount;
             var diagnoses = Diagnose.Get();
             var numberOfDiagnose = Diagnose.CalculateNumberOfDiagnose(user);
             user.Diagnose = diagnoses[numberOfDiagnose];
             Console.WriteLine("Количество правильных ответов: " + user.CountRightAnswers);
             Console.WriteLine(user.Name + user.Surname + ", Ваш диагноз: " + user.Diagnose);
             var path = @"D:\AllResults.txt";
-            var text = user.Name + " " + user.Surname + " " +
-                user.CountRightAnswers.ToString() + " " + user.Diagnose;
+            var text = user.Name+ Environment.NewLine + user.Surname + Environment.NewLine +
+                user.CountRightAnswers.ToString() + Environment.NewLine + user.Diagnose;
             FileProvider.Add(path, text);
             Console.WriteLine("Если вы хотите посмотреть результаты других участников нажмите 'Q'");
             var answer = Console.ReadLine();

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-
+using System.Linq;
 
 namespace GeniyIdiot
 {
@@ -19,13 +19,18 @@ namespace GeniyIdiot
             {
                 using (StreamReader streamReader = new StreamReader(path, true))
                 {
-                    var line = streamReader.ReadToEnd().Split('\n');
+                    string [] lines = File.ReadAllLines(path);
                     Console.WriteLine("{0,-25} {1,-25} {2,-35} {3, 20}\n",
                         "Имя:", "Фамилия:", "Количество правильных ответов:", "Диагноз:");
-                    for (int i = 0; i < line.Length - 1; i++)
+                    for (int i = 0; i < lines.Length - 1; i++)
                     {
-                        var world = line[i].Split(' ');
-                        Console.WriteLine("{0,-25} {1,-25} {2,-35} {3, 20}\n", world[0], world[1], world[2], world[3]);
+                        var name = lines[i];
+                        var surname = lines[i+1];
+                        var rightAnswer = lines[i+2];
+                        var diagnose = lines[i+3];
+                        Console.WriteLine("{0,-25} {1,-25} {2,-35} {3, 20}\n", name, surname, rightAnswer, diagnose);
+                        Console.WriteLine();
+                        i = i + 3;
                     }
                 }
             }

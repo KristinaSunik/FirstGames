@@ -10,11 +10,11 @@ namespace GeniyIdiot
 
         public static void Main(string[] args)
         {
+            User user = new User();
             Console.WriteLine("Ваша фамилия?");
-            string surname = Console.ReadLine();
+            user.GetSurname(Console.ReadLine());
             Console.WriteLine("Ваше имя?");
-            string name = Console.ReadLine();
-            User user = new User(name, surname);
+            user.GetName(Console.ReadLine());
             var questions = QuestionStorage.Get();
             var questionsCount = questions.Count;
             for (int i = 0; i < questionsCount; i++)
@@ -38,7 +38,7 @@ namespace GeniyIdiot
             Console.WriteLine("Количество правильных ответов: " + user.CountRightAnswers);
             Console.WriteLine(user.Name + user.Surname + ", Ваш диагноз: " + user.Diagnose);
             var path = @"D:\AllResults.txt";
-            var text = user.Name+ Environment.NewLine + user.Surname + Environment.NewLine +
+            var text = user.Name + Environment.NewLine + user.Surname + Environment.NewLine +
                 user.CountRightAnswers.ToString() + Environment.NewLine + user.Diagnose;
             FileProvider.Add(path, text);
             Console.WriteLine("Если вы хотите посмотреть результаты других участников нажмите 'Q'");
@@ -56,7 +56,7 @@ namespace GeniyIdiot
                     var userDiagnose = lines[i + 3];
                     Console.WriteLine("{0,-25} {1,-25} {2,-35} {3, 20}\n", userName, userSurname, userRightAnswer, userDiagnose);
                     Console.WriteLine();
-                    i = i + 3;
+                    i += 3;
                 }
             }
             Console.ReadKey();

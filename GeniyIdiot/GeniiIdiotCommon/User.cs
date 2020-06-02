@@ -1,4 +1,6 @@
-﻿namespace GeniyIdiotCommon
+﻿using System.Net.Http.Headers;
+
+namespace GeniyIdiotCommon
 {
     public class User
     {
@@ -8,18 +10,11 @@
         public int CountRightAnswers;
         public int PercentageOfRightAnswers;
 
+
         public User()
         {
-            Name = "Неизвест";
-            Surname = "Неизвестный";
-            CountRightAnswers = 0;
-            PercentageOfRightAnswers = 0;
-        }
-
-        public User(string name, string surname)
-        {
-            Name = name;
-            Surname = surname;
+            Name = "Иван";
+            Surname = "Иванович";
             CountRightAnswers = 0;
             PercentageOfRightAnswers = 0;
         }
@@ -30,5 +25,19 @@
         }
 
 
+        public string GetName(string value)
+        {
+            Name = value;
+            return Name;
+        }
+
+        public string GetSurname(string value)
+        {
+            Surname = value;
+            return Surname;
+        }
     }
 }
+
+    
+

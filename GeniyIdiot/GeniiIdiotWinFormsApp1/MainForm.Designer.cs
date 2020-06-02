@@ -43,6 +43,7 @@
             this.questionTextLabel.Size = new System.Drawing.Size(153, 27);
             this.questionTextLabel.TabIndex = 0;
             this.questionTextLabel.Text = "текст вопроса";
+            this.questionTextLabel.Click += new System.EventHandler(this.questionTextLabel_Click);
             // 
             // questionNumberLabel
             // 

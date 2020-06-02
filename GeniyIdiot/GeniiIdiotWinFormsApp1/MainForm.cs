@@ -25,9 +25,6 @@ namespace GeniiIdiotWinFormsApp1
             PrintNextQuestion();
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-        }
 
         private void nextQuestionButton_Click(object sender, EventArgs e)
         {
@@ -45,7 +42,6 @@ namespace GeniiIdiotWinFormsApp1
                 Questions.RemoveAt(RandomQuestionIndex);
 
                 PrintNextQuestion();
-            
         }
 
         private void PrintNextQuestion()
@@ -63,5 +59,7 @@ namespace GeniiIdiotWinFormsApp1
                 questionTextLabel.Text = Questions[RandomQuestionIndex].Text;
             }
         }
+
+       
     }
 }

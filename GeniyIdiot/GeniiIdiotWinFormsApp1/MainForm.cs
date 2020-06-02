@@ -21,10 +21,14 @@ namespace GeniiIdiotWinFormsApp1
         private void Form1_Load(object sender, EventArgs e)
         {
             User = new User();
+         
             Questions = QuestionStorage.Get();
             PrintNextQuestion();
         }
 
+        private void label4_Click(object sender, EventArgs e)
+        {
+        }
 
         private void nextQuestionButton_Click(object sender, EventArgs e)
         {
@@ -59,7 +63,5 @@ namespace GeniiIdiotWinFormsApp1
                 questionTextLabel.Text = Questions[RandomQuestionIndex].Text;
             }
         }
-
-       
     }
 }

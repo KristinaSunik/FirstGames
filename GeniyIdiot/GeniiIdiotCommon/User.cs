@@ -11,10 +11,10 @@ namespace GeniyIdiotCommon
         public int PercentageOfRightAnswers;
 
 
-        public User()
+        public User(string name, string surname)
         {
-            Name = "Иван";
-            Surname = "Иванович";
+            Name = name;
+            Surname = surname;
             CountRightAnswers = 0;
             PercentageOfRightAnswers = 0;
         }
@@ -22,19 +22,6 @@ namespace GeniyIdiotCommon
         public void AcceptRightAnswer()
         {
             CountRightAnswers++;
-        }
-
-
-        public string GetName(string value)
-        {
-            Name = value;
-            return Name;
-        }
-
-        public string GetSurname(string value)
-        {
-            Surname = value;
-            return Surname;
         }
     }
 }

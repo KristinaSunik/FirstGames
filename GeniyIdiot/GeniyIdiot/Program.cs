@@ -10,11 +10,11 @@ namespace GeniyIdiot
 
         public static void Main(string[] args)
         {
-            User user = new User();
             Console.WriteLine("Ваша фамилия?");
-            user.GetSurname(Console.ReadLine());
+            string surname = Console.ReadLine();
             Console.WriteLine("Ваше имя?");
-            user.GetName(Console.ReadLine());
+            string name = Console.ReadLine();
+            User user = new User(name, surname);
             var questions = QuestionStorage.Get();
             var questionsCount = questions.Count;
             for (int i = 0; i < questionsCount; i++)

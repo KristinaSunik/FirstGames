@@ -1,10 +1,9 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 
-namespace GeniyIdiot
+namespace GeniyIdiotCommon
 {
-   public class QuestionStorage
+    public class QuestionStorage
     {
         public static List<Question> Get()
         {

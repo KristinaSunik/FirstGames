@@ -1,6 +1,4 @@
-﻿
-
-namespace GeniyIdiot
+﻿namespace GeniyIdiotCommon
 {
     public class User
     {
@@ -31,6 +29,6 @@ namespace GeniyIdiot
             CountRightAnswers++;
         }
 
-      
+
     }
 }

@@ -1,8 +1,7 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 
-namespace GeniyIdiot
+namespace GeniyIdiotCommon
 {
     public class Diagnose
     {
@@ -28,7 +27,7 @@ namespace GeniyIdiot
             {
                 return 1;
             }
-           if (user.PercentageOfRightAnswers <= 51)
+            if (user.PercentageOfRightAnswers <= 51)
             {
                 return 2;
             }

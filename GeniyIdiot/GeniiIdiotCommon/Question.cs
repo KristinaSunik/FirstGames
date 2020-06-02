@@ -1,8 +1,6 @@
-﻿
-
-namespace GeniyIdiot
+﻿namespace GeniyIdiotCommon
 {
-   public class Question
+    public class Question
     {
         public string Text;
         public int Answer;

@@ -8,7 +8,7 @@ namespace GeniyIdiot
     public class Program
     {
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Console.WriteLine("Ваша фамилия?");
             string surname = Console.ReadLine();
@@ -45,7 +45,19 @@ namespace GeniyIdiot
             var answer = Console.ReadLine();
             if (answer == "Q" || answer == "q")
             {
-                FileProvider.Get(path);
+                Console.WriteLine("{0,-25} {1,-25} {2,-35} {3, 20}\n",
+                        "Имя:", "Фамилия:", "Количество правильных ответов:", "Диагноз:");
+                string[] lines = FileProvider.Get(path);
+                for (int i = 0; i < lines.Length - 1; i++)
+                {
+                    var userName = lines[i];
+                    var userSurname = lines[i + 1];
+                    var userRightAnswer = lines[i + 2];
+                    var userDiagnose = lines[i + 3];
+                    Console.WriteLine("{0,-25} {1,-25} {2,-35} {3, 20}\n", userName, userSurname, userRightAnswer, userDiagnose);
+                    Console.WriteLine();
+                    i = i + 3;
+                }
             }
             Console.ReadKey();
         }

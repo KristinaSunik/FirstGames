@@ -32,18 +32,20 @@ namespace GeniiIdiotWinFormsApp1
         private void nextQuestionButton_Click(object sender, EventArgs e)
         {
             int userAnswer;
-            while (!int.TryParse(Console.ReadLine(), out userAnswer))
+            if (!int.TryParse(Console.ReadLine(), out userAnswer))
             {
                 MessageBox.Show("Введите число!");
             }
-            var rightAnswer = Questions[RandomQuestionIndex].Answer;
-            if (userAnswer == rightAnswer)
-            {
-                User.AcceptRightAnswer();
-            }
-            Questions.RemoveAt(RandomQuestionIndex);
+            
+                var rightAnswer = Questions[RandomQuestionIndex].Answer;
+                if (userAnswer == rightAnswer)
+                {
+                    User.AcceptRightAnswer();
+                }
+                Questions.RemoveAt(RandomQuestionIndex);
 
-            PrintNextQuestion();
+                PrintNextQuestion();
+            
         }
 
         private void PrintNextQuestion()

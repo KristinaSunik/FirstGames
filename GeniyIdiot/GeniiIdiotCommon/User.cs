@@ -10,6 +10,13 @@ namespace GeniyIdiotCommon
         public int CountRightAnswers;
         public int PercentageOfRightAnswers;
 
+        public User()
+        {
+            Name = "Иван";
+            Surname = "Иванович";
+            CountRightAnswers = 0;
+            PercentageOfRightAnswers = 0;
+        }
 
         public User(string name, string surname)
         {

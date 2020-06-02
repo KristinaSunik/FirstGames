@@ -33,7 +33,7 @@ namespace GeniiIdiotWinFormsApp1
         private void nextQuestionButton_Click(object sender, EventArgs e)
         {
             int userAnswer;
-            if (!int.TryParse(Console.ReadLine(), out userAnswer))
+            if (!int.TryParse(userAnswerTextBox.Text, out userAnswer))
             {
                 MessageBox.Show("Введите число!");
             }

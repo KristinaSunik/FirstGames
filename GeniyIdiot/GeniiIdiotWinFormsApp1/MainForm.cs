@@ -31,7 +31,11 @@ namespace GeniiIdiotWinFormsApp1
 
         private void nextQuestionButton_Click(object sender, EventArgs e)
         {
-            var userAnswer = Convert.ToInt32(userAnswerTextBox.Text);
+            int userAnswer;
+            while (!int.TryParse(Console.ReadLine(), out userAnswer))
+            {
+                MessageBox.Show("Введите число!");
+            }
             var rightAnswer = Questions[RandomQuestionIndex].Answer;
             if (userAnswer == rightAnswer)
             {

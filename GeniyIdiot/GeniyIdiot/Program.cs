@@ -11,9 +11,9 @@ namespace GeniyIdiot
         public static void Main(string[] args)
         {
             Console.WriteLine("Ваша фамилия?");
-            string surname = Console.ReadLine();
+            var surname = Console.ReadLine();
             Console.WriteLine("Ваше имя?");
-            string name = Console.ReadLine();
+            var name = Console.ReadLine();
             User user = new User(name, surname);
             var questions = QuestionStorage.Get();
             var questionsCount = questions.Count;

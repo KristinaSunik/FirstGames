@@ -37,16 +37,14 @@ namespace GeniiIdiotWinFormsApp1
             {
                 MessageBox.Show("Введите число!");
             }
-            
-                var rightAnswer = Questions[RandomQuestionIndex].Answer;
-                if (userAnswer == rightAnswer)
-                {
-                    User.AcceptRightAnswer();
-                }
-                Questions.RemoveAt(RandomQuestionIndex);
 
-                PrintNextQuestion();
+            var rightAnswer = Questions[RandomQuestionIndex].Answer;
+            User.ChekUserAnswer(userAnswer, rightAnswer);
+            Questions.RemoveAt(RandomQuestionIndex);
+            PrintNextQuestion();
         }
+
+        
 
         private void PrintNextQuestion()
         {

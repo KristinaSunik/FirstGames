@@ -25,10 +25,7 @@ namespace GeniyIdiot
                 Console.WriteLine(questions[randomQuestionIndex].Text);
                 var userAnswer = GetUserAnswer();
                 var rightAnswer = questions[randomQuestionIndex].Answer;
-                if (userAnswer == rightAnswer)
-                {
-                    user.AcceptRightAnswer();
-                }
+                user.ChekUserAnswer(userAnswer, rightAnswer);
                 questions.RemoveAt(randomQuestionIndex);
             }
             user.PercentageOfRightAnswers = user.CountRightAnswers * 100 / questionsCount;

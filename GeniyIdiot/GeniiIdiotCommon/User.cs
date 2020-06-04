@@ -30,6 +30,13 @@ namespace GeniyIdiotCommon
         {
             CountRightAnswers++;
         }
+        public void ChekUserAnswer(int userAnswer, int rightAnswer)
+        {
+            if (userAnswer == rightAnswer)
+            {
+                AcceptRightAnswer();
+            }
+        }
     }
 }
 

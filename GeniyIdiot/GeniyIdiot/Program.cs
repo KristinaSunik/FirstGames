@@ -15,16 +15,14 @@ namespace GeniyIdiot
             Console.WriteLine("Ваше имя?");
             var name = Console.ReadLine();
             User user = new User(name, surname);
-            var questions = QuestionStorage.Get();
-            var questionsCount = questions.Count;
+            var game = new Game();
+            var questionsCount = game.GetQuestionsCount();
             for (int i = 0; i < questionsCount; i++)
             {
                 Console.WriteLine("Вопрос № " + (i + 1));
-                System.Random random = new System.Random();
-                var randomQuestionIndex = random.Next(0, questions.Count);
-                Console.WriteLine(questions[randomQuestionIndex].Text);
+                Console.WriteLine(game.GetRandomeQuestion().Text);
+                var rightAnswer = game.GetRandomeQuestion().Answer;
                 var userAnswer = GetUserAnswer();
-                var rightAnswer = questions[randomQuestionIndex].Answer;
                 user.ChekUserAnswer(userAnswer, rightAnswer);
                 questions.RemoveAt(randomQuestionIndex);
             }

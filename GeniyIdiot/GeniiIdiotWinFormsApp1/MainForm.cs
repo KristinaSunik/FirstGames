@@ -46,9 +46,7 @@ namespace GeniiIdiotWinFormsApp1
         {
             if (game.IsEnd())
             {
-                var numberOfDiagnose = Diagnose.CalculateNumberOfDiagnose(user);
-                var diagnoses = Diagnose.Get();
-                user.Diagnose = diagnoses[numberOfDiagnose];
+                user.Diagnose = Diagnose.Calculate(user);
                 MessageBox.Show(user.Diagnose);
             }
             else

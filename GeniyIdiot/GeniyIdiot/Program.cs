@@ -24,11 +24,9 @@ namespace GeniyIdiot
                 var userAnswer = GetUserAnswer();
                 game.AcceptUserAnswer(userAnswer);
             }
-            var questionsCount = GetQuestionsCount();
+            var questionsCount = game.GetQuestionsCount();
             user.PercentageOfRightAnswers = user.CountRightAnswers * 100 / questionsCount;
-            var diagnoses = Diagnose.Get();
-            var numberOfDiagnose = Diagnose.CalculateNumberOfDiagnose(user);
-            user.Diagnose = diagnoses[numberOfDiagnose];
+            user.Diagnose = Diagnose.Calculate(user);
             Console.WriteLine("Количество правильных ответов: " + user.CountRightAnswers);
             Console.WriteLine(user.Name + user.Surname + ", Ваш диагноз: " + user.Diagnose);
             var path = @"D:\AllResults.txt";

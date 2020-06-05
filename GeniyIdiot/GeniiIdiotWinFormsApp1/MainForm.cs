@@ -8,10 +8,8 @@ namespace GeniiIdiotWinFormsApp1
 {
     public partial class GeniiIdiotWinFormsApp : Form
     {
-        public static List<Question> Questions;
-        public int RandomQuestionIndex;
-        public User User;
-        Random random = new Random();
+        private User user;
+        private Game game;
 
         public GeniiIdiotWinFormsApp()
         {
@@ -21,9 +19,8 @@ namespace GeniiIdiotWinFormsApp1
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            User = new User();
-
-            Questions = QuestionStorage.Get();
+            user = new User();
+            game = new Game(user);
             PrintNextQuestion();
         }
 
@@ -39,9 +36,7 @@ namespace GeniiIdiotWinFormsApp1
                 MessageBox.Show("Введите число!");
             }
 
-            var rightAnswer = Questions[RandomQuestionIndex].Answer;
-            User.ChekUserAnswer(userAnswer, rightAnswer);
-            Questions.RemoveAt(RandomQuestionIndex);
+            game.AcceptUserAnswer(userAnswer);
             PrintNextQuestion();
         }
 
@@ -49,17 +44,16 @@ namespace GeniiIdiotWinFormsApp1
 
         private void PrintNextQuestion()
         {
-            if (Questions.Count == 0)
+            if (game.IsEnd())
             {
-                var numberOfDiagnose = Diagnose.CalculateNumberOfDiagnose(User);
+                var numberOfDiagnose = Diagnose.CalculateNumberOfDiagnose(user);
                 var diagnoses = Diagnose.Get();
-                User.Diagnose = diagnoses[numberOfDiagnose];
-                MessageBox.Show(User.Diagnose);
+                user.Diagnose = diagnoses[numberOfDiagnose];
+                MessageBox.Show(user.Diagnose);
             }
             else
             {
-                RandomQuestionIndex = random.Next(0, Questions.Count);
-                questionTextLabel.Text = Questions[RandomQuestionIndex].Text;
+                questionTextLabel.Text = game.PopRandomeQuestion().Text;
             }
         }
     }

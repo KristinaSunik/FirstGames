@@ -23,10 +23,12 @@ namespace GeniyIdiotCommon
             return "Вопрос № " + currentQuestionNumber;
         }
 
-        public int GetQuestionsCount()
+        public bool IsEnd()
         {
-            return questions.Count;
+            return GetQuestionsCount() == 0;
         }
+
+
         public Question PopRandomeQuestion()
         {
             Random random = new Random();
@@ -43,6 +45,11 @@ namespace GeniyIdiotCommon
             {
                 user.AcceptRightAnswer();
             }
+        }
+
+        public int GetQuestionsCount()
+        {
+            return questions.Count;
         }
     }
 }

@@ -16,8 +16,7 @@ namespace GeniyIdiot
             var name = Console.ReadLine();
             User user = new User(name, surname);
             var game = new Game(user);
-            var questionsCount = game.GetQuestionsCount();
-            for (int i = 0; i < questionsCount; i++)
+            while(!game.IsEnd())
             {
                 Console.WriteLine(game.GetCurrentQuestionNumberInfo());
                 var question = game.PopRandomeQuestion();
@@ -25,6 +24,7 @@ namespace GeniyIdiot
                 var userAnswer = GetUserAnswer();
                 game.AcceptUserAnswer(userAnswer);
             }
+            var questionsCount = GetQuestionsCount();
             user.PercentageOfRightAnswers = user.CountRightAnswers * 100 / questionsCount;
             var diagnoses = Diagnose.Get();
             var numberOfDiagnose = Diagnose.CalculateNumberOfDiagnose(user);

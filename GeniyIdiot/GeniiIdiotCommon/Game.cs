@@ -7,21 +7,42 @@ namespace GeniyIdiotCommon
    public class Game
     {
         private List<Question> questions;
+        private Question currentQuestion;
+        private User user;
+        private int currentQuestionNumber = 0;
 
-        public Game()
+        public Game(User user)
         {
+            this.user = user;
             questions = QuestionStorage.Get();
         }
+
+        public string GetCurrentQuestionNumberInfo()
+        {
+            currentQuestionNumber++;
+            return "Вопрос № " + currentQuestionNumber;
+        }
+
         public int GetQuestionsCount()
         {
             return questions.Count;
         }
-        public Question GetRandomeQuestion()
+        public Question PopRandomeQuestion()
         {
-            System.Random random = new System.Random();
+            Random random = new Random();
             var randomQuestionIndex = random.Next(0, questions.Count);
-            return questions[randomQuestionIndex];
+            currentQuestion = questions[randomQuestionIndex];
+            questions.Remove(currentQuestion);
+            return currentQuestion;
 
+        }
+        public void AcceptUserAnswer(int userAnswer)
+        {
+            var rightAnswer = currentQuestion.Answer;
+            if (userAnswer == rightAnswer)
+            {
+                user.AcceptRightAnswer();
+            }
         }
     }
 }

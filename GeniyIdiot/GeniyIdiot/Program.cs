@@ -15,16 +15,15 @@ namespace GeniyIdiot
             Console.WriteLine("Ваше имя?");
             var name = Console.ReadLine();
             User user = new User(name, surname);
-            var game = new Game();
+            var game = new Game(user);
             var questionsCount = game.GetQuestionsCount();
             for (int i = 0; i < questionsCount; i++)
             {
-                Console.WriteLine("Вопрос № " + (i + 1));
-                Console.WriteLine(game.GetRandomeQuestion().Text);
-                var rightAnswer = game.GetRandomeQuestion().Answer;
+                Console.WriteLine(game.GetCurrentQuestionNumberInfo());
+                var question = game.PopRandomeQuestion();
+                Console.WriteLine(question.Text);
                 var userAnswer = GetUserAnswer();
-                user.ChekUserAnswer(userAnswer, rightAnswer);
-                questions.RemoveAt(randomQuestionIndex);
+                game.AcceptUserAnswer(userAnswer);
             }
             user.PercentageOfRightAnswers = user.CountRightAnswers * 100 / questionsCount;
             var diagnoses = Diagnose.Get();

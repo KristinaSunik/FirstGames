@@ -38,7 +38,7 @@ namespace GeniyIdiot
             {
                 Console.WriteLine("{0,-25} {1,-25} {2,-35} {3, 20}\n",
                         "Имя:", "Фамилия:", "Количество правильных ответов:", "Диагноз:");
-                string[] lines = FileProvider.Get(path);
+                string lines = FileProvider.Get(path);
                 for (int i = 0; i < lines.Length - 1; i++)
                 {
                     var userName = lines[i];

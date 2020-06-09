@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace GeniyIdiotCommon
 {
@@ -21,7 +20,7 @@ namespace GeniyIdiotCommon
         public string GetCurrentQuestionNumberInfo()
         {
             currentQuestionNumber++;
-            return "Вопрос № " + currentQuestionNumber;
+            return "Вопрос  № " + currentQuestionNumber;
         }
 
         public bool IsEnd()
@@ -51,6 +50,25 @@ namespace GeniyIdiotCommon
         {
             var data = $"{user.Name}${ user.Surname}${ user.CountRightAnswers}${user.Diagnose}";
             FileProvider.Add(userResultsPath, data);
+        }
+        public List<UserResult> GetUserResults()
+        {
+            var userResults = new List<UserResult>();
+            var data = FileProvider.Get(userResultsPath);
+            var lines = data.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+            for (int i = 0; i < lines.Length; i++)
+            {
+                var line = lines[i];
+                var lineData = line.Split('$');
+                var userResult = new UserResult();
+                userResult.Name = lineData[0];
+                userResult.Surname = lineData[1];
+                userResult.CountRightAnswers = Convert.ToInt32(lineData[2]);
+                userResult.Diagnose = lineData[3];
+
+                userResults.Add(userResult);
+            }
+            return userResults;
         }
 
         public int GetQuestionsCount()

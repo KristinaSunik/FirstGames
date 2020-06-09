@@ -116,6 +116,7 @@
             this.посмотретьПредыдущиеРезультатыToolStripMenuItem.Name = "посмотретьПредыдущиеРезультатыToolStripMenuItem";
             this.посмотретьПредыдущиеРезультатыToolStripMenuItem.Size = new System.Drawing.Size(420, 34);
             this.посмотретьПредыдущиеРезультатыToolStripMenuItem.Text = "Посмотреть предыдущие результаты";
+            this.посмотретьПредыдущиеРезультатыToolStripMenuItem.Click += new System.EventHandler(this.посмотретьПредыдущиеРезультатыToolStripMenuItem_Click);
             // 
             // рестартToolStripMenuItem
             // 

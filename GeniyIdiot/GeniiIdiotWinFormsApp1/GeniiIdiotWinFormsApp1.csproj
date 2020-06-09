@@ -60,6 +60,12 @@
     <Compile Include="UserNameForm.Designer.cs">
       <DependentUpon>UserNameForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserResultsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserResultsForm.Designer.cs">
+      <DependentUpon>UserResultsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserSurnameForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,9 @@
     </Compile>
     <EmbeddedResource Include="UserNameForm.resx">
       <DependentUpon>UserNameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserResultsForm.resx">
+      <DependentUpon>UserResultsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserSurnameForm.resx">
       <DependentUpon>UserSurnameForm.cs</DependentUpon>

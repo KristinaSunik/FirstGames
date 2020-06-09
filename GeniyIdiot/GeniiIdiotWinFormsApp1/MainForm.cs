@@ -19,12 +19,10 @@ namespace GeniiIdiotWinFormsApp1
         private void MainForm_Load(object sender, EventArgs e)
         {
             var userSurnameForm = new UserSurnameForm();
-            userSurnameForm.UserSurnameTextBox.Focus();
             if (userSurnameForm.ShowDialog(this) == DialogResult.OK)
             {
                 var userSurname = userSurnameForm.UserSurnameTextBox.Text;
                 var userNameForm = new UserNameForm();
-                userNameForm.userNameTextBox.Focus();
                 if (userNameForm.ShowDialog(this) == DialogResult.OK)
                 {
                     var userName = userNameForm.userNameTextBox.Text;
@@ -74,6 +72,13 @@ namespace GeniiIdiotWinFormsApp1
                 questionNumberLabel.Text = game.GetCurrentQuestionNumberInfo();
                 userAnswerTextBox.Clear();
             }
+        }
+
+        private void посмотретьПредыдущиеРезультатыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var userResults = game.GetUserResults();
+            var userResultsForm = new UserResultsForm(userResults);
+            userResultsForm.Show();
         }
     }
 }

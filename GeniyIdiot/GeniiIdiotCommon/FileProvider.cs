@@ -13,13 +13,12 @@ namespace GeniyIdiotCommon
             results.Close();
         }
 
-        public static string[] Get(string path)
+        public static string Get(string path)
         {
-                using (StreamReader streamReader = new StreamReader(path, true))
-                {
-                    string[] lines = File.ReadAllLines(path);
-                    return lines;
-                }
+            var reader = new StreamReader(path);
+            var value = reader.ReadToEnd();
+            reader.Close();
+            return value;
         }  
     }
 }

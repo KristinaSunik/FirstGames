@@ -81,7 +81,7 @@
             this.Controls.Add(this.questionTextLabel);
             this.Name = "GeniiIdiotWinFormsApp";
             this.Text = "тест Гений-Идиот";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

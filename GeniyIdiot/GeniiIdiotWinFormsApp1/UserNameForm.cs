@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace GeniiIdiotWinFormsApp1
 {
-    public partial class UserInfoForm : Form
+    public partial class UserNameForm : Form
     {
-        public UserInfoForm()
+        public UserNameForm()
         {
             InitializeComponent();
-        }
-
-        private void userNameTextBox_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -6,18 +6,6 @@ namespace GeniyIdiotCommon
     public class Diagnose
     {
 
-       /* public static List<string> Get()
-        {
-            var diagnoses = new List<string>();
-            diagnoses.Add("Идиот");
-            diagnoses.Add("Кретин");
-            diagnoses.Add("Дурак");
-            diagnoses.Add("Нормальный");
-            diagnoses.Add("Талант");
-            diagnoses.Add("Гений");
-            return diagnoses;
-        } */
-
         public static string Calculate(User user)
         {
             if (user.PercentageOfRightAnswers <= 17)

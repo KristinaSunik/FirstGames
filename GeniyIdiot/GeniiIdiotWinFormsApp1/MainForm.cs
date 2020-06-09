@@ -19,10 +19,12 @@ namespace GeniiIdiotWinFormsApp1
         private void MainForm_Load(object sender, EventArgs e)
         {
             var userSurnameForm = new UserSurnameForm();
+            userSurnameForm.UserSurnameTextBox.Focus();
             if (userSurnameForm.ShowDialog(this) == DialogResult.OK)
             {
                 var userSurname = userSurnameForm.UserSurnameTextBox.Text;
                 var userNameForm = new UserNameForm();
+                userNameForm.userNameTextBox.Focus();
                 if (userNameForm.ShowDialog(this) == DialogResult.OK)
                 {
                     var userName = userNameForm.userNameTextBox.Text;
@@ -45,10 +47,14 @@ namespace GeniiIdiotWinFormsApp1
             if (!int.TryParse(userAnswerTextBox.Text, out userAnswer))
             {
                 MessageBox.Show("Введите число!");
+                userAnswerTextBox.Clear();
+                userAnswerTextBox.Focus();
             }
-
-            game.AcceptUserAnswer(userAnswer);
-            PrintNextQuestion();
+            else
+            {
+                game.AcceptUserAnswer(userAnswer);
+                PrintNextQuestion();
+            }
         }
 
 
@@ -63,7 +69,10 @@ namespace GeniiIdiotWinFormsApp1
             }
             else
             {
+                userAnswerTextBox.Focus();
                 questionTextLabel.Text = game.PopRandomeQuestion().Text;
+                questionNumberLabel.Text = game.GetCurrentQuestionNumberInfo();
+                userAnswerTextBox.Clear();
             }
         }
     }

@@ -27,12 +27,10 @@ namespace GeniyIdiot
             }
             user.PercentageOfRightAnswers = user.CountRightAnswers * 100 / questionsCount;
             user.Diagnose = Diagnose.Calculate(user);
+            user.SetDiagnose(user.Diagnose);
             Console.WriteLine("Количество правильных ответов: " + user.CountRightAnswers);
             Console.WriteLine(user.Name + user.Surname + ", Ваш диагноз: " + user.Diagnose);
-            var path = @"D:\AllResults.txt";
-            var text = user.Name + Environment.NewLine + user.Surname + Environment.NewLine +
-                user.CountRightAnswers.ToString() + Environment.NewLine + user.Diagnose;
-            FileProvider.Add(path, text);
+            game.SaveResult();
             Console.WriteLine("Если вы хотите посмотреть результаты других участников нажмите 'Q'");
             var answer = Console.ReadLine();
             if (answer == "Q" || answer == "q")

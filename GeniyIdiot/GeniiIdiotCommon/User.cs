@@ -5,10 +5,10 @@ namespace GeniyIdiotCommon
     public class User
     {
         public string Name;
-        public string Diagnose;
         public string Surname;
         public int CountRightAnswers;
         public int PercentageOfRightAnswers;
+        public string Diagnose;
 
         public User()
         {
@@ -30,8 +30,13 @@ namespace GeniyIdiotCommon
         {
             CountRightAnswers++;
         }
+
+        public void SetDiagnose(string diagnose)
+        {
+            Diagnose = diagnose;
+        }
     }
 }
 
-    
+
 

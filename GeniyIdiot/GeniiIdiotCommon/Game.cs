@@ -4,8 +4,9 @@ using System.Text;
 
 namespace GeniyIdiotCommon
 {
-   public class Game
+    public class Game
     {
+        private string userResultsPath = "userResults.txt";
         private List<Question> questions;
         private Question currentQuestion;
         private User user;
@@ -45,6 +46,11 @@ namespace GeniyIdiotCommon
             {
                 user.AcceptRightAnswer();
             }
+        }
+        public void SaveResult()
+        {
+            var data = $"{user.Name}${ user.Surname}${ user.CountRightAnswers}${user.Diagnose}";
+            FileProvider.Add(userResultsPath, data);
         }
 
         public int GetQuestionsCount()

@@ -26,13 +26,14 @@ namespace GeniyIdiot
                 game.AcceptUserAnswer(userAnswer);
             }
             user.PercentageOfRightAnswers = user.CountRightAnswers * 100 / questionsCount;
-            user.Diagnose = Diagnose.Calculate(user);
-            user.SetDiagnose(user.Diagnose);
+            var diagnose = Diagnose.Calculate(user);
+            user.SetDiagnose(diagnose);
             Console.WriteLine("Количество правильных ответов: " + user.CountRightAnswers);
             Console.WriteLine(user.Name + user.Surname + ", Ваш диагноз: " + user.Diagnose);
             game.SaveResult();
             Console.WriteLine("Если вы хотите посмотреть результаты других участников нажмите 'Q'");
             var answer = Console.ReadLine();
+            string path = "userResults.txt";
             if (answer == "Q" || answer == "q")
             {
                 Console.WriteLine("{0,-25} {1,-25} {2,-35} {3, 20}\n",

@@ -18,7 +18,8 @@ namespace GeniiIdiotWinFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            var userInfoForm = new UserInfoForm();
+            userInfoForm.Show();
             user = new User();
             game = new Game(user);
             PrintNextQuestion();
@@ -47,6 +48,7 @@ namespace GeniiIdiotWinFormsApp1
             if (game.IsEnd())
             {
                 user.Diagnose = Diagnose.Calculate(user);
+                game.SaveResult();
                 MessageBox.Show(user.Diagnose);
             }
             else

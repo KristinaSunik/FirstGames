@@ -80,5 +80,15 @@ namespace GeniiIdiotWinFormsApp1
             var userResultsForm = new UserResultsForm(userResults);
             userResultsForm.Show();
         }
+
+        private void рестартToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
+
+        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

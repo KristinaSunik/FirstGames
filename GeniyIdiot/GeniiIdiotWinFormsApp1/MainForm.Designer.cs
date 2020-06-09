@@ -123,12 +123,14 @@
             this.рестартToolStripMenuItem.Name = "рестартToolStripMenuItem";
             this.рестартToolStripMenuItem.Size = new System.Drawing.Size(420, 34);
             this.рестартToolStripMenuItem.Text = "Рестарт";
+            this.рестартToolStripMenuItem.Click += new System.EventHandler(this.рестартToolStripMenuItem_Click);
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
             this.выходToolStripMenuItem.Size = new System.Drawing.Size(420, 34);
             this.выходToolStripMenuItem.Text = "Выход";
+            this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
             // GeniiIdiotWinFormsApp
             // 

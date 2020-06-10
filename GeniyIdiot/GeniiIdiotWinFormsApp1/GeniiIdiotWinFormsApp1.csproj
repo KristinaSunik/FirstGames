@@ -54,11 +54,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserNameForm.cs">
+    <Compile Include="UserInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserNameForm.Designer.cs">
-      <DependentUpon>UserNameForm.cs</DependentUpon>
+    <Compile Include="UserInfoForm.Designer.cs">
+      <DependentUpon>UserInfoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UserResultsForm.cs">
       <SubType>Form</SubType>
@@ -84,8 +84,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UserNameForm.resx">
-      <DependentUpon>UserNameForm.cs</DependentUpon>
+    <EmbeddedResource Include="UserInfoForm.resx">
+      <DependentUpon>UserInfoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserResultsForm.resx">
       <DependentUpon>UserResultsForm.cs</DependentUpon>

@@ -23,7 +23,7 @@ namespace GeniiIdiotWinFormsApp1
             if (userSurnameForm.ShowDialog(this) == DialogResult.OK)
             {
                 var userSurname = userSurnameForm.UserSurnameTextBox.Text;
-                var userNameForm = new UserNameForm();
+                var userNameForm = new UserInfoForm();
                 if (userNameForm.ShowDialog(this) == DialogResult.OK)
                 {
                     var userName = userNameForm.userNameTextBox.Text;

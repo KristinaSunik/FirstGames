@@ -43,7 +43,6 @@
             this.surnameQuestionLabel.Size = new System.Drawing.Size(233, 32);
             this.surnameQuestionLabel.TabIndex = 0;
             this.surnameQuestionLabel.Text = "Ваша фамилия?";
-            this.surnameQuestionLabel.Click += new System.EventHandler(this.questionLabel_Click);
             // 
             // UserSurnameTextBox
             // 
@@ -51,7 +50,6 @@
             this.UserSurnameTextBox.Name = "UserSurnameTextBox";
             this.UserSurnameTextBox.Size = new System.Drawing.Size(198, 26);
             this.UserSurnameTextBox.TabIndex = 1;
-            this.UserSurnameTextBox.TextChanged += new System.EventHandler(this.userNameTextBox_TextChanged);
             // 
             // okButton
             // 
@@ -63,7 +61,6 @@
             this.okButton.Text = "OK";
             this.okButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.okButton.UseVisualStyleBackColor = true;
-            this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // cancelButton
             // 
@@ -74,7 +71,6 @@
             this.cancelButton.TabIndex = 3;
             this.cancelButton.Text = "Отмена";
             this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // UserSurnameForm
             // 

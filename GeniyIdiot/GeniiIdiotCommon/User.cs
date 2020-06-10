@@ -7,7 +7,6 @@ namespace GeniyIdiotCommon
         public string Name;
         public string Surname;
         public int CountRightAnswers;
-        public int PercentageOfRightAnswers;
         public string Diagnose;
 
         public User(string name, string surname)
@@ -15,7 +14,6 @@ namespace GeniyIdiotCommon
             Name = name;
             Surname = surname;
             CountRightAnswers = 0;
-            PercentageOfRightAnswers = 0;
         }
 
         public void AcceptRightAnswer()

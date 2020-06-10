@@ -7,7 +7,6 @@ namespace GeniyIdiotCommon
         public string Name;
         public string Surname;
         public int CountRightAnswers;
-        public int PercentageOfRightAnswers;
         public string Diagnose;
     }
 }

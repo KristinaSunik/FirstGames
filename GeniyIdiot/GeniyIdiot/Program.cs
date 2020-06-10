@@ -36,12 +36,12 @@ namespace GeniyIdiot
                 Console.WriteLine("{0,-25} {1,-25} {2,-35} {3, 20}\n",
                         "Имя:", "Фамилия:", "Количество правильных ответов:", "Диагноз:");
                 var userResults = game.GetUserResults();
-                for (int i = 0; i < userResults.Count-3; i++)
+                for (int i = 0; i < userResults.Count; i++)
                 {
                     Console.WriteLine("{0,-25} {1,-25} {2,-35} {3, 20}\n",
-                        userResults[i], userResults[i + 1], userResults[i + 2], userResults[i + 3]);
+                        userResults[i].Name, userResults[i].Surname, 
+                        userResults[i].CountRightAnswers, userResults[i].Diagnose);
                     Console.WriteLine();
-                    i += 3;
                 }
             }
             Console.ReadKey();

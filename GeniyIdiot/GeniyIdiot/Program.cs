@@ -31,19 +31,16 @@ namespace GeniyIdiot
             game.SaveResult();
             Console.WriteLine("Если вы хотите посмотреть результаты других участников нажмите 'Q'");
             var answer = Console.ReadLine();
-            string path = "userResults.txt";
             if (answer == "Q" || answer == "q")
             {
                 Console.WriteLine("{0,-25} {1,-25} {2,-35} {3, 20}\n",
                         "Имя:", "Фамилия:", "Количество правильных ответов:", "Диагноз:");
-                string lines = FileProvider.Get(path);
-                for (int i = 0; i < lines.Length - 1; i++)
+                var userResults = game.GetUserResults();
+                for (int i = 0; i < userResults.Count - 1; i++)
                 {
-                    var userName = lines[i];
-                    var userSurname = lines[i + 1];
-                    var userRightAnswer = lines[i + 2];
-                    var userDiagnose = lines[i + 3];
-                    Console.WriteLine("{0,-25} {1,-25} {2,-35} {3, 20}\n", userName, userSurname, userRightAnswer, userDiagnose);
+
+                    Console.WriteLine("{0,-25} {1,-25} {2,-35} {3, 20}\n",
+                        userResults[i], userResults[i + 1], userResults[i + 2], userResults[i + 3]);
                     Console.WriteLine();
                     i += 3;
                 }

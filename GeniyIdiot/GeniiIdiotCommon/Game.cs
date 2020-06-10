@@ -71,7 +71,13 @@ namespace GeniyIdiotCommon
             return userResults;
         }
 
-        public int GetQuestionsCount()
+        public int GetPercentageOfRightAnswers ()
+        {
+            var percentageOfRightAnswers = user.CountRightAnswers * 100 / GetQuestionsCount();
+            return percentageOfRightAnswers;
+        }
+
+        private int GetQuestionsCount()
         {
             return questions.Count;
         }

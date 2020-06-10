@@ -10,6 +10,7 @@ namespace GeniiIdiotWinFormsApp1
     {
         private User user;
         private Game game;
+       int numberOfQuestions = 0;
 
         public GeniiIdiotWinFormsApp()
         {
@@ -28,6 +29,7 @@ namespace GeniiIdiotWinFormsApp1
                     var userName = userNameForm.userNameTextBox.Text;
                     user = new User(userName, userSurname);
                     game = new Game(user);
+                    numberOfQuestions = game.GetNumberOfQuestions();
                     PrintNextQuestion();
                 }
                 else Close();
@@ -50,6 +52,7 @@ namespace GeniiIdiotWinFormsApp1
             }
             else
             {
+                Convert.ToInt32(userAnswer);
                 game.AcceptUserAnswer(userAnswer);
                 PrintNextQuestion();
             }
@@ -61,7 +64,7 @@ namespace GeniiIdiotWinFormsApp1
         {
             if (game.IsEnd())
             {
-                user.Diagnose = Diagnose.Calculate(user);
+                game.CalculateDiagnose(numberOfQuestions);
                 game.SaveResult();
                 MessageBox.Show(user.Diagnose);
             }

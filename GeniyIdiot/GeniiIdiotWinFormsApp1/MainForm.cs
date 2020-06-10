@@ -1,7 +1,6 @@
 ﻿
 using GeniyIdiotCommon;
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace GeniiIdiotWinFormsApp1
@@ -19,20 +18,16 @@ namespace GeniiIdiotWinFormsApp1
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            var userSurnameForm = new UserSurnameForm();
-            if (userSurnameForm.ShowDialog(this) == DialogResult.OK)
+            var userInfoForm = new UserInfoForm();
+            if (userInfoForm.ShowDialog(this) == DialogResult.OK)
             {
-                var userSurname = userSurnameForm.UserSurnameTextBox.Text;
-                var userNameForm = new UserInfoForm();
-                if (userNameForm.ShowDialog(this) == DialogResult.OK)
-                {
-                    var userName = userNameForm.userNameTextBox.Text;
+                var userSurname = userInfoForm.userSurnameTextBox.Text;
+                
+                    var userName = userInfoForm.userNameTextBox.Text;
                     user = new User(userName, userSurname);
                     game = new Game(user);
                     numberOfQuestions = game.GetNumberOfQuestions();
                     PrintNextQuestion();
-                }
-                else Close();
             }
             else Close();
         }

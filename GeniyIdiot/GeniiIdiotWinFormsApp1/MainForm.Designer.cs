@@ -45,7 +45,7 @@
             // 
             this.questionTextLabel.AutoSize = true;
             this.questionTextLabel.Font = new System.Drawing.Font("Microsoft YaHei", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.questionTextLabel.Location = new System.Drawing.Point(89, 117);
+            this.questionTextLabel.Location = new System.Drawing.Point(51, 113);
             this.questionTextLabel.Name = "questionTextLabel";
             this.questionTextLabel.Size = new System.Drawing.Size(153, 27);
             this.questionTextLabel.TabIndex = 0;

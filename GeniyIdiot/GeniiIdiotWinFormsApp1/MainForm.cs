@@ -56,7 +56,6 @@ namespace GeniiIdiotWinFormsApp1
             }
             else
             {
-                Convert.ToInt32(userAnswer);
                 game.AcceptUserAnswer(userAnswer);
                 PrintNextQuestion();
             }

@@ -41,7 +41,6 @@ namespace GeniyIdiot
                     Console.WriteLine("{0,-25} {1,-25} {2,-35} {3, 20}\n",
                         userResults[i].Name, userResults[i].Surname, 
                         userResults[i].CountRightAnswers, userResults[i].Diagnose);
-                    Console.WriteLine();
                 }
             }
             Console.ReadKey();

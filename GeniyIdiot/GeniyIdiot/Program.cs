@@ -25,7 +25,7 @@ namespace GeniyIdiot
                 var userAnswer = GetUserAnswer();
                 game.AcceptUserAnswer(userAnswer);
             }
-            game.CalculateDiagnose(game.GetPercentageOfRightAnswers(numberOfQuestions));
+            game.CalculateDiagnose(numberOfQuestions);
             Console.WriteLine("Количество правильных ответов: " + user.CountRightAnswers);
             Console.WriteLine(user.Name + user.Surname + ", Ваш диагноз: " + user.Diagnose);
             game.SaveResult();

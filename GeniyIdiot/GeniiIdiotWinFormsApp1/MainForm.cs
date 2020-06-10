@@ -67,8 +67,7 @@ namespace GeniiIdiotWinFormsApp1
         {
             if (game.IsEnd())
             {
-                var percentageOfRightAnswers = game.GetPercentageOfRightAnswers(numberOfQuestions);
-                game.CalculateDiagnose(percentageOfRightAnswers);
+                game.CalculateDiagnose(numberOfQuestions);
                 game.SaveResult();
                 MessageBox.Show(user.Diagnose);
             }

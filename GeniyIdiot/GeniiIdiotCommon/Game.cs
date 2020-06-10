@@ -77,15 +77,11 @@ namespace GeniyIdiotCommon
             return numberOfQuestions;
 
         }
-        public int GetPercentageOfRightAnswers (int numberOfQuestions)
+
+
+        public string CalculateDiagnose(int numberOfQuestions)
         {
             var percentageOfRightAnswers = user.CountRightAnswers * 100 / numberOfQuestions;
-            return percentageOfRightAnswers;
-        }
-
-
-        public string CalculateDiagnose(int percentageOfRightAnswers)
-        {
             var diagnose = Diagnose.Calculate(percentageOfRightAnswers);
             user.SetDiagnose(diagnose);
             return diagnose;

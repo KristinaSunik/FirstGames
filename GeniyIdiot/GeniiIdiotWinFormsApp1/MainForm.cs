@@ -9,7 +9,7 @@ namespace GeniiIdiotWinFormsApp1
     {
         private User user;
         private Game game;
-       int numberOfQuestions = 0;
+        int numberOfQuestions = 0;
 
         public GeniiIdiotWinFormsApp()
         {
@@ -21,13 +21,22 @@ namespace GeniiIdiotWinFormsApp1
             var userInfoForm = new UserInfoForm();
             if (userInfoForm.ShowDialog(this) == DialogResult.OK)
             {
-                var userSurname = userInfoForm.userSurnameTextBox.Text;
-                
+                while(String.IsNullOrWhiteSpace(userInfoForm.userSurnameTextBox.Text) ||
+                    String.IsNullOrWhiteSpace(userInfoForm.userNameTextBox.Text))
+                {
+                    MessageBox.Show("Введите все данные!!");
+                    userInfoForm.ShowDialog(this);
+
+                }
+               
+                    var userSurname = userInfoForm.userSurnameTextBox.Text;
+
                     var userName = userInfoForm.userNameTextBox.Text;
                     user = new User(userName, userSurname);
                     game = new Game(user);
                     numberOfQuestions = game.GetNumberOfQuestions();
                     PrintNextQuestion();
+                
             }
             else Close();
         }

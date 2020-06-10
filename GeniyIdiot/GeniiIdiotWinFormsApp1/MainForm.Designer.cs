@@ -59,8 +59,7 @@
             this.questionNumberLabel.Name = "questionNumberLabel";
             this.questionNumberLabel.Size = new System.Drawing.Size(164, 32);
             this.questionNumberLabel.TabIndex = 1;
-            this.questionNumberLabel.Text = "Вопрос№1";
-            this.questionNumberLabel.Click += new System.EventHandler(this.label4_Click);
+            this.questionNumberLabel.Text = "Вопрос № 1";
             // 
             // nextQuestionButton
             // 

@@ -41,10 +41,6 @@ namespace GeniiIdiotWinFormsApp1
             else Close();
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-        }
-
         private void nextQuestionButton_Click(object sender, EventArgs e)
         {
             int userAnswer;

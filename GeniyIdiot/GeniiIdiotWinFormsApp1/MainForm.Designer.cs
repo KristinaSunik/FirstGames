@@ -38,6 +38,7 @@
             this.посмотретьПредыдущиеРезультатыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.рестартToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewQuestionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +58,7 @@
             this.questionNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.questionNumberLabel.Location = new System.Drawing.Point(40, 44);
             this.questionNumberLabel.Name = "questionNumberLabel";
-            this.questionNumberLabel.Size = new System.Drawing.Size(164, 32);
+            this.questionNumberLabel.Size = new System.Drawing.Size(180, 32);
             this.questionNumberLabel.TabIndex = 1;
             this.questionNumberLabel.Text = "Вопрос № 1";
             // 
@@ -104,6 +105,7 @@
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.посмотретьПредыдущиеРезультатыToolStripMenuItem,
+            this.addNewQuestionToolStripMenuItem,
             this.рестартToolStripMenuItem,
             this.выходToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
@@ -130,6 +132,12 @@
             this.выходToolStripMenuItem.Size = new System.Drawing.Size(420, 34);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
+            // addNewQuestionToolStripMenuItem
+            // 
+            this.addNewQuestionToolStripMenuItem.Name = "addNewQuestionToolStripMenuItem";
+            this.addNewQuestionToolStripMenuItem.Size = new System.Drawing.Size(420, 34);
+            this.addNewQuestionToolStripMenuItem.Text = "Добавить свой вопрос";
             // 
             // GeniiIdiotWinFormsApp
             // 
@@ -163,6 +171,7 @@
         private System.Windows.Forms.ToolStripMenuItem посмотретьПредыдущиеРезультатыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem рестартToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addNewQuestionToolStripMenuItem;
     }
 }
 

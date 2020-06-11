@@ -24,8 +24,7 @@ namespace GeniyIdiotCommon
             if (!FileProvider.IsExists(questionsPath))
             {
                 var questions = Get();
-                var serialisedQuestions = JsonConvert.SerializeObject(questions, Formatting.Indented);
-                FileProvider.Add(questionsPath, serialisedQuestions);
+                SaveQuestions(questions);
             }
 
         }
@@ -36,6 +35,12 @@ namespace GeniyIdiotCommon
             return questions;
         }
 
+
+        public static void SaveQuestions(List<Question>questions)
+        {
+            var serialisedQuestions = JsonConvert.SerializeObject(questions, Formatting.Indented);
+            FileProvider.Add(questionsPath, serialisedQuestions);
+        }
         
     }
 

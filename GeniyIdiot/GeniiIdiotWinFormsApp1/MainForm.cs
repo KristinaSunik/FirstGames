@@ -92,5 +92,11 @@ namespace GeniiIdiotWinFormsApp1
         {
             Close();
         }
+
+        private void addNewQuestionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var addQuestionForm = new AddQuestionForm(game);
+            addQuestionForm.Show();
+        }
     }
 }

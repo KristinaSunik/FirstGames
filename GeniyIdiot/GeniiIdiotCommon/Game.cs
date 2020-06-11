@@ -11,7 +11,6 @@ namespace GeniyIdiotCommon
         private Question currentQuestion;
         private User user;
         private int currentQuestionNumber = 0;
-        private string questionsPath = "questions.json";
         public Game(User user)
         {
             this.user = user;
@@ -36,6 +35,12 @@ namespace GeniyIdiotCommon
             return GetQuestionsCount() == 0;
         }
 
+        public void AddNewQuestion(Question newQuestion)
+        {
+            var allQuestions = QuestionStorage.GetQuestionsFromFile();
+            allQuestions.Add(newQuestion);
+            QuestionStorage.SaveQuestions(allQuestions);
+        }
 
         public Question PopRandomeQuestion()
         {

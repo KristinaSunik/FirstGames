@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GeniyIdiotCommon;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,27 @@ namespace GeniiIdiotWinFormsApp1
 {
     public partial class AddQuestionForm : Form
     {
-        public AddQuestionForm()
+        private Game game;
+
+        public AddQuestionForm(Game game)
         {
             InitializeComponent();
+            this.game = game;
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            if (IsUserDataValid())
+            {
+                var newQuestion = new Question(questionTextBox.Text, Convert.ToInt32(answerTextBox.Text));
+                game.AddNewQuestion(newQuestion);
+                Close();
+            }
+        }
+
+        private bool IsUserDataValid()
+        {
+            return true;
         }
     }
 }

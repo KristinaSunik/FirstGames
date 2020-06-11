@@ -138,6 +138,7 @@
             this.addNewQuestionToolStripMenuItem.Name = "addNewQuestionToolStripMenuItem";
             this.addNewQuestionToolStripMenuItem.Size = new System.Drawing.Size(420, 34);
             this.addNewQuestionToolStripMenuItem.Text = "Добавить свой вопрос";
+            this.addNewQuestionToolStripMenuItem.Click += new System.EventHandler(this.addNewQuestionToolStripMenuItem_Click);
             // 
             // GeniiIdiotWinFormsApp
             // 

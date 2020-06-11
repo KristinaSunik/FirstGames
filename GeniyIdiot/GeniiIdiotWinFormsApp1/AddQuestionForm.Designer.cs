@@ -30,8 +30,8 @@
         {
             this.QuestionTextLabel = new System.Windows.Forms.Label();
             this.AnswerTextLabel = new System.Windows.Forms.Label();
-            this.QuestionTextBox = new System.Windows.Forms.TextBox();
-            this.AnswerTextBox = new System.Windows.Forms.TextBox();
+            this.questionTextBox = new System.Windows.Forms.TextBox();
+            this.answerTextBox = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -57,17 +57,17 @@
             // 
             // QuestionTextBox
             // 
-            this.QuestionTextBox.Location = new System.Drawing.Point(59, 116);
-            this.QuestionTextBox.Name = "QuestionTextBox";
-            this.QuestionTextBox.Size = new System.Drawing.Size(205, 26);
-            this.QuestionTextBox.TabIndex = 2;
+            this.questionTextBox.Location = new System.Drawing.Point(59, 116);
+            this.questionTextBox.Name = "QuestionTextBox";
+            this.questionTextBox.Size = new System.Drawing.Size(205, 26);
+            this.questionTextBox.TabIndex = 2;
             // 
             // AnswerTextBox
             // 
-            this.AnswerTextBox.Location = new System.Drawing.Point(58, 262);
-            this.AnswerTextBox.Name = "AnswerTextBox";
-            this.AnswerTextBox.Size = new System.Drawing.Size(205, 26);
-            this.AnswerTextBox.TabIndex = 3;
+            this.answerTextBox.Location = new System.Drawing.Point(58, 262);
+            this.answerTextBox.Name = "AnswerTextBox";
+            this.answerTextBox.Size = new System.Drawing.Size(205, 26);
+            this.answerTextBox.TabIndex = 3;
             // 
             // saveButton
             // 
@@ -78,6 +78,7 @@
             this.saveButton.TabIndex = 4;
             this.saveButton.Text = "Сохранить";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // AddQuestionForm
             // 
@@ -85,8 +86,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(328, 450);
             this.Controls.Add(this.saveButton);
-            this.Controls.Add(this.AnswerTextBox);
-            this.Controls.Add(this.QuestionTextBox);
+            this.Controls.Add(this.answerTextBox);
+            this.Controls.Add(this.questionTextBox);
             this.Controls.Add(this.AnswerTextLabel);
             this.Controls.Add(this.QuestionTextLabel);
             this.Name = "AddQuestionForm";
@@ -100,8 +101,8 @@
 
         private System.Windows.Forms.Label QuestionTextLabel;
         private System.Windows.Forms.Label AnswerTextLabel;
-        private System.Windows.Forms.TextBox QuestionTextBox;
-        private System.Windows.Forms.TextBox AnswerTextBox;
+        private System.Windows.Forms.TextBox questionTextBox;
+        private System.Windows.Forms.TextBox answerTextBox;
         private System.Windows.Forms.Button saveButton;
     }
 }

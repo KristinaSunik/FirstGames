@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace GeniyIdiotCommon
@@ -10,11 +11,18 @@ namespace GeniyIdiotCommon
         private Question currentQuestion;
         private User user;
         private int currentQuestionNumber = 0;
-
+        private string questionsPath = "questions.json";
         public Game(User user)
         {
             this.user = user;
             questions = QuestionStorage.Get();
+            Init();
+            questions = QuestionStorage.GetQuestionsFromFile();
+        }
+
+        private void Init()
+        {
+            QuestionStorage.CreateFileIfNotExists();
         }
 
         public string GetCurrentQuestionNumberInfo()

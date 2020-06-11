@@ -76,19 +76,19 @@ namespace GeniiIdiotWinFormsApp1
             }
         }
 
-        private void посмотретьПредыдущиеРезультатыToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ShowPreviousResultsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var userResults = game.GetUserResults();
             var userResultsForm = new UserResultsForm(userResults);
             userResultsForm.Show();
         }
 
-        private void рестартToolStripMenuItem_Click(object sender, EventArgs e)
+        private void RestartToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Restart();
         }
 
-        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
         }

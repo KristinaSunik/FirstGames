@@ -12,6 +12,10 @@ namespace GeniyIdiotCommon
             results.WriteLine(text);
             results.Close();
         }
+        public static bool IsExists(string path)
+        {
+            return File.Exists(path);
+        }
 
         public static string Get(string path)
         {

@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 
 namespace GeniyIdiotCommon
 {
     public class QuestionStorage
     {
+        private static string questionsPath = "questions.json";
+
         public static List<Question> Get()
         {
             Question question1 = new Question("Сколько будет два плюс два  умноженное на два?", 6);
@@ -15,5 +18,25 @@ namespace GeniyIdiotCommon
             var questions = new List<Question> { question1, question2, question3, question4, question5 };
             return questions;
         }
+
+        public static void CreateFileIfNotExists()
+        {
+            if (!FileProvider.IsExists(questionsPath))
+            {
+                var questions = Get();
+                var serialisedQuestions = JsonConvert.SerializeObject(questions, Formatting.Indented);
+                FileProvider.Add(questionsPath, serialisedQuestions);
+            }
+
+        }
+        public static List<Question> GetQuestionsFromFile()
+        {
+            var serializedQuestions = FileProvider.Get(questionsPath);
+            var questions = JsonConvert.DeserializeObject<List<Question>>(serializedQuestions);
+            return questions;
+        }
+
+        
     }
+
 }

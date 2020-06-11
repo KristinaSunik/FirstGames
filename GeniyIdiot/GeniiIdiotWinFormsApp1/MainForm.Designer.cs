@@ -115,21 +115,21 @@
             this.посмотретьПредыдущиеРезультатыToolStripMenuItem.Name = "посмотретьПредыдущиеРезультатыToolStripMenuItem";
             this.посмотретьПредыдущиеРезультатыToolStripMenuItem.Size = new System.Drawing.Size(420, 34);
             this.посмотретьПредыдущиеРезультатыToolStripMenuItem.Text = "Посмотреть предыдущие результаты";
-            this.посмотретьПредыдущиеРезультатыToolStripMenuItem.Click += new System.EventHandler(this.посмотретьПредыдущиеРезультатыToolStripMenuItem_Click);
+            this.посмотретьПредыдущиеРезультатыToolStripMenuItem.Click += new System.EventHandler(this.ShowPreviousResultsToolStripMenuItem_Click);
             // 
             // рестартToolStripMenuItem
             // 
             this.рестартToolStripMenuItem.Name = "рестартToolStripMenuItem";
             this.рестартToolStripMenuItem.Size = new System.Drawing.Size(420, 34);
             this.рестартToolStripMenuItem.Text = "Рестарт";
-            this.рестартToolStripMenuItem.Click += new System.EventHandler(this.рестартToolStripMenuItem_Click);
+            this.рестартToolStripMenuItem.Click += new System.EventHandler(this.RestartToolStripMenuItem_Click);
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
             this.выходToolStripMenuItem.Size = new System.Drawing.Size(420, 34);
             this.выходToolStripMenuItem.Text = "Выход";
-            this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
+            this.выходToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // GeniiIdiotWinFormsApp
             // 

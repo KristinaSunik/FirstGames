@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace GeniyIdiotCommon
@@ -11,10 +10,11 @@ namespace GeniyIdiotCommon
         private Question currentQuestion;
         private User user;
         private int currentQuestionNumber = 0;
+
         public Game(User user)
         {
             this.user = user;
-            questions = QuestionStorage.Get();
+            questions = QuestionStorage.GetQuestions();
             Init();
             questions = QuestionStorage.GetQuestionsFromFile();
         }
@@ -35,12 +35,6 @@ namespace GeniyIdiotCommon
             return GetQuestionsCount() == 0;
         }
 
-        public void AddNewQuestion(Question newQuestion)
-        {
-            var allQuestions = QuestionStorage.GetQuestionsFromFile();
-            allQuestions.Add(newQuestion);
-            QuestionStorage.SaveQuestions(allQuestions);
-        }
 
         public Question PopRandomeQuestion()
         {
@@ -64,6 +58,15 @@ namespace GeniyIdiotCommon
             var data = $"{user.Name}${ user.Surname}${ user.CountRightAnswers}${user.Diagnose}";
             FileProvider.Add(userResultsPath, data);
         }
+
+        public void AddNewQuestion(Question newQuestion)
+        {
+            var allQuestions = QuestionStorage.GetQuestionsFromFile();
+            allQuestions.Add(newQuestion);
+            QuestionStorage.SaveQuestions(allQuestions);
+        }
+
+
         public List<UserResult> GetUserResults()
         {
             var userResults = new List<UserResult>();

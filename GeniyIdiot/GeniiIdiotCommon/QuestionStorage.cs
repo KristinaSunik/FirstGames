@@ -8,7 +8,7 @@ namespace GeniyIdiotCommon
     {
         private static string questionsPath = "questions.json";
 
-        public static List<Question> Get()
+        public static List<Question> GetQuestions()
         {
             Question question1 = new Question("Сколько будет два плюс два  умноженное на два?", 6);
             Question question2 = new Question("Бревно нужно распилить на 10  частей, сколько надо сделать  распилов?", 9);
@@ -23,7 +23,7 @@ namespace GeniyIdiotCommon
         {
             if (!FileProvider.IsExists(questionsPath))
             {
-                var questions = Get();
+                var questions = GetQuestions();
                 SaveQuestions(questions);
             }
 

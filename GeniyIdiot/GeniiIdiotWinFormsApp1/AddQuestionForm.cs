@@ -39,9 +39,13 @@ namespace GeniiIdiotWinFormsApp1
             }
             while(String.IsNullOrWhiteSpace(answerTextBox))
             {
-                MessageBox.Show("Заполните поле: 'Введите текст вопроса'!!");
+                MessageBox.Show("Заполните поле: 'Введите ответ на вопрос'!!");
             }
-            return true;
+            while (!int.TryParse(answerTextBox, out int result))
+            {
+                MessageBox.Show("Введите ЧИСЛО в поле: 'Введите ответ на вопрос'!");
+            }
+                return true;
         }
     }
 }

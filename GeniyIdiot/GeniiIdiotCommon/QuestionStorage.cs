@@ -39,7 +39,7 @@ namespace GeniyIdiotCommon
         public static void SaveQuestions(List<Question>questions)
         {
             var serialisedQuestions = JsonConvert.SerializeObject(questions, Formatting.Indented);
-            FileProvider.Add(questionsPath, serialisedQuestions);
+            FileProvider.Set(questionsPath, serialisedQuestions);
         }
         
     }

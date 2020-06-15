@@ -41,7 +41,7 @@ namespace GeniiIdiotWinFormsApp1
             {
                 MessageBox.Show("Заполните поле: 'Введите ответ на вопрос'!!");
             }
-            while (!int.TryParse(answerTextBox, out int result))
+            if (!int.TryParse(answerTextBox, out int result))
             {
                 MessageBox.Show("Введите ЧИСЛО в поле: 'Введите ответ на вопрос'!");
             }

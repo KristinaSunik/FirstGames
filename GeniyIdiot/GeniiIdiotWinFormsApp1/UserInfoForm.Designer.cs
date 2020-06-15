@@ -110,7 +110,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button okButton;
+        public System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Button cancelButton;
         public System.Windows.Forms.TextBox userNameTextBox;
         private System.Windows.Forms.Label questionNameLabel;

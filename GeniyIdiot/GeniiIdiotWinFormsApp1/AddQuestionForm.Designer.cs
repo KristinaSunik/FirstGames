@@ -35,46 +35,46 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // QuestionTextLabel
+            // questionTextLabel
             // 
             this.questionTextLabel.AutoSize = true;
             this.questionTextLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.questionTextLabel.Location = new System.Drawing.Point(54, 58);
-            this.questionTextLabel.Name = "QuestionTextLabel";
+            this.questionTextLabel.Name = "questionTextLabel";
             this.questionTextLabel.Size = new System.Drawing.Size(230, 25);
             this.questionTextLabel.TabIndex = 0;
             this.questionTextLabel.Text = "Введите текст вопроса";
             // 
-            // AnswerTextLabel
+            // answerTextLabel
             // 
             this.answerTextLabel.AutoSize = true;
             this.answerTextLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.answerTextLabel.Location = new System.Drawing.Point(53, 199);
-            this.answerTextLabel.Name = "AnswerTextLabel";
+            this.answerTextLabel.Name = "answerTextLabel";
             this.answerTextLabel.Size = new System.Drawing.Size(247, 25);
             this.answerTextLabel.TabIndex = 1;
             this.answerTextLabel.Text = "Введите ответ на вопрос";
             // 
-            // QuestionTextBox
+            // questionTextBox
             // 
             this.questionTextBox.Location = new System.Drawing.Point(59, 116);
-            this.questionTextBox.Name = "QuestionTextBox";
-            this.questionTextBox.Size = new System.Drawing.Size(205, 26);
+            this.questionTextBox.Name = "questionTextBox";
+            this.questionTextBox.Size = new System.Drawing.Size(413, 26);
             this.questionTextBox.TabIndex = 2;
             // 
-            // AnswerTextBox
+            // answerTextBox
             // 
             this.answerTextBox.Location = new System.Drawing.Point(58, 262);
-            this.answerTextBox.Name = "AnswerTextBox";
-            this.answerTextBox.Size = new System.Drawing.Size(205, 26);
+            this.answerTextBox.Name = "answerTextBox";
+            this.answerTextBox.Size = new System.Drawing.Size(414, 26);
             this.answerTextBox.TabIndex = 3;
             // 
             // saveButton
             // 
             this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.saveButton.Location = new System.Drawing.Point(150, 336);
+            this.saveButton.Location = new System.Drawing.Point(302, 341);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(113, 60);
+            this.saveButton.Size = new System.Drawing.Size(170, 60);
             this.saveButton.TabIndex = 4;
             this.saveButton.Text = "Сохранить";
             this.saveButton.UseVisualStyleBackColor = true;
@@ -84,7 +84,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(328, 450);
+            this.ClientSize = new System.Drawing.Size(518, 450);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.answerTextBox);
             this.Controls.Add(this.questionTextBox);

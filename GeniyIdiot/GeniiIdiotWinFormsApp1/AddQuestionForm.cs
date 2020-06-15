@@ -23,7 +23,7 @@ namespace GeniiIdiotWinFormsApp1
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (IsUserDataValid())
+            if (IsUserDataValid(questionTextBox.Text, answerTextBox.Text))
             {
                 var newQuestion = new Question(questionTextBox.Text, Convert.ToInt32(answerTextBox.Text));
                 game.AddNewQuestion(newQuestion);
@@ -31,8 +31,16 @@ namespace GeniiIdiotWinFormsApp1
             }
         }
 
-        private bool IsUserDataValid()
+        private bool IsUserDataValid(string questionTextBox, string answerTextBox)
         {
+            while (String.IsNullOrWhiteSpace(questionTextBox))
+            {
+                MessageBox.Show("Заполните поле: 'Введите текст вопроса'!!");
+            }
+            while(String.IsNullOrWhiteSpace(answerTextBox))
+            {
+                MessageBox.Show("Заполните поле: 'Введите текст вопроса'!!");
+            }
             return true;
         }
     }

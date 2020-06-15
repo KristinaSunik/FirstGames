@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.QuestionTextLabel = new System.Windows.Forms.Label();
-            this.AnswerTextLabel = new System.Windows.Forms.Label();
+            this.questionTextLabel = new System.Windows.Forms.Label();
+            this.answerTextLabel = new System.Windows.Forms.Label();
             this.questionTextBox = new System.Windows.Forms.TextBox();
             this.answerTextBox = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
@@ -37,23 +37,23 @@
             // 
             // QuestionTextLabel
             // 
-            this.QuestionTextLabel.AutoSize = true;
-            this.QuestionTextLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.QuestionTextLabel.Location = new System.Drawing.Point(54, 58);
-            this.QuestionTextLabel.Name = "QuestionTextLabel";
-            this.QuestionTextLabel.Size = new System.Drawing.Size(230, 25);
-            this.QuestionTextLabel.TabIndex = 0;
-            this.QuestionTextLabel.Text = "Введите текст вопроса";
+            this.questionTextLabel.AutoSize = true;
+            this.questionTextLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.questionTextLabel.Location = new System.Drawing.Point(54, 58);
+            this.questionTextLabel.Name = "QuestionTextLabel";
+            this.questionTextLabel.Size = new System.Drawing.Size(230, 25);
+            this.questionTextLabel.TabIndex = 0;
+            this.questionTextLabel.Text = "Введите текст вопроса";
             // 
             // AnswerTextLabel
             // 
-            this.AnswerTextLabel.AutoSize = true;
-            this.AnswerTextLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AnswerTextLabel.Location = new System.Drawing.Point(53, 199);
-            this.AnswerTextLabel.Name = "AnswerTextLabel";
-            this.AnswerTextLabel.Size = new System.Drawing.Size(247, 25);
-            this.AnswerTextLabel.TabIndex = 1;
-            this.AnswerTextLabel.Text = "Введите ответ на вопрос";
+            this.answerTextLabel.AutoSize = true;
+            this.answerTextLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.answerTextLabel.Location = new System.Drawing.Point(53, 199);
+            this.answerTextLabel.Name = "AnswerTextLabel";
+            this.answerTextLabel.Size = new System.Drawing.Size(247, 25);
+            this.answerTextLabel.TabIndex = 1;
+            this.answerTextLabel.Text = "Введите ответ на вопрос";
             // 
             // QuestionTextBox
             // 
@@ -88,8 +88,8 @@
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.answerTextBox);
             this.Controls.Add(this.questionTextBox);
-            this.Controls.Add(this.AnswerTextLabel);
-            this.Controls.Add(this.QuestionTextLabel);
+            this.Controls.Add(this.answerTextLabel);
+            this.Controls.Add(this.questionTextLabel);
             this.Name = "AddQuestionForm";
             this.Text = "AddQuestionForm";
             this.ResumeLayout(false);
@@ -99,8 +99,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Label QuestionTextLabel;
-        private System.Windows.Forms.Label AnswerTextLabel;
+        private System.Windows.Forms.Label questionTextLabel;
+        private System.Windows.Forms.Label answerTextLabel;
         private System.Windows.Forms.TextBox questionTextBox;
         private System.Windows.Forms.TextBox answerTextBox;
         private System.Windows.Forms.Button saveButton;

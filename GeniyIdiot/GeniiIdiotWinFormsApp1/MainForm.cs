@@ -21,8 +21,9 @@ namespace GeniiIdiotWinFormsApp1
             UserInfoForm.okButton.Enabled = false;
             if (String.IsNullOrWhiteSpace(userInfoForm.userSurnameTextBox.Text) ||
                     String.IsNullOrWhiteSpace(userInfoForm.userNameTextBox.Text))
-                {
+            {
                 UserInfoForm.okButton.Enabled = true;
+            }
 
                 if (userInfoForm.ShowDialog(this) == DialogResult.OK)
                 {
@@ -34,7 +35,6 @@ namespace GeniiIdiotWinFormsApp1
                     PrintNextQuestion();
                 }
                 else Close();
-            }
         }
 
         private void nextQuestionButton_Click(object sender, EventArgs e)

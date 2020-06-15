@@ -33,19 +33,17 @@ namespace GeniiIdiotWinFormsApp1
 
         private bool IsUserDataValid(string questionTextBox, string answerTextBox)
         {
-            while (String.IsNullOrWhiteSpace(questionTextBox))
+            if (String.IsNullOrWhiteSpace(questionTextBox) ||
+                String.IsNullOrWhiteSpace(answerTextBox))
             {
-                MessageBox.Show("Заполните поле: 'Введите текст вопроса'!!");
+                MessageBox.Show("Заполните все поля!!!!");
             }
-            while(String.IsNullOrWhiteSpace(answerTextBox))
-            {
-                MessageBox.Show("Заполните поле: 'Введите ответ на вопрос'!!");
-            }
-            if (!int.TryParse(answerTextBox, out int result))
+
+           if (!int.TryParse(answerTextBox, out int result))
             {
                 MessageBox.Show("Введите ЧИСЛО в поле: 'Введите ответ на вопрос'!");
             }
-                return true;
+            return true;
         }
     }
 }

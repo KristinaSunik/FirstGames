@@ -81,7 +81,7 @@ namespace GeniyIdiotCommon
         {
             if (!FileProvider.IsExists(userResultsPath))
             {
-                return userResults;
+                return null;
             }
             else
             {

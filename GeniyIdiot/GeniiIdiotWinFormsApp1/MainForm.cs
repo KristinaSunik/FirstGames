@@ -60,7 +60,7 @@ namespace GeniiIdiotWinFormsApp1
             if (game.IsEnd())
             {
                 game.CalculateDiagnose(numberOfQuestions);
-                game.SaveResult();
+                game.SaveResult(game.userResults);
                 MessageBox.Show(user.Diagnose);
             }
             else
@@ -93,6 +93,11 @@ namespace GeniiIdiotWinFormsApp1
         {
             var addQuestionForm = new AddQuestionForm(game);
             addQuestionForm.Show();
+        }
+
+        private void DeleteQuestionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

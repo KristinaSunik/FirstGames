@@ -28,7 +28,7 @@ namespace GeniyIdiot
             game.CalculateDiagnose(numberOfQuestions);
             Console.WriteLine("Количество правильных ответов: " + user.CountRightAnswers);
             Console.WriteLine(user.Name + user.Surname + ", Ваш диагноз: " + user.Diagnose);
-            game.SaveResult();
+            game.SaveResult(game.userResults);
             Console.WriteLine("Если вы хотите посмотреть результаты других участников нажмите 'Q'");
             var answer = Console.ReadLine();
             if (answer == "Q" || answer == "q")

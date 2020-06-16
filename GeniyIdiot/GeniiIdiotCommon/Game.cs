@@ -1,15 +1,18 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace GeniyIdiotCommon
 {
     public class Game
     {
-        private string userResultsPath = "userResults.txt";
+        private string userResultsPath = "userResults.json";
         private List<Question> questions;
         private Question currentQuestion;
         private User user;
         private int currentQuestionNumber = 0;
+        public List<UserResult> userResults;
 
         public Game(User user)
         {
@@ -21,6 +24,7 @@ namespace GeniyIdiotCommon
         private void Init()
         {
             QuestionStorage.CreateFileIfNotExists();
+            
         }
 
         public string GetCurrentQuestionNumberInfo()
@@ -52,11 +56,6 @@ namespace GeniyIdiotCommon
                 user.AcceptRightAnswer();
             }
         }
-        public void SaveResult()
-        {
-            var data = $"{user.Name}${ user.Surname}${ user.CountRightAnswers}${user.Diagnose}";
-            FileProvider.Add(userResultsPath, data);
-        }
 
         public void AddNewQuestion(Question newQuestion)
         {
@@ -65,25 +64,31 @@ namespace GeniyIdiotCommon
             QuestionStorage.SaveQuestions(allQuestions);
         }
 
+        public  List<UserResult> GetUserResultsFromFile()
+        {
+            var serializedUserResults = FileProvider.Get(userResultsPath);
+            var userResults = JsonConvert.DeserializeObject<List<UserResult>>(serializedUserResults);
+            return userResults;
+        }
+
+        public  void SaveResult(List<UserResult> userResults)
+        {
+            var serializedUserResult = JsonConvert.SerializeObject(userResults, Formatting.Indented);
+            
+            FileProvider.Add(userResultsPath, serializedUserResult);
+        }
 
         public List<UserResult> GetUserResults()
         {
-            var userResults = new List<UserResult>();
-            var data = FileProvider.Get(userResultsPath);
-            var lines = data.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-            for (int i = 0; i < lines.Length; i++)
+            if (!FileProvider.IsExists(userResultsPath))
             {
-                var line = lines[i];
-                var lineData = line.Split('$');
-                var userResult = new UserResult();
-                userResult.Name = lineData[0];
-                userResult.Surname = lineData[1];
-                userResult.CountRightAnswers = Convert.ToInt32(lineData[2]);
-                userResult.Diagnose = lineData[3];
-
-                userResults.Add(userResult);
+                return null;
             }
-            return userResults;
+            else
+            {
+                var userResults = GetUserResultsFromFile();
+                return userResults;
+            }
         }
 
         public int GetNumberOfQuestions()

@@ -36,9 +36,10 @@
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.посмотретьПредыдущиеРезультатыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewQuestionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.рестартToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addNewQuestionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалитьВопросToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,6 +107,7 @@
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.посмотретьПредыдущиеРезультатыToolStripMenuItem,
             this.addNewQuestionToolStripMenuItem,
+            this.удалитьВопросToolStripMenuItem,
             this.рестартToolStripMenuItem,
             this.выходToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
@@ -118,6 +120,13 @@
             this.посмотретьПредыдущиеРезультатыToolStripMenuItem.Size = new System.Drawing.Size(420, 34);
             this.посмотретьПредыдущиеРезультатыToolStripMenuItem.Text = "Посмотреть предыдущие результаты";
             this.посмотретьПредыдущиеРезультатыToolStripMenuItem.Click += new System.EventHandler(this.ShowPreviousResultsToolStripMenuItem_Click);
+            // 
+            // addNewQuestionToolStripMenuItem
+            // 
+            this.addNewQuestionToolStripMenuItem.Name = "addNewQuestionToolStripMenuItem";
+            this.addNewQuestionToolStripMenuItem.Size = new System.Drawing.Size(420, 34);
+            this.addNewQuestionToolStripMenuItem.Text = "Добавить вопрос";
+            this.addNewQuestionToolStripMenuItem.Click += new System.EventHandler(this.AddNewQuestionToolStripMenuItem_Click);
             // 
             // рестартToolStripMenuItem
             // 
@@ -133,12 +142,12 @@
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
-            // addNewQuestionToolStripMenuItem
+            // удалитьВопросToolStripMenuItem
             // 
-            this.addNewQuestionToolStripMenuItem.Name = "addNewQuestionToolStripMenuItem";
-            this.addNewQuestionToolStripMenuItem.Size = new System.Drawing.Size(420, 34);
-            this.addNewQuestionToolStripMenuItem.Text = "Добавить свой вопрос";
-            this.addNewQuestionToolStripMenuItem.Click += new System.EventHandler(this.AddNewQuestionToolStripMenuItem_Click);
+            this.удалитьВопросToolStripMenuItem.Name = "удалитьВопросToolStripMenuItem";
+            this.удалитьВопросToolStripMenuItem.Size = new System.Drawing.Size(420, 34);
+            this.удалитьВопросToolStripMenuItem.Text = "Удалить вопрос";
+            this.удалитьВопросToolStripMenuItem.Click += new System.EventHandler(this.DeleteQuestionToolStripMenuItem_Click);
             // 
             // GeniiIdiotWinFormsApp
             // 
@@ -173,6 +182,7 @@
         private System.Windows.Forms.ToolStripMenuItem рестартToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addNewQuestionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem удалитьВопросToolStripMenuItem;
     }
 }
 

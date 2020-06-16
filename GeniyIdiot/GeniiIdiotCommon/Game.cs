@@ -71,11 +71,11 @@ namespace GeniyIdiotCommon
             return userResults;
         }
 
-        public  void SaveResult(List<UserResult> userResults)
+        public  void SaveResult(User user)
         {
-            var serializedUserResult = JsonConvert.SerializeObject(userResults, Formatting.Indented);
+            var serializedUser = JsonConvert.SerializeObject(user, Formatting.Indented);
             
-            FileProvider.Add(userResultsPath, serializedUserResult);
+            FileProvider.Add(userResultsPath, serializedUser);
         }
 
         public List<UserResult> GetUserResults()

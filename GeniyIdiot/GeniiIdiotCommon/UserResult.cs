@@ -9,13 +9,7 @@ namespace GeniyIdiotCommon
         public int CountRightAnswers;
         public string Diagnose;
 
-        public UserResult(string name, string surname, int countRigthAnswers, string diagnose)
-        {
-            Name = name;
-            Surname = surname;
-            CountRightAnswers = countRigthAnswers;
-            Diagnose = diagnose;
-        }
+        
 
     }
 }

@@ -60,7 +60,7 @@ namespace GeniiIdiotWinFormsApp1
             if (game.IsEnd())
             {
                 game.CalculateDiagnose(numberOfQuestions);
-                game.SaveResult(game.userResults);
+                game.SaveResult(user);
                 MessageBox.Show(user.Diagnose);
             }
             else

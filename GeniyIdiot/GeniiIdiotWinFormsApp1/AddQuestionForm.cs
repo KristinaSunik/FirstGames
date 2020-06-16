@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VisioForge.Shared.MediaFoundation.OPM;
 
 namespace GeniiIdiotWinFormsApp1
 {
@@ -33,13 +34,14 @@ namespace GeniiIdiotWinFormsApp1
 
         private bool IsUserDataValid(string questionTextBox, string answerTextBox)
         {
+ 
             if (String.IsNullOrWhiteSpace(questionTextBox) ||
                 String.IsNullOrWhiteSpace(answerTextBox))
             {
                 MessageBox.Show("Заполните все поля!!!!");
             }
 
-           if (!int.TryParse(answerTextBox, out int result))
+            if (!int.TryParse(answerTextBox, out int result))
             {
                 MessageBox.Show("Введите ЧИСЛО в поле: 'Введите ответ на вопрос'!");
             }

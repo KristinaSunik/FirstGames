@@ -18,11 +18,11 @@ namespace GeniiIdiotWinFormsApp1
         private void MainForm_Load(object sender, EventArgs e)
         {
             var userInfoForm = new UserInfoForm();
-            UserInfoForm.okButton.Enabled = false;
+            userInfoForm.okButton.Enabled = false;
             if (String.IsNullOrWhiteSpace(userInfoForm.userSurnameTextBox.Text) ||
                     String.IsNullOrWhiteSpace(userInfoForm.userNameTextBox.Text))
             {
-                UserInfoForm.okButton.Enabled = true;
+                userInfoForm.okButton.Enabled = true;
             }
 
                 if (userInfoForm.ShowDialog(this) == DialogResult.OK)

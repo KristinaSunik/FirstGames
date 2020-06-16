@@ -16,6 +16,5 @@ namespace GeniiIdiotWinFormsApp1
         {
             InitializeComponent();
         }
-
     }
 }

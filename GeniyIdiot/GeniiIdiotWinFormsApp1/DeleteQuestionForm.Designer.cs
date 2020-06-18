@@ -36,6 +36,7 @@
             // 
             // ListOfQuestionsDataGridView
             // 
+            this.ListOfQuestionsDataGridView.BackgroundColor = System.Drawing.Color.ForestGreen;
             this.ListOfQuestionsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ListOfQuestionsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Question,

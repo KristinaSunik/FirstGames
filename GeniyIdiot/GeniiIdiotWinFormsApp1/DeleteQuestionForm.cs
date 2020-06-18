@@ -31,6 +31,11 @@ namespace GeniiIdiotWinFormsApp1
         private void ListOfQuestionsDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var questions = QuestionStorage.GetQuestionsFromFile();
+            int i =ListOfQuestionsDataGridView.CurrentRow.Index;
+            questions.RemoveAt(i);
+            ListOfQuestionsDataGridView.Refresh();
+            QuestionStorage.SaveQuestions(questions);
+
 
         }
     }

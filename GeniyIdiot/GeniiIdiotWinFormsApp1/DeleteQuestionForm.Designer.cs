@@ -47,6 +47,7 @@
             this.ListOfQuestionsDataGridView.RowTemplate.Height = 28;
             this.ListOfQuestionsDataGridView.Size = new System.Drawing.Size(775, 363);
             this.ListOfQuestionsDataGridView.TabIndex = 0;
+            this.ListOfQuestionsDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListOfQuestionsDataGridView_CellContentClick);
             // 
             // Question
             // 

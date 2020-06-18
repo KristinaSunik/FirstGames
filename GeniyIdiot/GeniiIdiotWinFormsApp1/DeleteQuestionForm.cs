@@ -1,13 +1,6 @@
 ﻿using GeniyIdiotCommon;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GeniiIdiotWinFormsApp1
@@ -15,12 +8,13 @@ namespace GeniiIdiotWinFormsApp1
     public partial class DeleteQuestionForm : Form
     {
         private string userResultsPath = "userResults.json";
+
         public DeleteQuestionForm()
         {
             InitializeComponent();
         }
 
-        private void DeleteQuestionForm_Load(object sender, EventArgs e)
+        public void DeleteQuestionForm_Load(object sender, EventArgs e)
         {
             if (!FileProvider.IsExists(userResultsPath))
             {
@@ -32,6 +26,12 @@ namespace GeniiIdiotWinFormsApp1
                 var question = questions[i];
                 ListOfQuestionsDataGridView.Rows.Add(question.Text, question.Answer);
             }
+        }
+
+        private void ListOfQuestionsDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var questions = QuestionStorage.GetQuestionsFromFile();
+
         }
     }
 }

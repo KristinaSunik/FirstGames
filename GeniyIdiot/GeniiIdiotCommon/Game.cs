@@ -2,12 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace GeniyIdiotCommon
 {
     public class Game
     {
-        private string userResultsPath = "userResults.json";
+        private static string userResultsPath = "userResults.json";
         private List<Question> questions;
         private Question currentQuestion;
         private User user;
@@ -69,7 +70,7 @@ namespace GeniyIdiotCommon
             QuestionStorage.SaveQuestions(allQuestions);
         }
 
-        public List<UserResults> GetUserResultsFromFile()
+        public  static List<UserResults> GetUserResultsFromFile()
         {
             var serializedUserResults = FileProvider.Get(userResultsPath);
             var userResults = JsonConvert.DeserializeObject<List<UserResults>>(serializedUserResults);

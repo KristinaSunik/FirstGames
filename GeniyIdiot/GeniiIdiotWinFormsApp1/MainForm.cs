@@ -108,7 +108,8 @@ namespace GeniiIdiotWinFormsApp1
 
         private void DeleteQuestionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var deleteQuestionForm = new DeleteQuestionForm();
+            deleteQuestionForm.Show();
         }
     }
 }

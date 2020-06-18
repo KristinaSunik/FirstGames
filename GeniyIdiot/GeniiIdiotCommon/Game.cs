@@ -12,7 +12,7 @@ namespace GeniyIdiotCommon
         private Question currentQuestion;
         private User user;
         private int currentQuestionNumber = 0;
-        public List<UserResult> userResults;
+        public List<UserResults> userResults;
 
         public Game(User user)
         {
@@ -22,7 +22,7 @@ namespace GeniyIdiotCommon
         }
        
 
-        private void Init()
+        public void Init()
         {
             QuestionStorage.CreateFileIfNotExists();
 
@@ -69,10 +69,10 @@ namespace GeniyIdiotCommon
             QuestionStorage.SaveQuestions(allQuestions);
         }
 
-        public List<UserResult> GetUserResultsFromFile()
+        public List<UserResults> GetUserResultsFromFile()
         {
             var serializedUserResults = FileProvider.Get(userResultsPath);
-            var userResults = JsonConvert.DeserializeObject<List<UserResult>>(serializedUserResults);
+            var userResults = JsonConvert.DeserializeObject<List<UserResults>>(serializedUserResults);
             return userResults;
         }
 
@@ -83,7 +83,7 @@ namespace GeniyIdiotCommon
             FileProvider.Add(userResultsPath, serializedUser);
         }
 
-        public List<UserResult> GetUserResults()
+        public List<UserResults> GetUserResults()
         {
             var userResults = GetUserResultsFromFile();
             return userResults;

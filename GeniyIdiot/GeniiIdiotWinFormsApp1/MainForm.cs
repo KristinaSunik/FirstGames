@@ -18,31 +18,35 @@ namespace GeniiIdiotWinFormsApp1
         private void MainForm_Load(object sender, EventArgs e)
         {
             var userInfoForm = new UserInfoForm();
-            userInfoForm.okButton.Enabled = false;
-            if (String.IsNullOrWhiteSpace(userInfoForm.userSurnameTextBox.Text) ||
-                    String.IsNullOrWhiteSpace(userInfoForm.userNameTextBox.Text))
-            {
-                userInfoForm.okButton.Enabled = true;
-            }
-
             if (userInfoForm.ShowDialog(this) == DialogResult.OK)
             {
-                var userSurname = userInfoForm.userSurnameTextBox.Text;
-                var userName = userInfoForm.userNameTextBox.Text;
-                user = new User(userName, userSurname);
-                game = new Game(user);
-                numberOfQuestions = game.GetNumberOfQuestions();
-                PrintNextQuestion();
+                if (game.UserInfoIsValid(userInfoForm.userSurnameTextBox.Text, userInfoForm.userNameTextBox.Text) == false)
+                {
+                    MessageBox.Show("Заполните все поля!!!!", "ВНИМАНИЕ",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else { 
+
+
+                    var userSurname = userInfoForm.userSurnameTextBox.Text;
+                    var userName = userInfoForm.userNameTextBox.Text;
+                    user = new User(userName, userSurname);
+                    game = new Game(user);
+                    numberOfQuestions = game.GetNumberOfQuestions();
+                    PrintNextQuestion();
+                }
+               
             }
             else Close();
         }
+
 
         private void nextQuestionButton_Click(object sender, EventArgs e)
         {
             int userAnswer;
             if (!int.TryParse(userAnswerTextBox.Text, out userAnswer))
             {
-                MessageBox.Show("Введите число!");
+                MessageBox.Show("Введите число!", "ВНИМАНИЕ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 userAnswerTextBox.Clear();
                 userAnswerTextBox.Focus();
             }

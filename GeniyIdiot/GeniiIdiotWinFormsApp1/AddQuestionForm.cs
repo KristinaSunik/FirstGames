@@ -31,14 +31,21 @@ namespace GeniiIdiotWinFormsApp1
             if (String.IsNullOrWhiteSpace(questionTextBox) ||
                 String.IsNullOrWhiteSpace(answerTextBox))
             {
-                MessageBox.Show("Заполните все поля!!!!");
+                MessageBox.Show("Заполните все поля!!!!", "ВНИМАНИЕ",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
 
             if (!int.TryParse(answerTextBox, out int result))
             {
-                MessageBox.Show("Введите ЧИСЛО в поле: 'Введите ответ на вопрос'!");
+                MessageBox.Show("Введите ЧИСЛО в поле: 'Введите ответ на вопрос'!",
+                    "ВНИМАНИЕ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
-            return true;
+            else
+            {
+                return true;
+            }
         }
     }
 }

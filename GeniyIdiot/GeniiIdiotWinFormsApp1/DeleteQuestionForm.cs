@@ -27,7 +27,11 @@ namespace GeniiIdiotWinFormsApp1
                 File.Create(userResultsPath);
             }
             var questions = QuestionStorage.GetQuestionsFromFile();
-
+            for (int i = 0; i < questions.Count; i++)
+            {
+                var question = questions[i];
+                ListOfQuestionsDataGridView.Rows.Add(question.Text, question.Answer);
+            }
         }
     }
 }

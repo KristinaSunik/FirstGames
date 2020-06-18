@@ -22,5 +22,6 @@ namespace GeniiIdiotWinFormsApp1
                     userResult.CountRightAnswers, userResult.Diagnose);
             }
         }
+
     }
 }

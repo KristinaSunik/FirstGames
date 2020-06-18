@@ -1,14 +1,7 @@
 ﻿using GeniyIdiotCommon;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using VisioForge.Shared.MediaFoundation.OPM;
+
 
 namespace GeniiIdiotWinFormsApp1
 {
@@ -34,7 +27,7 @@ namespace GeniiIdiotWinFormsApp1
 
         private bool IsUserDataValid(string questionTextBox, string answerTextBox)
         {
- 
+
             if (String.IsNullOrWhiteSpace(questionTextBox) ||
                 String.IsNullOrWhiteSpace(answerTextBox))
             {

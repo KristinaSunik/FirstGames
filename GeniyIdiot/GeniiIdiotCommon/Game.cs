@@ -12,7 +12,7 @@ namespace GeniyIdiotCommon
         private Question currentQuestion;
         private User user;
         private int currentQuestionNumber = 0;
-        public List<UserResults> userResults;
+        public List<UserResult> userResults;
 
         public Game(User user)
         {
@@ -24,12 +24,12 @@ namespace GeniyIdiotCommon
         private void Init()
         {
             QuestionStorage.CreateFileIfNotExists();
-           
+
             if (!FileProvider.IsExists(userResultsPath))
             {
                 File.Create(userResultsPath);
             }
-            }
+        }
 
         public string GetCurrentQuestionNumberInfo()
         {
@@ -68,24 +68,24 @@ namespace GeniyIdiotCommon
             QuestionStorage.SaveQuestions(allQuestions);
         }
 
-        public  List<UserResults> GetUserResultsFromFile()
+        public List<UserResult> GetUserResultsFromFile()
         {
             var serializedUserResults = FileProvider.Get(userResultsPath);
-            var userResults = JsonConvert.DeserializeObject<List<UserResults>>(serializedUserResults);
+            var userResults = JsonConvert.DeserializeObject<List<UserResult>>(serializedUserResults);
             return userResults;
         }
 
-        public  void SaveResult(User user)
+        public void SaveResult(User user)
         {
             var serializedUser = JsonConvert.SerializeObject(user, Formatting.Indented);
-            
+
             FileProvider.Add(userResultsPath, serializedUser);
         }
 
-        public List<UserResults> GetUserResults()
+        public List<UserResult> GetUserResults()
         {
-                var userResults = GetUserResultsFromFile();
-                return userResults;
+            var userResults = GetUserResultsFromFile();
+            return userResults;
         }
 
         public int GetNumberOfQuestions()

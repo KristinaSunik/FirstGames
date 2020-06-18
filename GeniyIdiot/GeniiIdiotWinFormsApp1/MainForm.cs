@@ -8,7 +8,7 @@ namespace GeniiIdiotWinFormsApp1
     {
         private User user;
         private Game game;
-        int numberOfQuestions = 0; 
+        int numberOfQuestions = 0;
 
         public GeniiIdiotWinFormsApp()
         {
@@ -25,16 +25,16 @@ namespace GeniiIdiotWinFormsApp1
                 userInfoForm.okButton.Enabled = true;
             }
 
-                if (userInfoForm.ShowDialog(this) == DialogResult.OK)
-                {
-                    var userSurname = userInfoForm.userSurnameTextBox.Text;
-                    var userName = userInfoForm.userNameTextBox.Text;
-                    user = new User(userName, userSurname);
-                    game = new Game(user);
-                    numberOfQuestions = game.GetNumberOfQuestions();
-                    PrintNextQuestion();
-                }
-                else Close();
+            if (userInfoForm.ShowDialog(this) == DialogResult.OK)
+            {
+                var userSurname = userInfoForm.userSurnameTextBox.Text;
+                var userName = userInfoForm.userNameTextBox.Text;
+                user = new User(userName, userSurname);
+                game = new Game(user);
+                numberOfQuestions = game.GetNumberOfQuestions();
+                PrintNextQuestion();
+            }
+            else Close();
         }
 
         private void nextQuestionButton_Click(object sender, EventArgs e)

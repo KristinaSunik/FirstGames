@@ -2,7 +2,7 @@
 
 namespace GeniyIdiotCommon
 {
-    public class UserResults
+    public class UserResult
     {
         public string Name;
         public string Surname;

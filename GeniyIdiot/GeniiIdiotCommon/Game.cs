@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace GeniyIdiotCommon
 {
@@ -23,8 +24,12 @@ namespace GeniyIdiotCommon
         private void Init()
         {
             QuestionStorage.CreateFileIfNotExists();
-            
-        }
+           
+            if (!FileProvider.IsExists(userResultsPath))
+            {
+                File.Create(userResultsPath);
+            }
+            }
 
         public string GetCurrentQuestionNumberInfo()
         {
@@ -79,15 +84,8 @@ namespace GeniyIdiotCommon
 
         public List<UserResults> GetUserResults()
         {
-            if (!FileProvider.IsExists(userResultsPath))
-            {
-                return userResults;
-            }
-            else
-            {
                 var userResults = GetUserResultsFromFile();
                 return userResults;
-            }
         }
 
         public int GetNumberOfQuestions()

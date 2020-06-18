@@ -20,19 +20,7 @@ namespace GeniyIdiotCommon
             Init();
             questions = QuestionStorage.GetQuestionsFromFile();
         }
-        public bool UserInfoIsValid(string userSurnameTextBox, string userNameTextBox)
-        {
-            if (String.IsNullOrWhiteSpace(userSurnameTextBox) ||
-                String.IsNullOrWhiteSpace(userNameTextBox))
-            {
-                
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
+       
 
         private void Init()
         {

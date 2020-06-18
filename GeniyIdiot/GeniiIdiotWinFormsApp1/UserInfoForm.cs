@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace GeniiIdiotWinFormsApp1
 {
@@ -9,6 +10,11 @@ namespace GeniiIdiotWinFormsApp1
             InitializeComponent();
         }
 
-       
+        private void okButton_Click(object sender, System.EventArgs e)
+        {
+
+           
+
+        }
     }
 }

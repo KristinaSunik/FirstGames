@@ -20,22 +20,29 @@ namespace GeniiIdiotWinFormsApp1
             var userInfoForm = new UserInfoForm();
             if (userInfoForm.ShowDialog(this) == DialogResult.OK)
             {
-                if (game.UserInfoIsValid(userInfoForm.userSurnameTextBox.Text, userInfoForm.userNameTextBox.Text) == false)
+                while(true)
                 {
-                    MessageBox.Show("Заполните все поля!!!!", "ВНИМАНИЕ",
+                    if (string.IsNullOrEmpty(userInfoForm.userSurnameTextBox.Text) ||
+                   string.IsNullOrEmpty(userInfoForm.userNameTextBox.Text))
+                    {
+
+                        MessageBox.Show("Заполните все поля!!!!", "ВНИМАНИЕ",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        userInfoForm.ShowDialog();
+                    }
+                  else  if (!string.IsNullOrEmpty(userInfoForm.userSurnameTextBox.Text) &&
+                   !string.IsNullOrEmpty(userInfoForm.userNameTextBox.Text))
+                    {
+                        break; 
+                    }
                 }
-                else { 
-
-
+               
                     var userSurname = userInfoForm.userSurnameTextBox.Text;
                     var userName = userInfoForm.userNameTextBox.Text;
                     user = new User(userName, userSurname);
                     game = new Game(user);
                     numberOfQuestions = game.GetNumberOfQuestions();
                     PrintNextQuestion();
-                }
-               
             }
             else Close();
         }

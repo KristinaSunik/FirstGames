@@ -7,7 +7,6 @@ namespace GeniiIdiotWinFormsApp1
 {
     public partial class DeleteQuestionForm : Form
     {
-        private string userResultsPath = "userResults.json";
         private static string questionsPath = "questions.json";
 
         public DeleteQuestionForm()

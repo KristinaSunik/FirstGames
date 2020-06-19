@@ -9,6 +9,15 @@ namespace GeniyIdiotCommon
         public int CountRightAnswers;
         public string Diagnose;
 
+        public UserResults(string name, string surname, int countRightAnswers, string diagnose)
+        {
+            Name = name;
+            Surname = surname;
+            CountRightAnswers = countRightAnswers;
+            Diagnose = diagnose;
+        }
+
+   
 
     }
 }

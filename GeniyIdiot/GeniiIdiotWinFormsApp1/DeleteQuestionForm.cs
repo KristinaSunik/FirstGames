@@ -8,6 +8,7 @@ namespace GeniiIdiotWinFormsApp1
     public partial class DeleteQuestionForm : Form
     {
         private string userResultsPath = "userResults.json";
+        private static string questionsPath = "questions.json";
 
         public DeleteQuestionForm()
         {
@@ -16,11 +17,11 @@ namespace GeniiIdiotWinFormsApp1
 
         public void DeleteQuestionForm_Load(object sender, EventArgs e)
         {
-            if (!FileProvider.IsExists(userResultsPath))
+            if (!FileProvider.IsExists(questionsPath))
             {
-                File.Create(userResultsPath);
+                QuestionStorage.CreateFileIfNotExists();
             }
-            var questions = QuestionStorage.GetQuestionsFromFile();
+                var questions = QuestionStorage.GetQuestionsFromFile();
             for (int i = 0; i < questions.Count; i++)
             {
                 var question = questions[i];

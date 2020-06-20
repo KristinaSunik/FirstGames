@@ -1,6 +1,7 @@
 ﻿
 using GeniyIdiotCommon;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 namespace GeniiIdiotWinFormsApp1
 {
@@ -8,6 +9,7 @@ namespace GeniiIdiotWinFormsApp1
     {
         private User user;
         private Game game;
+        public List<UserResults> userResults;
         int numberOfQuestions = 0;
 
         public GeniiIdiotWinFormsApp()
@@ -71,7 +73,9 @@ namespace GeniiIdiotWinFormsApp1
             if (game.IsEnd())
             {
                 game.CalculateDiagnose(numberOfQuestions);
-                game.SaveResult(user);
+                var newUserResult = new UserResults(user.Name,user.Surname,user.CountRightAnswers,user.Diagnose);
+                game.AddNewUserResult(newUserResult);
+                game.SaveResult(userResults);
                 MessageBox.Show(user.Diagnose);
             }
             else

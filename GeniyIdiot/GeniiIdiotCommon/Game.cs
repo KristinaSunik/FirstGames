@@ -76,13 +76,19 @@ namespace GeniyIdiotCommon
             var userResults = JsonConvert.DeserializeObject<List<UserResults>>(serializedUserResults);
             return userResults;
         }
+        public void SaveResult(List<UserResults> userResults)
+        { 
+            var serializedUser = JsonConvert.SerializeObject(userResults, Formatting.Indented);
 
-        public void SaveResult(User user)
-        {
-            var serializedUser = JsonConvert.SerializeObject(user, Formatting.Indented);
-
-            FileProvider.Add(userResultsPath, serializedUser);
+            FileProvider.Set(userResultsPath, serializedUser);
         }
+
+        public void AddNewUserResult(UserResults newUserResult)
+        {
+            var allResults = GetUserResultsFromFile();
+            allResults.Add(newUserResult);
+        }
+
 
         public List<UserResults> GetUserResults()
         {

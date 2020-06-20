@@ -28,6 +28,8 @@ namespace GeniyIdiot
             game.CalculateDiagnose(numberOfQuestions);
             Console.WriteLine("Количество правильных ответов: " + user.CountRightAnswers);
             Console.WriteLine(user.Name + user.Surname + ", Ваш диагноз: " + user.Diagnose);
+            var newUserResult = new UserResults(user.Name, user.Surname, user.CountRightAnswers, user.Diagnose);
+            game.AddNewUserResult(newUserResult);
             game.SaveResult(userResults);
             Console.WriteLine("Если вы хотите посмотреть результаты других участников нажмите 'Q'");
             var answer = Console.ReadLine();

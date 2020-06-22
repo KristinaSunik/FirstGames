@@ -1,4 +1,4 @@
-﻿using GeniyIdiotCommon;
+using GeniyIdiotCommon;
 using System;
 using System.Collections.Generic;
 

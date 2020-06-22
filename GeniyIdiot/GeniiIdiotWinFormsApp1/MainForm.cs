@@ -1,8 +1,8 @@
 ﻿
 using GeniyIdiotCommon;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
-
 namespace GeniiIdiotWinFormsApp1
 {
     public partial class GeniiIdiotWinFormsApp : Form
@@ -21,32 +21,40 @@ namespace GeniiIdiotWinFormsApp1
             var userInfoForm = new UserInfoForm();
             if (userInfoForm.ShowDialog(this) == DialogResult.OK)
             {
-                while(String.IsNullOrWhiteSpace(userInfoForm.userSurnameTextBox.Text) ||
-                    String.IsNullOrWhiteSpace(userInfoForm.userNameTextBox.Text))
+                while(true)
                 {
-                    MessageBox.Show("Введите все данные!!");
-                    userInfoForm.ShowDialog(this);
+                    if (string.IsNullOrEmpty(userInfoForm.userSurnameTextBox.Text) ||
+                   string.IsNullOrEmpty(userInfoForm.userNameTextBox.Text))
+                    {
 
+                        MessageBox.Show("Заполните все поля!!!!", "ВНИМАНИЕ",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        userInfoForm.ShowDialog();
+                    }
+                  else  if (!string.IsNullOrEmpty(userInfoForm.userSurnameTextBox.Text) &&
+                   !string.IsNullOrEmpty(userInfoForm.userNameTextBox.Text))
+                    {
+                        break; 
+                    }
                 }
                
                     var userSurname = userInfoForm.userSurnameTextBox.Text;
-
                     var userName = userInfoForm.userNameTextBox.Text;
                     user = new User(userName, userSurname);
                     game = new Game(user);
                     numberOfQuestions = game.GetNumberOfQuestions();
                     PrintNextQuestion();
-                
             }
             else Close();
         }
+
 
         private void nextQuestionButton_Click(object sender, EventArgs e)
         {
             int userAnswer;
             if (!int.TryParse(userAnswerTextBox.Text, out userAnswer))
             {
-                MessageBox.Show("Введите число!");
+                MessageBox.Show("Введите число!", "ВНИМАНИЕ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 userAnswerTextBox.Clear();
                 userAnswerTextBox.Focus();
             }
@@ -64,7 +72,8 @@ namespace GeniiIdiotWinFormsApp1
             if (game.IsEnd())
             {
                 game.CalculateDiagnose(numberOfQuestions);
-                game.SaveResult();
+                var newUserResult = new UserResult(user.Name, user.Surname, user.CountRightAnswers, user.Diagnose);
+                game.AddNewUserResult(newUserResult);
                 MessageBox.Show(user.Diagnose);
             }
             else
@@ -76,21 +85,33 @@ namespace GeniiIdiotWinFormsApp1
             }
         }
 
-        private void посмотретьПредыдущиеРезультатыToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ShowPreviousResultsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var userResults = game.GetUserResults();
             var userResultsForm = new UserResultsForm(userResults);
             userResultsForm.Show();
         }
 
-        private void рестартToolStripMenuItem_Click(object sender, EventArgs e)
+        private void RestartToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Restart();
         }
 
-        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void AddNewQuestionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var addQuestionForm = new AddQuestionForm(game);
+            addQuestionForm.Show();
+        }
+
+        private void DeleteQuestionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var deleteQuestionForm = new DeleteQuestionForm();
+            deleteQuestionForm.Show();
         }
     }
 }

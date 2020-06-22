@@ -1,20 +1,37 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace GeniyIdiotCommon
 {
     public class Game
     {
-        private string userResultsPath = "userResults.txt";
+        private static string userResultsPath = "userResults.json";
         private List<Question> questions;
         private Question currentQuestion;
         private User user;
         private int currentQuestionNumber = 0;
+        public List<UserResult> userResults;
 
         public Game(User user)
         {
             this.user = user;
-            questions = QuestionStorage.Get();
+            Init();
+            questions = QuestionStorage.GetQuestionsFromFile();
+        }
+
+
+        public void Init()
+        {
+            QuestionStorage.CreateFileIfNotExists();
+
+            if (!FileProvider.IsExists(userResultsPath))
+            {
+                var results = new List<UserResult>();
+                SaveResult(results);
+            }
         }
 
         public string GetCurrentQuestionNumberInfo()
@@ -46,28 +63,36 @@ namespace GeniyIdiotCommon
                 user.AcceptRightAnswer();
             }
         }
-        public void SaveResult()
+
+        public void AddNewQuestion(Question newQuestion)
         {
-            var data = $"{user.Name}${ user.Surname}${ user.CountRightAnswers}${user.Diagnose}";
-            FileProvider.Add(userResultsPath, data);
+            var allQuestions = QuestionStorage.GetQuestionsFromFile();
+            allQuestions.Add(newQuestion);
+            QuestionStorage.SaveQuestions(allQuestions);
         }
+
+        public static List<UserResult> GetUserResultsFromFile()
+        {
+            var serializedUserResults = FileProvider.Get(userResultsPath);
+            var userResults = JsonConvert.DeserializeObject<List<UserResult>>(serializedUserResults);
+            return userResults;
+        }
+        public void SaveResult(List<UserResult> userResults)
+        {
+            var serializedUser = JsonConvert.SerializeObject(userResults, Formatting.Indented);
+            FileProvider.Set(userResultsPath, serializedUser);
+        }
+
+        public void AddNewUserResult(UserResult newUserResult)
+        {
+            var allResults = GetUserResultsFromFile();
+            allResults.Add(newUserResult);
+            SaveResult(allResults);
+        }
+
         public List<UserResult> GetUserResults()
         {
-            var userResults = new List<UserResult>();
-            var data = FileProvider.Get(userResultsPath);
-            var lines = data.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-            for (int i = 0; i < lines.Length; i++)
-            {
-                var line = lines[i];
-                var lineData = line.Split('$');
-                var userResult = new UserResult();
-                userResult.Name = lineData[0];
-                userResult.Surname = lineData[1];
-                userResult.CountRightAnswers = Convert.ToInt32(lineData[2]);
-                userResult.Diagnose = lineData[3];
-
-                userResults.Add(userResult);
-            }
+            var userResults = GetUserResultsFromFile();
             return userResults;
         }
 

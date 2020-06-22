@@ -12,6 +12,17 @@ namespace GeniyIdiotCommon
             results.WriteLine(text);
             results.Close();
         }
+        public static bool IsExists(string path)
+        {
+            return File.Exists(path);
+        }
+
+        public static void Set (string path, string text)
+        {
+            var results = new StreamWriter(path, false);
+            results.WriteLine(text);
+            results.Close();
+        }
 
         public static string Get(string path)
         {

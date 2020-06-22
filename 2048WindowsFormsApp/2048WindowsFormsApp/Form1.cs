@@ -81,7 +81,7 @@ namespace _2048WindowsFormsApp
                             {
                                 if (map[i, k].Text != String.Empty)
                                 {
-                                   if( map[i,k].Text == map[i,j].Text)
+                                    if (map[i, k].Text == map[i, j].Text)
                                     {
                                         var number = Convert.ToInt32(map[i, k].Text);
                                         map[i, j].Text = (number * 2).ToString();
@@ -103,8 +103,8 @@ namespace _2048WindowsFormsApp
                             {
                                 if (map[i, k].Text != String.Empty)
                                 {
-                                        map[i, j].Text = map[i, k].Text;
-                                        map[i, k].Text = string.Empty;
+                                    map[i, j].Text = map[i, k].Text;
+                                    map[i, k].Text = string.Empty;
                                 }
                             }
                         }
@@ -113,15 +113,129 @@ namespace _2048WindowsFormsApp
             }
             if (e.KeyCode == Keys.Left)
             {
-                MessageBox.Show("Left");
+                for (int i = 0; i < mapSize; i++)
+                {
+                    for (int j = 0; j < mapSize; j++)
+                    {
+                        if (map[i, j].Text != String.Empty)
+                        {
+                            for (int k = j + 1; k < mapSize; k++)
+                            {
+                                if (map[i, k].Text != String.Empty)
+                                {
+                                    if (map[i, k].Text == map[i, j].Text)
+                                    {
+                                        var number = Convert.ToInt32(map[i, k].Text);
+                                        map[i, j].Text = (number * 2).ToString();
+                                        map[i, k].Text = string.Empty;
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                for (int i = 0; i < mapSize; i++)
+                {
+                    for (int j = 0; j < mapSize; j++)
+                    {
+                        if (map[i, j].Text == String.Empty)
+                        {
+                            for (int k = j + 1; k < mapSize; k++)
+                            {
+                                if (map[i, k].Text != String.Empty)
+                                {
+                                    map[i, j].Text = map[i, k].Text;
+                                    map[i, k].Text = string.Empty;
+                                }
+                            }
+                        }
+                    }
+                }
             }
             if (e.KeyCode == Keys.Up)
             {
-                MessageBox.Show("Up");
+                for (int i = 0; i < mapSize; i++)
+                {
+                    for (int j = mapSize - 1; j >= 0; j--)
+                    {
+                        if (map[i, j].Text != String.Empty)
+                        {
+                            for (int k = j - 1; k >= 0; k--)
+                            {
+                                if (map[i, k].Text != String.Empty)
+                                {
+                                    if (map[i, k].Text == map[i, j].Text)
+                                    {
+                                        var number = Convert.ToInt32(map[i, k].Text);
+                                        map[i, j].Text = (number * 2).ToString();
+                                        map[i, k].Text = string.Empty;
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                for (int i = 0; i < mapSize; i++)
+                {
+                    for (int j = mapSize - 1; j >= 0; j--)
+                    {
+                        if (map[i, j].Text == String.Empty)
+                        {
+                            for (int k = j - 1; k >= 0; k--)
+                            {
+                                if (map[i, k].Text != String.Empty)
+                                {
+                                    map[i, j].Text = map[i, k].Text;
+                                    map[i, k].Text = string.Empty;
+                                }
+                            }
+                        }
+                    }
+                }
             }
             if (e.KeyCode == Keys.Down)
             {
-                MessageBox.Show("Down");
+                for (int i = 0; i < mapSize; i++)
+                {
+                    for (int j = mapSize - 1; j >= 0; j--)
+                    {
+                        if (map[i, j].Text != String.Empty)
+                        {
+                            for (int k = j - 1; k >= 0; k--)
+                            {
+                                if (map[i, k].Text != String.Empty)
+                                {
+                                    if (map[i, k].Text == map[i, j].Text)
+                                    {
+                                        var number = Convert.ToInt32(map[i, k].Text);
+                                        map[i, j].Text = (number * 2).ToString();
+                                        map[i, k].Text = string.Empty;
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                for (int i = 0; i < mapSize; i++)
+                {
+                    for (int j = mapSize - 1; j >= 0; j--)
+                    {
+                        if (map[i, j].Text == String.Empty)
+                        {
+                            for (int k = j - 1; k >= 0; k--)
+                            {
+                                if (map[i, k].Text != String.Empty)
+                                {
+                                    map[i, j].Text = map[i, k].Text;
+                                    map[i, k].Text = string.Empty;
+                                }
+                            }
+                        }
+                    }
+                }
             }
             GenerateNumber();
         }

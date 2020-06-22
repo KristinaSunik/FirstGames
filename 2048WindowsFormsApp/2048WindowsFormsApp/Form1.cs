@@ -18,6 +18,7 @@ namespace _2048WindowsFormsApp
         private void Form1_Load(object sender, EventArgs e)
         {
             InitMap();
+            GenerateNumber();
         }
 
         private void InitMap()
@@ -34,6 +35,23 @@ namespace _2048WindowsFormsApp
                 }
             }
         }
+
+        private void GenerateNumber()
+        {
+            var random = new Random();
+
+            while (true)
+            {
+                var rowIndex = random.Next(mapSize);
+                var columnIndex = random.Next(mapSize);
+                if (map[columnIndex, rowIndex].Text == String.Empty)
+                {
+                    map[columnIndex, rowIndex].Text = "2";
+                    break;
+                }
+            }
+        }
+
 
         private Label CreateLabel(int rowIndex, int columnIndex)
         {

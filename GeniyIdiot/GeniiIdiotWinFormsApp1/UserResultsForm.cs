@@ -18,9 +18,10 @@ namespace GeniiIdiotWinFormsApp1
             for (int i = 0; i < userResults.Count; i++)
             {
                 var userResult = userResults[i];
-                userResultsDataGridView.Rows.Add(userResult.Name, userResult.Surname, 
-                    userResult.CountRightAnswers,userResult.Diagnose);
+                userResultsDataGridView.Rows.Add(userResult.Name, userResult.Surname,
+                    userResult.CountRightAnswers, userResult.Diagnose);
             }
         }
+
     }
 }

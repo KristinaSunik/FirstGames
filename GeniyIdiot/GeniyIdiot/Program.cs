@@ -1,12 +1,12 @@
-﻿using GeniyIdiotCommon;
+using GeniyIdiotCommon;
 using System;
-
-
+using System.Collections.Generic;
 
 namespace GeniyIdiot
 {
     public class Program
     {
+        private static List<UserResult> userResults;
 
         public static void Main(string[] args)
         {
@@ -28,7 +28,9 @@ namespace GeniyIdiot
             game.CalculateDiagnose(numberOfQuestions);
             Console.WriteLine("Количество правильных ответов: " + user.CountRightAnswers);
             Console.WriteLine(user.Name + user.Surname + ", Ваш диагноз: " + user.Diagnose);
-            game.SaveResult(user);
+            var newUserResult = new UserResult(user.Name, user.Surname, user.CountRightAnswers, user.Diagnose);
+            game.AddNewUserResult(newUserResult);
+            game.SaveResult(userResults);
             Console.WriteLine("Если вы хотите посмотреть результаты других участников нажмите 'Q'");
             var answer = Console.ReadLine();
             if (answer == "Q" || answer == "q")

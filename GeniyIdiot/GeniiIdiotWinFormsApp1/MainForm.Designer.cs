@@ -33,11 +33,13 @@
             this.nextQuestionButton = new System.Windows.Forms.Button();
             this.userAnswerTextBox = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.посмотретьПредыдущиеРезультатыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewQuestionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалитьВопросToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.рестартToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +59,7 @@
             this.questionNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.questionNumberLabel.Location = new System.Drawing.Point(40, 44);
             this.questionNumberLabel.Name = "questionNumberLabel";
-            this.questionNumberLabel.Size = new System.Drawing.Size(164, 32);
+            this.questionNumberLabel.Size = new System.Drawing.Size(180, 32);
             this.questionNumberLabel.TabIndex = 1;
             this.questionNumberLabel.Text = "Вопрос № 1";
             // 
@@ -88,22 +90,12 @@
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // menuStrip2
-            // 
-            this.menuStrip2.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
-            this.menuStrip2.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem});
-            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(610, 33);
-            this.menuStrip2.TabIndex = 5;
-            this.menuStrip2.Text = "menuStrip2";
-            // 
             // файлToolStripMenuItem
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.посмотретьПредыдущиеРезультатыToolStripMenuItem,
+            this.addNewQuestionToolStripMenuItem,
+            this.удалитьВопросToolStripMenuItem,
             this.рестартToolStripMenuItem,
             this.выходToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
@@ -115,21 +107,47 @@
             this.посмотретьПредыдущиеРезультатыToolStripMenuItem.Name = "посмотретьПредыдущиеРезультатыToolStripMenuItem";
             this.посмотретьПредыдущиеРезультатыToolStripMenuItem.Size = new System.Drawing.Size(420, 34);
             this.посмотретьПредыдущиеРезультатыToolStripMenuItem.Text = "Посмотреть предыдущие результаты";
-            this.посмотретьПредыдущиеРезультатыToolStripMenuItem.Click += new System.EventHandler(this.посмотретьПредыдущиеРезультатыToolStripMenuItem_Click);
+            this.посмотретьПредыдущиеРезультатыToolStripMenuItem.Click += new System.EventHandler(this.ShowPreviousResultsToolStripMenuItem_Click);
+            // 
+            // addNewQuestionToolStripMenuItem
+            // 
+            this.addNewQuestionToolStripMenuItem.Name = "addNewQuestionToolStripMenuItem";
+            this.addNewQuestionToolStripMenuItem.Size = new System.Drawing.Size(420, 34);
+            this.addNewQuestionToolStripMenuItem.Text = "Добавить вопрос";
+            this.addNewQuestionToolStripMenuItem.Click += new System.EventHandler(this.AddNewQuestionToolStripMenuItem_Click);
+            // 
+            // удалитьВопросToolStripMenuItem
+            // 
+            this.удалитьВопросToolStripMenuItem.Name = "удалитьВопросToolStripMenuItem";
+            this.удалитьВопросToolStripMenuItem.Size = new System.Drawing.Size(420, 34);
+            this.удалитьВопросToolStripMenuItem.Text = "Удалить вопрос";
+            this.удалитьВопросToolStripMenuItem.Click += new System.EventHandler(this.DeleteQuestionToolStripMenuItem_Click);
             // 
             // рестартToolStripMenuItem
             // 
             this.рестартToolStripMenuItem.Name = "рестартToolStripMenuItem";
             this.рестартToolStripMenuItem.Size = new System.Drawing.Size(420, 34);
             this.рестартToolStripMenuItem.Text = "Рестарт";
-            this.рестартToolStripMenuItem.Click += new System.EventHandler(this.рестартToolStripMenuItem_Click);
+            this.рестартToolStripMenuItem.Click += new System.EventHandler(this.RestartToolStripMenuItem_Click);
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
             this.выходToolStripMenuItem.Size = new System.Drawing.Size(420, 34);
             this.выходToolStripMenuItem.Text = "Выход";
-            this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
+            this.выходToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
+            // menuStrip2
+            // 
+            this.menuStrip2.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.menuStrip2.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.файлToolStripMenuItem});
+            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.Size = new System.Drawing.Size(610, 33);
+            this.menuStrip2.TabIndex = 5;
+            this.menuStrip2.Text = "menuStrip2";
             // 
             // GeniiIdiotWinFormsApp
             // 
@@ -158,11 +176,13 @@
         private System.Windows.Forms.Button nextQuestionButton;
         private System.Windows.Forms.TextBox userAnswerTextBox;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem посмотретьПредыдущиеРезультатыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addNewQuestionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem удалитьВопросToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem рестартToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip menuStrip2;
     }
 }
 

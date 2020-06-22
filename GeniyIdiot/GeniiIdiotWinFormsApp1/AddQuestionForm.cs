@@ -1,4 +1,5 @@
 ﻿using GeniyIdiotCommon;
+using SharpDX;
 using System;
 using System.Windows.Forms;
 
@@ -32,6 +33,13 @@ namespace GeniiIdiotWinFormsApp1
                 String.IsNullOrWhiteSpace(answerTextBox))
             {
                 MessageBox.Show("Заполните все поля!!!!", "ВНИМАНИЕ",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            int result;
+            if (!int.TryParse(answerTextBox, out result))
+            {
+                MessageBox.Show("Введите число  в поле 'Введите ответ на вопрос'!", "ВНИМАНИЕ",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }

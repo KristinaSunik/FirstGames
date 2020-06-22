@@ -35,13 +35,6 @@ namespace GeniiIdiotWinFormsApp1
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
-            if (!int.TryParse(answerTextBox, out int result))
-            {
-                MessageBox.Show("Введите ЧИСЛО в поле: 'Введите ответ на вопрос'!",
-                    "ВНИМАНИЕ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
             else
             {
                 return true;

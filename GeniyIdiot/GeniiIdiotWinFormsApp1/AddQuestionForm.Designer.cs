@@ -1,4 +1,5 @@
-﻿namespace GeniiIdiotWinFormsApp1
+﻿
+namespace GeniiIdiotWinFormsApp1
 {
     partial class AddQuestionForm
     {

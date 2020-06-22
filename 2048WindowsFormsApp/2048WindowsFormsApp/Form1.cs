@@ -71,7 +71,45 @@ namespace _2048WindowsFormsApp
         {
             if (e.KeyCode == Keys.Right)
             {
-                MessageBox.Show("Right");
+                for (int i = 0; i < mapSize; i++)
+                {
+                    for (int j = mapSize - 1; j >= 0; j--)
+                    {
+                        if (map[i, j].Text != String.Empty)
+                        {
+                            for (int k = j - 1; k >= 0; k--)
+                            {
+                                if (map[i, k].Text != String.Empty)
+                                {
+                                   if( map[i,k].Text == map[i,j].Text)
+                                    {
+                                        var number = Convert.ToInt32(map[i, k].Text);
+                                        map[i, j].Text = (number * 2).ToString();
+                                        map[i, k].Text = string.Empty;
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                for (int i = 0; i < mapSize; i++)
+                {
+                    for (int j = mapSize - 1; j >= 0; j--)
+                    {
+                        if (map[i, j].Text == String.Empty)
+                        {
+                            for (int k = j - 1; k >= 0; k--)
+                            {
+                                if (map[i, k].Text != String.Empty)
+                                {
+                                        map[i, j].Text = map[i, k].Text;
+                                        map[i, k].Text = string.Empty;
+                                }
+                            }
+                        }
+                    }
+                }
             }
             if (e.KeyCode == Keys.Left)
             {
@@ -85,6 +123,7 @@ namespace _2048WindowsFormsApp
             {
                 MessageBox.Show("Down");
             }
+            GenerateNumber();
         }
     }
 }

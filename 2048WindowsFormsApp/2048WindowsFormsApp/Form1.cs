@@ -66,5 +66,25 @@ namespace _2048WindowsFormsApp
             label.Location = new Point(x, y);
             return label;
         }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Right)
+            {
+                MessageBox.Show("Right");
+            }
+            if (e.KeyCode == Keys.Left)
+            {
+                MessageBox.Show("Left");
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                MessageBox.Show("Up");
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                MessageBox.Show("Down");
+            }
+        }
     }
 }

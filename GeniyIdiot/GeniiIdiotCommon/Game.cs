@@ -21,7 +21,7 @@ namespace GeniyIdiotCommon
             Init();
             questions = QuestionStorage.GetQuestionsFromFile();
         }
-       
+
 
         public void Init()
         {
@@ -70,16 +70,15 @@ namespace GeniyIdiotCommon
             QuestionStorage.SaveQuestions(allQuestions);
         }
 
-        public  static List<UserResults> GetUserResultsFromFile()
+        public static List<UserResults> GetUserResultsFromFile()
         {
             var serializedUserResults = FileProvider.Get(userResultsPath);
             var userResults = JsonConvert.DeserializeObject<List<UserResults>>(serializedUserResults);
             return userResults;
         }
         public void SaveResult(List<UserResults> userResults)
-        { 
+        {
             var serializedUser = JsonConvert.SerializeObject(userResults, Formatting.Indented);
-
             FileProvider.Set(userResultsPath, serializedUser);
         }
 
@@ -88,7 +87,6 @@ namespace GeniyIdiotCommon
             var allResults = GetUserResultsFromFile();
             allResults.Add(newUserResult);
         }
-
 
         public List<UserResults> GetUserResults()
         {

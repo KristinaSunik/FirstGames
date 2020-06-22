@@ -9,7 +9,6 @@ namespace GeniiIdiotWinFormsApp1
     {
         private User user;
         private Game game;
-        public List<UserResults> userResults;
         int numberOfQuestions = 0;
 
         public GeniiIdiotWinFormsApp()
@@ -73,9 +72,8 @@ namespace GeniiIdiotWinFormsApp1
             if (game.IsEnd())
             {
                 game.CalculateDiagnose(numberOfQuestions);
-                var newUserResult = new UserResults(user.Name, user.Surname, user.CountRightAnswers, user.Diagnose);
+                var newUserResult = new UserResult(user.Name, user.Surname, user.CountRightAnswers, user.Diagnose);
                 game.AddNewUserResult(newUserResult);
-                game.SaveResult(userResults);
                 MessageBox.Show(user.Diagnose);
             }
             else

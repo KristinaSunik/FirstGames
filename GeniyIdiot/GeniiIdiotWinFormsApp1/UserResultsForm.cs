@@ -6,8 +6,8 @@ namespace GeniiIdiotWinFormsApp1
 {
     public partial class UserResultsForm : Form
     {
-        private List<UserResults> userResults;
-        public UserResultsForm(List<UserResults> userResults)
+        private List<UserResult> userResults;
+        public UserResultsForm(List<UserResult> userResults)
         {
             InitializeComponent();
             this.userResults = userResults;

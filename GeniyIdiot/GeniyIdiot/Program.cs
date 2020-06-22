@@ -6,7 +6,7 @@ namespace GeniyIdiot
 {
     public class Program
     {
-        private static List<UserResults> userResults;
+        private static List<UserResult> userResults;
 
         public static void Main(string[] args)
         {
@@ -28,7 +28,7 @@ namespace GeniyIdiot
             game.CalculateDiagnose(numberOfQuestions);
             Console.WriteLine("Количество правильных ответов: " + user.CountRightAnswers);
             Console.WriteLine(user.Name + user.Surname + ", Ваш диагноз: " + user.Diagnose);
-            var newUserResult = new UserResults(user.Name, user.Surname, user.CountRightAnswers, user.Diagnose);
+            var newUserResult = new UserResult(user.Name, user.Surname, user.CountRightAnswers, user.Diagnose);
             game.AddNewUserResult(newUserResult);
             game.SaveResult(userResults);
             Console.WriteLine("Если вы хотите посмотреть результаты других участников нажмите 'Q'");

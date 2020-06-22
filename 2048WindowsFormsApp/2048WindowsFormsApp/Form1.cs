@@ -75,11 +75,11 @@ namespace _2048WindowsFormsApp
                 {
                     for (int j = mapSize - 1; j >= 0; j--)
                     {
-                        if (map[i, j].Text != String.Empty)
+                        if (map[i, j].Text != string.Empty)
                         {
                             for (int k = j - 1; k >= 0; k--)
                             {
-                                if (map[i, k].Text != String.Empty)
+                                if (map[i, k].Text != string.Empty)
                                 {
                                     if (map[i, k].Text == map[i, j].Text)
                                     {
@@ -97,11 +97,11 @@ namespace _2048WindowsFormsApp
                 {
                     for (int j = mapSize - 1; j >= 0; j--)
                     {
-                        if (map[i, j].Text == String.Empty)
+                        if (map[i, j].Text == string.Empty)
                         {
                             for (int k = j - 1; k >= 0; k--)
                             {
-                                if (map[i, k].Text != String.Empty)
+                                if (map[i, k].Text != string.Empty)
                                 {
                                     map[i, j].Text = map[i, k].Text;
                                     map[i, k].Text = string.Empty;
@@ -117,11 +117,11 @@ namespace _2048WindowsFormsApp
                 {
                     for (int j = 0; j < mapSize; j++)
                     {
-                        if (map[i, j].Text != String.Empty)
+                        if (map[i, j].Text != string.Empty)
                         {
                             for (int k = j + 1; k < mapSize; k++)
                             {
-                                if (map[i, k].Text != String.Empty)
+                                if (map[i, k].Text != string.Empty)
                                 {
                                     if (map[i, k].Text == map[i, j].Text)
                                     {
@@ -139,11 +139,11 @@ namespace _2048WindowsFormsApp
                 {
                     for (int j = 0; j < mapSize; j++)
                     {
-                        if (map[i, j].Text == String.Empty)
+                        if (map[i, j].Text == string.Empty)
                         {
                             for (int k = j + 1; k < mapSize; k++)
                             {
-                                if (map[i, k].Text != String.Empty)
+                                if (map[i, k].Text != string.Empty)
                                 {
                                     map[i, j].Text = map[i, k].Text;
                                     map[i, k].Text = string.Empty;
@@ -159,11 +159,11 @@ namespace _2048WindowsFormsApp
                 {
                     for (int i = 0; i < mapSize; i++)
                     {
-                        if (map[i, j].Text != String.Empty)
+                        if (map[i, j].Text != string.Empty)
                         {
                             for (int k = i + 1; k < mapSize; k++)
                             {
-                                if (map[k, j].Text != String.Empty)
+                                if (map[k, j].Text != string.Empty)
                                 {
                                     if (map[k, j].Text == map[i, j].Text)
                                     {
@@ -182,11 +182,11 @@ namespace _2048WindowsFormsApp
                 {
                     for (int i = 0; i < mapSize; i++)
                     {
-                        if (map[i, j].Text == String.Empty)
+                        if (map[i, j].Text == string.Empty)
                         {
                             for (int k = i + 1; k < mapSize; k++)
                             {
-                                if (map[k, j].Text != String.Empty)
+                                if (map[k, j].Text != string.Empty)
                                 {
                                     map[i, j].Text = map[k, j].Text;
                                     map[k, j].Text = string.Empty;
@@ -221,7 +221,7 @@ namespace _2048WindowsFormsApp
                     }
                 }
 
-                for (int j = mapSize - 1; j >= 0; j--)
+                for (int j = 0; j < mapSize; j++)
                 {
                     for (int i = mapSize - 1; i >= 0; i--)
                     {

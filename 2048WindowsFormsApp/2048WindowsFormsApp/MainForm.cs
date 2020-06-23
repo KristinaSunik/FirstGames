@@ -14,18 +14,6 @@ namespace _2048WindowsFormsApp
         private int bestScore;
         private string path = "BestScore.txt";
 
-        private int GetBestScoreFromFile()
-        {
-            if (FileProvider.IsExists(path))
-            {
-                var bestScore = Convert.ToInt32(File.ReadAllText(path));
-                return bestScore;
-            }
-            else
-            {
-                return 0;
-            }
-        }
 
         public MainForm()
         {
@@ -38,6 +26,19 @@ namespace _2048WindowsFormsApp
             GenerateNumber();
             ShowScore();
             ShowBestScore();
+        }
+
+        private int GetBestScoreFromFile()
+        {
+            if (FileProvider.IsExists(path))
+            {
+                bestScore = Convert.ToInt32(FileProvider.Get(path));
+                return bestScore;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         private void ShowBestScore()
@@ -97,7 +98,7 @@ namespace _2048WindowsFormsApp
             return label;
         }
 
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Right)
             {
@@ -280,6 +281,15 @@ namespace _2048WindowsFormsApp
                 SaveNewBestScore(path);
             }
             ShowBestScore();
+            if (GameIsEnd())
+            {
+                MessageBox.Show("ВЫ ПРОИГРАЛИ!", "Сожалеем, но ", "Сожалеем, но ", MessageBoxButtons OK);
+            }
+        }
+
+        private bool GameIsEnd()
+        {
+            throw new NotImplementedException();
         }
 
         private void SaveNewBestScore(string path)

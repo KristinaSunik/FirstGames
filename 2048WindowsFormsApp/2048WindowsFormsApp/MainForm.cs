@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace _2048WindowsFormsApp
@@ -12,7 +13,9 @@ namespace _2048WindowsFormsApp
         private Label[,] map;
         private int score = 0;
         private int bestScore;
-        private string path = "BestScore.txt";
+        private string bestScorePath = "BestScore.txt";
+        private string allScoresPath = "AllScores.txt";
+
 
 
         public MainForm()
@@ -30,9 +33,9 @@ namespace _2048WindowsFormsApp
 
         private int GetBestScoreFromFile()
         {
-            if (FileProvider.IsExists(path))
+            if (FileProvider.IsExists(bestScorePath))
             {
-                bestScore = Convert.ToInt32(FileProvider.Get(path));
+                bestScore = Convert.ToInt32(FileProvider.Get(bestScorePath));
                 return bestScore;
             }
             else
@@ -100,6 +103,11 @@ namespace _2048WindowsFormsApp
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
+            if (GameIsEnd())
+            {
+                MessageBox.Show("ВЫ ПРОИГРАЛИ!", "Сожалеем, но ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                FileProvider.Add(allScoresPath, Convert.ToString(score));
+            }
             if (e.KeyCode == Keys.Right)
             {
                 for (int i = 0; i < mapSize; i++)
@@ -278,18 +286,31 @@ namespace _2048WindowsFormsApp
             ShowScore();
             if (bestScore < score)
             {
-                SaveNewBestScore(path);
+                SaveNewBestScore(bestScorePath);
             }
             ShowBestScore();
-            if (GameIsEnd())
-            {
-                MessageBox.Show("ВЫ ПРОИГРАЛИ!", "Сожалеем, но ", "Сожалеем, но ", MessageBoxButtons OK);
-            }
+
         }
 
         private bool GameIsEnd()
         {
-            throw new NotImplementedException();
+            int count = 0;
+            for (int j = 0; j < mapSize; j++)
+            {
+                for (int i = 0; i < mapSize; i++)
+                {
+                    if (map[j, i].Text != String.Empty)
+                    {
+                        count++;
+                        if (count == mapSize * mapSize)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+                }
+            }
+            return false;
         }
 
         private void SaveNewBestScore(string path)

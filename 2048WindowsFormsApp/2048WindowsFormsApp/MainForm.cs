@@ -5,13 +5,13 @@ using System.Windows.Forms;
 
 namespace _2048WindowsFormsApp
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         private const int margin = 6;
         private int mapSize = 4;
         private Label[,] map;
         private int score = 0;
-        private int bestScore = 0;
+        private int bestScore;
         private string path = "BestScore.txt";
 
         private int GetBestScoreFromFile()
@@ -32,12 +32,12 @@ namespace _2048WindowsFormsApp
             return File.Exists(path);
         }
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
             InitMap();
             GenerateNumber();

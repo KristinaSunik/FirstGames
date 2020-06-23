@@ -9,6 +9,27 @@ namespace _2048WindowsFormsApp
         private const int margin = 6;
         private int mapSize = 4;
         private Label[,] map;
+        private int score = 0;
+        private int bestScore = GetBestScoreFromFile();
+
+        private static int GetBestScoreFromFile()
+        {
+            if (!FileExists())
+            {
+
+                return 0;
+            }
+            else
+            {
+                int bestScore = 
+                return bestScore;
+            }
+        }
+
+        private static bool FileExists()
+        {
+            throw new NotImplementedException();
+        }
 
         public Form1()
         {
@@ -19,6 +40,18 @@ namespace _2048WindowsFormsApp
         {
             InitMap();
             GenerateNumber();
+            ShowScore();
+            ShowBestScore();
+        }
+
+        private void ShowBestScore()
+        {
+           ;
+        }
+
+        private void ShowScore()
+        {
+            ScoreLabel.Text = score.ToString();
         }
 
         private void InitMap()
@@ -86,6 +119,7 @@ namespace _2048WindowsFormsApp
                                         var number = Convert.ToInt32(map[i, k].Text);
                                         map[i, j].Text = (number * 2).ToString();
                                         map[i, k].Text = string.Empty;
+                                        score += number * 2;
                                     }
                                     break;
                                 }
@@ -128,6 +162,7 @@ namespace _2048WindowsFormsApp
                                         var number = Convert.ToInt32(map[i, k].Text);
                                         map[i, j].Text = (number * 2).ToString();
                                         map[i, k].Text = string.Empty;
+                                        score += number * 2;
                                     }
                                     break;
                                 }
@@ -170,6 +205,7 @@ namespace _2048WindowsFormsApp
                                         var number = Convert.ToInt32(map[k, j].Text);
                                         map[i, j].Text = (number * 2).ToString();
                                         map[k, j].Text = string.Empty;
+                                        score += number * 2;
                                     }
                                     break;
                                 }
@@ -213,6 +249,7 @@ namespace _2048WindowsFormsApp
                                         var number = Convert.ToInt32(map[k, j].Text);
                                         map[i, j].Text = (number * 2).ToString();
                                         map[k, j].Text = string.Empty;
+                                        score += number * 2;
                                     }
                                     break;
                                 }
@@ -240,6 +277,7 @@ namespace _2048WindowsFormsApp
                 }
             }
             GenerateNumber();
+            ShowScore();
         }
     }
 }

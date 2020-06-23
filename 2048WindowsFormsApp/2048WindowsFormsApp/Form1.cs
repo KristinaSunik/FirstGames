@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace _2048WindowsFormsApp
@@ -10,25 +11,25 @@ namespace _2048WindowsFormsApp
         private int mapSize = 4;
         private Label[,] map;
         private int score = 0;
-        private int bestScore = GetBestScoreFromFile();
+        private int bestScore = 0;
+        private string path = "BestScore.txt";
 
-        private static int GetBestScoreFromFile()
+        private int GetBestScoreFromFile()
         {
-            if (!FileExists())
+            if (FileExists(path))
             {
-
-                return 0;
+                var bestScore = Convert.ToInt32(File.ReadAllText(path));
+                return bestScore;
             }
             else
             {
-                int bestScore = 
-                return bestScore;
+                return 0;
             }
         }
 
-        private static bool FileExists()
+        private static bool FileExists(string path)
         {
-            throw new NotImplementedException();
+            return File.Exists(path);
         }
 
         public Form1()
@@ -46,7 +47,8 @@ namespace _2048WindowsFormsApp
 
         private void ShowBestScore()
         {
-           ;
+            bestScore = GetBestScoreFromFile();
+            BestScoreLabel.Text = bestScore.ToString();
         }
 
         private void ShowScore()
@@ -278,6 +280,19 @@ namespace _2048WindowsFormsApp
             }
             GenerateNumber();
             ShowScore();
+            if (bestScore < score)
+            {
+                SaveNewBestScore(path);
+            }
+            ShowBestScore();
+        }
+
+        private void SaveNewBestScore(string path)
+        {
+            var file = new StreamWriter(path);
+            file.Write(score);
+            file.Close();
+            bestScore = score;
         }
     }
 }

@@ -16,7 +16,7 @@ namespace _2048WindowsFormsApp
 
         private int GetBestScoreFromFile()
         {
-            if (FileExists(path))
+            if (FileProvider.IsExists(path))
             {
                 var bestScore = Convert.ToInt32(File.ReadAllText(path));
                 return bestScore;
@@ -25,11 +25,6 @@ namespace _2048WindowsFormsApp
             {
                 return 0;
             }
-        }
-
-        private static bool FileExists(string path)
-        {
-            return File.Exists(path);
         }
 
         public MainForm()

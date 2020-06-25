@@ -32,7 +32,7 @@ namespace _2048WindowsFormsApp
             GenerateNumber();
             ShowScore();
             ShowBestScore();
-           
+
         }
 
         private int GetBestScoreFromFile()
@@ -84,8 +84,17 @@ namespace _2048WindowsFormsApp
                 var columnIndex = random.Next(mapSize);
                 if (map[columnIndex, rowIndex].Text == String.Empty)
                 {
-                    map[columnIndex, rowIndex].Text = "2";
-                    break;
+                    if (random.Next(1, 10) < 8)
+                    {
+                        map[columnIndex, rowIndex].Text = "2";
+                        break;
+                    }
+
+                    else
+                    {
+                        map[columnIndex, rowIndex].Text = "4";
+                        break;
+                    }
                 }
             }
         }
@@ -109,7 +118,7 @@ namespace _2048WindowsFormsApp
         {
             if (GameIsEnd())
             {
-                MessageBox.Show("ВЫ ПРОИГРАЛИ!", "Сожалеем, но ", 
+                MessageBox.Show("ВЫ ПРОИГРАЛИ!", "Сожалеем, но ",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 FileProvider.Add(allScoresPath, Convert.ToString(score));
             }
@@ -133,7 +142,7 @@ namespace _2048WindowsFormsApp
                                         score += number * 2;
                                         if (number * 2 == 2048)
                                         {
-                                            MessageBox.Show("!!!ВЫ ВЫЙГРАЛИ!!!", "ПОЗДРАВЛЯЕМ ", 
+                                            MessageBox.Show("!!!ВЫ ВЫЙГРАЛИ!!!", "ПОЗДРАВЛЯЕМ ",
                                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                         }
                                     }
@@ -229,7 +238,7 @@ namespace _2048WindowsFormsApp
                                         score += number * 2;
                                         if (number * 2 == 2048)
                                         {
-                                            MessageBox.Show("!!!ВЫ ВЫЙГРАЛИ!!!", "ПОЗДРАВЛЯЕМ ", 
+                                            MessageBox.Show("!!!ВЫ ВЫЙГРАЛИ!!!", "ПОЗДРАВЛЯЕМ ",
                                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                         }
                                     }
@@ -314,7 +323,7 @@ namespace _2048WindowsFormsApp
                 SaveNewBestScore(bestScorePath);
             }
             ShowBestScore();
-            
+
 
         }
 

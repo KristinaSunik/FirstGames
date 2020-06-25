@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace _2048WindowsFormsApp
@@ -10,9 +7,9 @@ namespace _2048WindowsFormsApp
     public partial class MainForm : Form
     {
         private const int margin = 6;
-        private int mapSize = 4;
-        private Label[,] map;
-        private int score = 0;
+        public int mapSize = 4;
+        public Label[,] map;
+        public int score = 0;
         private int cubeSize = 70;
         private int frame = 10;
         private int bestScore;
@@ -124,203 +121,26 @@ namespace _2048WindowsFormsApp
             }
             if (e.KeyCode == Keys.Right)
             {
-                for (int i = 0; i < mapSize; i++)
-                {
-                    for (int j = mapSize - 1; j >= 0; j--)
-                    {
-                        if (map[i, j].Text != string.Empty)
-                        {
-                            for (int k = j - 1; k >= 0; k--)
-                            {
-                                if (map[i, k].Text != string.Empty)
-                                {
-                                    if (map[i, k].Text == map[i, j].Text)
-                                    {
-                                        var number = Convert.ToInt32(map[i, k].Text);
-                                        map[i, j].Text = (number * 2).ToString();
-                                        map[i, k].Text = string.Empty;
-                                        score += number * 2;
-                                        if (number * 2 == 2048)
-                                        {
-                                            MessageBox.Show("!!!ВЫ ВЫЙГРАЛИ!!!", "ПОЗДРАВЛЯЕМ ",
-                                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                        }
-                                    }
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-                for (int i = 0; i < mapSize; i++)
-                {
-                    for (int j = mapSize - 1; j >= 0; j--)
-                    {
-                        if (map[i, j].Text == string.Empty)
-                        {
-                            for (int k = j - 1; k >= 0; k--)
-                            {
-                                if (map[i, k].Text != string.Empty)
-                                {
-                                    map[i, j].Text = map[i, k].Text;
-                                    map[i, k].Text = string.Empty;
-                                }
-                            }
-                        }
-                    }
-                }
+                MovingRight();
             }
             if (e.KeyCode == Keys.Left)
             {
-                for (int i = 0; i < mapSize; i++)
-                {
-                    for (int j = 0; j < mapSize; j++)
-                    {
-                        if (map[i, j].Text != string.Empty)
-                        {
-                            for (int k = j + 1; k < mapSize; k++)
-                            {
-                                if (map[i, k].Text != string.Empty)
-                                {
-                                    if (map[i, k].Text == map[i, j].Text)
-                                    {
-                                        var number = Convert.ToInt32(map[i, k].Text);
-                                        map[i, j].Text = (number * 2).ToString();
-                                        map[i, k].Text = string.Empty;
-                                        score += number * 2;
-                                        if (number * 2 == 2048)
-                                        {
-                                            MessageBox.Show("!!!ВЫ ВЫЙГРАЛИ!!!", "ПОЗДРАВЛЯЕМ ",
-                                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                        }
-                                    }
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-                for (int i = 0; i < mapSize; i++)
-                {
-                    for (int j = 0; j < mapSize; j++)
-                    {
-                        if (map[i, j].Text == string.Empty)
-                        {
-                            for (int k = j + 1; k < mapSize; k++)
-                            {
-                                if (map[i, k].Text != string.Empty)
-                                {
-                                    map[i, j].Text = map[i, k].Text;
-                                    map[i, k].Text = string.Empty;
-                                }
-                            }
-                        }
-                    }
-                }
+                MovingLeft();
             }
             if (e.KeyCode == Keys.Up)
             {
-                for (int j = 0; j < mapSize; j++)
-                {
-                    for (int i = 0; i < mapSize; i++)
-                    {
-                        if (map[i, j].Text != string.Empty)
-                        {
-                            for (int k = i + 1; k < mapSize; k++)
-                            {
-                                if (map[k, j].Text != string.Empty)
-                                {
-                                    if (map[k, j].Text == map[i, j].Text)
-                                    {
-                                        var number = Convert.ToInt32(map[k, j].Text);
-                                        map[i, j].Text = (number * 2).ToString();
-                                        map[k, j].Text = string.Empty;
-                                        score += number * 2;
-                                        if (number * 2 == 2048)
-                                        {
-                                            MessageBox.Show("!!!ВЫ ВЫЙГРАЛИ!!!", "ПОЗДРАВЛЯЕМ ",
-                                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                        }
-                                    }
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                for (int j = 0; j < mapSize; j++)
-                {
-                    for (int i = 0; i < mapSize; i++)
-                    {
-                        if (map[i, j].Text == string.Empty)
-                        {
-                            for (int k = i + 1; k < mapSize; k++)
-                            {
-                                if (map[k, j].Text != string.Empty)
-                                {
-                                    map[i, j].Text = map[k, j].Text;
-                                    map[k, j].Text = string.Empty;
-                                }
-                            }
-                        }
-                    }
-                }
+                MovingUp();
             }
             if (e.KeyCode == Keys.Down)
             {
-                for (int j = 0; j < mapSize; j++)
-                {
-                    for (int i = mapSize - 1; i >= 0; i--)
-                    {
-                        if (map[i, j].Text != String.Empty)
-                        {
-                            for (int k = i - 1; k >= 0; k--)
-                            {
-                                if (map[k, j].Text != String.Empty)
-                                {
-                                    if (map[k, j].Text == map[i, j].Text)
-                                    {
-                                        var number = Convert.ToInt32(map[k, j].Text);
-                                        map[i, j].Text = (number * 2).ToString();
-                                        map[k, j].Text = string.Empty;
-                                        score += number * 2;
-                                        if (number * 2 == 2048)
-                                        {
-                                            MessageBox.Show("!!!ВЫ ВЫЙГРАЛИ!!!", "ПОЗДРАВЛЯЕМ ",
-                                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                        }
-                                    }
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                for (int j = 0; j < mapSize; j++)
-                {
-                    for (int i = mapSize - 1; i >= 0; i--)
-                    {
-                        if (map[i, j].Text == String.Empty)
-                        {
-                            for (int k = i - 1; k >= 0; k--)
-                            {
-                                if (map[k, j].Text != String.Empty)
-                                {
-                                    map[i, j].Text = map[k, j].Text;
-                                    map[k, j].Text = string.Empty;
-                                }
-                            }
-                        }
-                    }
-                }
+                MovingDown();
             }
             GenerateNumber();
             ShowScore();
             if (bestScore < score)
             {
-                SaveNewBestScore(bestScorePath);
+                FileProvider.Set(bestScorePath, Convert.ToString(score));
+                bestScore = score;
             }
             ShowBestScore();
 
@@ -333,7 +153,6 @@ namespace _2048WindowsFormsApp
 
 
         }
-
         private bool GameIsEnd()
         {
             for (int j = 0; j < mapSize; j++)
@@ -349,12 +168,204 @@ namespace _2048WindowsFormsApp
             return true;
         }
 
-        private void SaveNewBestScore(string path)
+        private void MovingDown()
         {
-            var file = new StreamWriter(path);
-            file.Write(score);
-            file.Close();
-            bestScore = score;
+            for (int j = 0; j < mapSize; j++)
+            {
+                for (int i = mapSize - 1; i >= 0; i--)
+                {
+                    if (map[i, j].Text != String.Empty)
+                    {
+                        for (int k = i - 1; k >= 0; k--)
+                        {
+                            if (map[k, j].Text != String.Empty)
+                            {
+                                if (map[k, j].Text == map[i, j].Text)
+                                {
+                                    var number = Convert.ToInt32(map[k, j].Text);
+                                    map[i, j].Text = (number * 2).ToString();
+                                    map[k, j].Text = string.Empty;
+                                    score += number * 2;
+                                    if (number * 2 == 2048)
+                                    {
+                                        MessageBox.Show("!!!ВЫ ВЫЙГРАЛИ!!!", "ПОЗДРАВЛЯЕМ ",
+                                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            for (int j = 0; j < mapSize; j++)
+            {
+                for (int i = mapSize - 1; i >= 0; i--)
+                {
+                    if (map[i, j].Text == String.Empty)
+                    {
+                        for (int k = i - 1; k >= 0; k--)
+                        {
+                            if (map[k, j].Text != String.Empty)
+                            {
+                                map[i, j].Text = map[k, j].Text;
+                                map[k, j].Text = string.Empty;
+                            }
+                        }
+                    }
+                }
+            }
         }
+
+        private void MovingUp()
+        {
+            for (int j = 0; j < mapSize; j++)
+            {
+                for (int i = 0; i < mapSize; i++)
+                {
+                    if (map[i, j].Text != string.Empty)
+                    {
+                        for (int k = i + 1; k < mapSize; k++)
+                        {
+                            if (map[k, j].Text != string.Empty)
+                            {
+                                if (map[k, j].Text == map[i, j].Text)
+                                {
+                                    var number = Convert.ToInt32(map[k, j].Text);
+                                    map[i, j].Text = (number * 2).ToString();
+                                    map[k, j].Text = string.Empty;
+                                    score += number * 2;
+                                    if (number * 2 == 2048)
+                                    {
+                                        MessageBox.Show("!!!ВЫ ВЫЙГРАЛИ!!!", "ПОЗДРАВЛЯЕМ ",
+                                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            for (int j = 0; j < mapSize; j++)
+            {
+                for (int i = 0; i < mapSize; i++)
+                {
+                    if (map[i, j].Text == string.Empty)
+                    {
+                        for (int k = i + 1; k < mapSize; k++)
+                        {
+                            if (map[k, j].Text != string.Empty)
+                            {
+                                map[i, j].Text = map[k, j].Text;
+                                map[k, j].Text = string.Empty;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void MovingLeft()
+        {
+            for (int i = 0; i < mapSize; i++)
+            {
+                for (int j = 0; j < mapSize; j++)
+                {
+                    if (map[i, j].Text != string.Empty)
+                    {
+                        for (int k = j + 1; k < mapSize; k++)
+                        {
+                            if (map[i, k].Text != string.Empty)
+                            {
+                                if (map[i, k].Text == map[i, j].Text)
+                                {
+                                    var number = Convert.ToInt32(map[i, k].Text);
+                                    map[i, j].Text = (number * 2).ToString();
+                                    map[i, k].Text = string.Empty;
+                                    score += number * 2;
+                                    if (number * 2 == 2048)
+                                    {
+                                        MessageBox.Show("!!!ВЫ ВЫЙГРАЛИ!!!", "ПОЗДРАВЛЯЕМ ",
+                                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            for (int i = 0; i < mapSize; i++)
+            {
+                for (int j = 0; j < mapSize; j++)
+                {
+                    if (map[i, j].Text == string.Empty)
+                    {
+                        for (int k = j + 1; k < mapSize; k++)
+                        {
+                            if (map[i, k].Text != string.Empty)
+                            {
+                                map[i, j].Text = map[i, k].Text;
+                                map[i, k].Text = string.Empty;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void MovingRight()
+        {
+            for (int i = 0; i < mapSize; i++)
+            {
+                for (int j = mapSize - 1; j >= 0; j--)
+                {
+                    if (map[i, j].Text != string.Empty)
+                    {
+                        for (int k = j - 1; k >= 0; k--)
+                        {
+                            if (map[i, k].Text != string.Empty)
+                            {
+                                if (map[i, k].Text == map[i, j].Text)
+                                {
+                                    var number = Convert.ToInt32(map[i, k].Text);
+                                    map[i, j].Text = (number * 2).ToString();
+                                    map[i, k].Text = string.Empty;
+                                    score += number * 2;
+                                    if (number * 2 == 2048)
+                                    {
+                                        MessageBox.Show("!!!ВЫ ВЫЙГРАЛИ!!!", "ПОЗДРАВЛЯЕМ ",
+                                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            for (int i = 0; i < mapSize; i++)
+            {
+                for (int j = mapSize - 1; j >= 0; j--)
+                {
+                    if (map[i, j].Text == string.Empty)
+                    {
+                        for (int k = j - 1; k >= 0; k--)
+                        {
+                            if (map[i, k].Text != string.Empty)
+                            {
+                                map[i, j].Text = map[i, k].Text;
+                                map[i, k].Text = string.Empty;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }
+

@@ -84,7 +84,7 @@ namespace _2048WindowsFormsApp
                 var columnIndex = random.Next(mapSize);
                 if (map[columnIndex, rowIndex].Text == String.Empty)
                 {
-                    if (random.Next(1, 10) < 8)
+                    if (random.Next(1, 10) <= 8)
                     {
                         map[columnIndex, rowIndex].Text = "2";
                         break;

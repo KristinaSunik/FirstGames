@@ -1,6 +1,6 @@
 ﻿namespace _2048WindowsFormsApp
 {
-    partial class UserResultsForm
+    partial class AllScoresForm
     {
         /// <summary>
         /// Required designer variable.

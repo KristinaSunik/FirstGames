@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -7,6 +9,7 @@ namespace _2048WindowsFormsApp
     public partial class MainForm : Form
     {
         private const int margin = 6;
+        private List<UserScore> allScores;
         public int mapSize = 4;
         public Label[,] map;
         public int score = 0;
@@ -14,7 +17,7 @@ namespace _2048WindowsFormsApp
         private int frame = 10;
         private int bestScore;
         private string bestScorePath = "BestScore.txt";
-        private string allScoresPath = "AllScores.txt";
+        private string allScoresPath = "AllScores.json";
 
 
 
@@ -25,6 +28,14 @@ namespace _2048WindowsFormsApp
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            var NameForm = new NameForm();
+            NameForm.Show(this);
+            allScores = GetAllScoresFromFile();
+            if (!FileProvider.IsExists(allScoresPath))
+            {
+                var results = new List<UserScore>();
+                SaveAllScores(results);
+            }
             InitMap();
             GenerateNumber();
             ShowScore();
@@ -197,11 +208,26 @@ namespace _2048WindowsFormsApp
             {
                 MessageBox.Show("ВЫ ПРОИГРАЛИ!", "Сожалеем, но ",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                FileProvider.Add(allScoresPath, Convert.ToString(score));
+               var allScores =  GetAllScoresFromFile();
+                allScores.Add(UserScore);
             }
 
 
         }
+
+        private List<UserScore> GetAllScoresFromFile()
+        {
+            var serializedAllScores = FileProvider.Get(allScoresPath);
+            var results = JsonConvert.DeserializeObject<List<UserScore>>(serializedAllScores);
+            return results;
+        }
+
+        public void SaveAllScores(List<UserScore> allScores)
+        {
+            var serialisedAllScores = JsonConvert.SerializeObject(allScores, Formatting.Indented);
+            FileProvider.Set(allScoresPath, serialisedAllScores);
+        }
+
         private bool GameIsEnd()
         {
             for (int j = 0; j < mapSize; j++)

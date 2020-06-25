@@ -10,21 +10,21 @@ using System.Windows.Forms;
 
 namespace _2048WindowsFormsApp
 {
-    public partial class UserResultsForm : Form
+    public partial class AllScoresForm : Form
     {
-        private List<UserResult> userResults;
+        private List<AllScores> allScore;
        
-        public UserResultsForm()
+        public AllScoresForm()
         {
             InitializeComponent();
         }
 
         private void UserResultsForm_Load(object sender, EventArgs e)
         {
-                for (int i = 0; i < userResults.Count; i++)
+                for (int i = 0; i < allScores.Count; i++)
                 {
-                    var userResult = userResults[i];
-                    userResultsDataGridView.Rows.Add(userResult.Name, userResult.Score);
+                    var allScores = this.allScores[i];
+                userResultsDataGridView.Rows.Add(allScores.Name, allScores.Score);
                 }
         }
     }

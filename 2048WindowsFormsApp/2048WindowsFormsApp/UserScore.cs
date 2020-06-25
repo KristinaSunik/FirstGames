@@ -2,15 +2,16 @@
 
 namespace _2048WindowsFormsApp
 {
-    class UserResult
+    public class UserScore
     {
         public string Name;
         public int Score;
 
-        public UserResult(string name, int score)
+        public UserScore(string name)
         {
             Name = name;
-            Score = score;
+            Score = 0;
         }
+
     }
 }

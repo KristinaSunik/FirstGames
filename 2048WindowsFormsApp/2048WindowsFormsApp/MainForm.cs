@@ -67,6 +67,7 @@ namespace _2048WindowsFormsApp
                     var newLabel = CreateLabel(i, j);
                     Controls.Add(newLabel);
                     map[i, j] = newLabel;
+                    ChangeColourDueDefenition(i, j); ;
                 }
             }
         }
@@ -84,12 +85,14 @@ namespace _2048WindowsFormsApp
                     if (random.Next(1, 10) <= 8)
                     {
                         map[columnIndex, rowIndex].Text = "2";
+                        ChangeColourDueDefenition(columnIndex, rowIndex);
                         break;
                     }
 
                     else
                     {
                         map[columnIndex, rowIndex].Text = "4";
+                        ChangeColourDueDefenition(columnIndex, rowIndex);
                         break;
                     }
                 }
@@ -100,25 +103,71 @@ namespace _2048WindowsFormsApp
         private Label CreateLabel(int rowIndex, int columnIndex)
         {
             var label = new Label();
-            label.BackColor = SystemColors.ActiveCaption;
+            label.BackColor = Color.LightGray;
             label.Font = new Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)(204));
             label.Size = new Size(cubeSize, cubeSize);
             label.TextAlign = ContentAlignment.MiddleCenter;
-
             var x = frame + columnIndex * (cubeSize + margin);
             var y = cubeSize + rowIndex * (cubeSize + margin);
             label.Location = new Point(x, y);
             return label;
         }
 
+        private void ChangeColourDueDefenition(int i, int j)
+        {
+
+            if (map[i, j].Text == String.Empty)
+            {
+                map[i, j].BackColor = Color.LightSlateGray;
+            }
+            if (map[i, j].Text == "2")
+            {
+                map[i, j].BackColor = Color.LightGray;
+            }
+            if (map[i, j].Text == "4")
+            {
+                map[i, j].BackColor = Color.PeachPuff;
+            }
+            if (map[i, j].Text == "8")
+            {
+                map[i, j].BackColor = Color.LightGoldenrodYellow;
+            }
+            if (map[i, j].Text == "16")
+            {
+                map[i, j].BackColor = Color.DarkMagenta;
+            }
+            if (map[i, j].Text == "32")
+            {
+                map[i, j].BackColor = Color.LightCoral;
+            }
+            if (map[i, j].Text == "64")
+            {
+                map[i, j].BackColor = Color.Coral;
+            }
+            if (map[i, j].Text == "128")
+            {
+                map[i, j].BackColor = Color.LavenderBlush;
+            }
+            if (map[i, j].Text == "256")
+            {
+                map[i, j].BackColor = Color.Red;
+            }
+            if (map[i, j].Text == "512")
+            {
+                map[i, j].BackColor = Color.MistyRose;
+            }
+            if (map[i, j].Text == "1024")
+            {
+                map[i, j].BackColor = Color.IndianRed;
+            }
+            if (map[i, j].Text == "2048")
+            {
+                map[i, j].BackColor = Color.DarkRed;
+            }
+        }
+
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
-            if (GameIsEnd())
-            {
-                MessageBox.Show("ВЫ ПРОИГРАЛИ!", "Сожалеем, но ",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                FileProvider.Add(allScoresPath, Convert.ToString(score));
-            }
             if (e.KeyCode == Keys.Right)
             {
                 MovingRight();
@@ -184,7 +233,9 @@ namespace _2048WindowsFormsApp
                                 {
                                     var number = Convert.ToInt32(map[k, j].Text);
                                     map[i, j].Text = (number * 2).ToString();
+                                    ChangeColourDueDefenition(i, j);
                                     map[k, j].Text = string.Empty;
+                                    ChangeColourDueDefenition(k, j);
                                     score += number * 2;
                                     if (number * 2 == 2048)
                                     {
@@ -210,7 +261,9 @@ namespace _2048WindowsFormsApp
                             if (map[k, j].Text != String.Empty)
                             {
                                 map[i, j].Text = map[k, j].Text;
+                                ChangeColourDueDefenition(i, j);
                                 map[k, j].Text = string.Empty;
+                                ChangeColourDueDefenition(k, j);
                             }
                         }
                     }
@@ -234,7 +287,9 @@ namespace _2048WindowsFormsApp
                                 {
                                     var number = Convert.ToInt32(map[k, j].Text);
                                     map[i, j].Text = (number * 2).ToString();
+                                    ChangeColourDueDefenition(i, j);
                                     map[k, j].Text = string.Empty;
+                                    ChangeColourDueDefenition(k, j);
                                     score += number * 2;
                                     if (number * 2 == 2048)
                                     {
@@ -260,7 +315,9 @@ namespace _2048WindowsFormsApp
                             if (map[k, j].Text != string.Empty)
                             {
                                 map[i, j].Text = map[k, j].Text;
+                                ChangeColourDueDefenition(i, j);
                                 map[k, j].Text = string.Empty;
+                                ChangeColourDueDefenition(k, j);
                             }
                         }
                     }
@@ -284,7 +341,9 @@ namespace _2048WindowsFormsApp
                                 {
                                     var number = Convert.ToInt32(map[i, k].Text);
                                     map[i, j].Text = (number * 2).ToString();
+                                    ChangeColourDueDefenition(i, j);
                                     map[i, k].Text = string.Empty;
+                                    ChangeColourDueDefenition(i, k);
                                     score += number * 2;
                                     if (number * 2 == 2048)
                                     {
@@ -309,7 +368,9 @@ namespace _2048WindowsFormsApp
                             if (map[i, k].Text != string.Empty)
                             {
                                 map[i, j].Text = map[i, k].Text;
+                                ChangeColourDueDefenition(i, j);
                                 map[i, k].Text = string.Empty;
+                                ChangeColourDueDefenition(i, k);
                             }
                         }
                     }
@@ -333,7 +394,9 @@ namespace _2048WindowsFormsApp
                                 {
                                     var number = Convert.ToInt32(map[i, k].Text);
                                     map[i, j].Text = (number * 2).ToString();
+                                    ChangeColourDueDefenition(i, j);
                                     map[i, k].Text = string.Empty;
+                                    ChangeColourDueDefenition(i, k);
                                     score += number * 2;
                                     if (number * 2 == 2048)
                                     {
@@ -358,7 +421,9 @@ namespace _2048WindowsFormsApp
                             if (map[i, k].Text != string.Empty)
                             {
                                 map[i, j].Text = map[i, k].Text;
+                                ChangeColourDueDefenition(i, j);
                                 map[i, k].Text = string.Empty;
+                                ChangeColourDueDefenition(i, k);
                             }
                         }
                     }

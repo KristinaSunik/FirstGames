@@ -13,6 +13,8 @@ namespace _2048WindowsFormsApp
         private int mapSize = 4;
         private Label[,] map;
         private int score = 0;
+        private int cubeSize = 70;
+        private int frame = 10;
         private int bestScore;
         private string bestScorePath = "BestScore.txt";
         private string allScoresPath = "AllScores.txt";
@@ -94,11 +96,11 @@ namespace _2048WindowsFormsApp
             var label = new Label();
             label.BackColor = SystemColors.ActiveCaption;
             label.Font = new Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte)(204));
-            label.Size = new Size(70, 70);
+            label.Size = new Size(cubeSize, cubeSize);
             label.TextAlign = ContentAlignment.MiddleCenter;
 
-            var x = 10 + columnIndex * (70 + margin);
-            var y = 70 + rowIndex * (70 + margin);
+            var x = frame + columnIndex * (cubeSize + margin);
+            var y = cubeSize + rowIndex * (cubeSize + margin);
             label.Location = new Point(x, y);
             return label;
         }

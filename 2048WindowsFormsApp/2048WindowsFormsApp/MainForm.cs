@@ -18,8 +18,7 @@ namespace _2048WindowsFormsApp
         private int bestScore;
         private string bestScorePath = "BestScore.txt";
         private string allScoresPath = "AllScores.json";
-
-
+        private UserScore userScore;
 
         public MainForm()
         {
@@ -208,8 +207,8 @@ namespace _2048WindowsFormsApp
             {
                 MessageBox.Show("ВЫ ПРОИГРАЛИ!", "Сожалеем, но ",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
-               var allScores =  GetAllScoresFromFile();
-                allScores.Add(UserScore);
+                AddNewScore(userScore);
+
             }
 
 
@@ -457,6 +456,36 @@ namespace _2048WindowsFormsApp
             }
         }
 
+        private void RestartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
+
+
+        private void ShowPreviousResultsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var previousScores = GetAllScores();
+            var allScoresForm = new AllScoresForm(previousScores);
+            allScoresForm.Show();
+        }
+
+        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        public void AddNewScore(UserScore userScore)
+        {
+            var allScores = GetAllScoresFromFile();
+            allScores.Add(userScore);
+            SaveAllScores(allScores);
+        }
+
+        public List<UserScore> GetAllScores()
+        {
+            var allScores = GetAllScoresFromFile();
+            return allScores;
+        }
     }
 }
 

@@ -324,28 +324,29 @@ namespace _2048WindowsFormsApp
             }
             ShowBestScore();
 
+            if (GameIsEnd())
+            {
+                MessageBox.Show("ВЫ ПРОИГРАЛИ!", "Сожалеем, но ",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                FileProvider.Add(allScoresPath, Convert.ToString(score));
+            }
+
 
         }
 
         private bool GameIsEnd()
         {
-            int count = 0;
             for (int j = 0; j < mapSize; j++)
             {
                 for (int i = 0; i < mapSize; i++)
                 {
                     if (map[j, i].Text != String.Empty)
                     {
-                        count++;
-                        if (count == mapSize * mapSize)
-                        {
-                            return true;
-                        }
                         return false;
                     }
                 }
             }
-            return false;
+            return true;
         }
 
         private void SaveNewBestScore(string path)

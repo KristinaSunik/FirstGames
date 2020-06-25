@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Buttons.cs" />
     <Compile Include="FileProvider.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

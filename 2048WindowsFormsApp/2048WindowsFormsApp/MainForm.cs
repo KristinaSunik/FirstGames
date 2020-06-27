@@ -472,18 +472,7 @@ namespace _2048WindowsFormsApp
         }
 
 
-        private void ShowPreviousResultsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!FileProvider.IsExists(allScoresPath))
-            {
-                var results = new List<UserScore>();
-                SaveAllScores(results);
-            }
-            allScores = GetAllScoresFromFile();
-            var previousScores = GetAllScores();
-            var allScoresForm = new AllScoresForm(previousScores);
-            allScoresForm.Show();
-        }
+       
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -512,6 +501,47 @@ namespace _2048WindowsFormsApp
         {
             var RulesOfTheGameForm = new RulesOfTheGameForm();
             RulesOfTheGameForm.Show(this);
+        }
+
+        private void x4ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mapSize = 4;
+            InitMap();
+            GenerateNumber();
+        }
+
+        private void x5ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mapSize = 5;
+            InitMap();
+            GenerateNumber();
+        }
+
+        private void x6ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mapSize = 6;
+            InitMap();
+            GenerateNumber();
+        }
+
+        private void x8ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mapSize = 8;
+            InitMap();
+            GenerateNumber();
+        }
+
+        private void ShowPreviousResultsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+                if (!FileProvider.IsExists(allScoresPath))
+                {
+                    var results = new List<UserScore>();
+                    SaveAllScores(results);
+                }
+                allScores = GetAllScoresFromFile();
+                var previousScores = GetAllScores();
+                var allScoresForm = new AllScoresForm(previousScores);
+                allScoresForm.Show();
         }
     }
 }

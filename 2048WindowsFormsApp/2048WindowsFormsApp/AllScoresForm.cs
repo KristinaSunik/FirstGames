@@ -22,10 +22,10 @@ namespace _2048WindowsFormsApp
         private void AllScoresForm_Load(object sender, EventArgs e)
         {
             for (int i = 0; i < allScores.Count; i++)
-                {
-                    var allScores = this.allScores[i];
+            {
+                var allScores = this.allScores[i];
                 userResultsDataGridView.Rows.Add(allScores.Name, allScores.Score);
-                }
+            }
         }
     }
 }

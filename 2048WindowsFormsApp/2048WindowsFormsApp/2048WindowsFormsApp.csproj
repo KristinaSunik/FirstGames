@@ -64,6 +64,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RulesOfTheGameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RulesOfTheGameForm.Designer.cs">
+      <DependentUpon>RulesOfTheGameForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserScore.cs" />
     <Compile Include="AllScoresForm.cs">
       <SubType>Form</SubType>
@@ -88,6 +94,9 @@
     </Compile>
     <EmbeddedResource Include="AllScoresForm.resx">
       <DependentUpon>AllScoresForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RulesOfTheGameForm.resx">
+      <DependentUpon>RulesOfTheGameForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

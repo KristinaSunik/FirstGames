@@ -37,6 +37,7 @@
             this.менюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.рестартToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.правилаИгрыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,6 +98,7 @@
             this.показатьПредыдущиеРезультатыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.менюToolStripMenuItem,
             this.рестартToolStripMenuItem,
+            this.правилаИгрыToolStripMenuItem,
             this.выходToolStripMenuItem});
             this.показатьПредыдущиеРезультатыToolStripMenuItem.Name = "показатьПредыдущиеРезультатыToolStripMenuItem";
             this.показатьПредыдущиеРезультатыToolStripMenuItem.Size = new System.Drawing.Size(78, 29);
@@ -122,7 +124,14 @@
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
             this.выходToolStripMenuItem.Size = new System.Drawing.Size(396, 34);
             this.выходToolStripMenuItem.Text = "Выход";
-            this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
+            this.выходToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
+            // правилаИгрыToolStripMenuItem
+            // 
+            this.правилаИгрыToolStripMenuItem.Name = "правилаИгрыToolStripMenuItem";
+            this.правилаИгрыToolStripMenuItem.Size = new System.Drawing.Size(396, 34);
+            this.правилаИгрыToolStripMenuItem.Text = "Правила игры";
+            this.правилаИгрыToolStripMenuItem.Click += new System.EventHandler(this.RulesOfTheGameToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -157,6 +166,7 @@
         private System.Windows.Forms.ToolStripMenuItem рестартToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem менюToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem правилаИгрыToolStripMenuItem;
     }
 }
 

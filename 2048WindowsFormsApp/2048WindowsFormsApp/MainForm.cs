@@ -485,7 +485,7 @@ namespace _2048WindowsFormsApp
             allScoresForm.Show();
         }
 
-        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -506,6 +506,12 @@ namespace _2048WindowsFormsApp
         {
             var allScores = GetAllScoresFromFile();
             return allScores;
+        }
+
+        private void RulesOfTheGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var RulesOfTheGameForm = new RulesOfTheGameForm();
+            RulesOfTheGameForm.Show(this);
         }
     }
 }

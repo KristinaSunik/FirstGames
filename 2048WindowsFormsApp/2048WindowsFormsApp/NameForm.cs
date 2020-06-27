@@ -12,6 +12,7 @@ namespace _2048WindowsFormsApp
 {
     public partial class NameForm : Form
     {
+        public UserScore userScore;
         public NameForm()
         {
             InitializeComponent();
@@ -20,7 +21,7 @@ namespace _2048WindowsFormsApp
         private void saveButton_Click(object sender, EventArgs e)
         {
             var userName = nameTextBox.Text;
-            var userResult = new UserScore(userName);
+            var userScore = new UserScore(userName);
             Close();
         }
     }

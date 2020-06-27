@@ -12,18 +12,18 @@ namespace _2048WindowsFormsApp
 {
     public partial class AllScoresForm : Form
     {
-        private List<UserScore> allScore;
-       
-        public AllScoresForm(List<UserScore> allScore)
+        public List<UserScore> allScores;
+
+        public AllScoresForm(List<UserScore> allScores)
         {
             InitializeComponent();
         }
 
         private void UserResultsForm_Load(object sender, EventArgs e)
         {
-                for (int i = 0; i < allScore.Count; i++)
+            for (int i = 0; i < allScores.Count; i++)
                 {
-                    var allScores = this.allScore[i];
+                    var allScores = this.allScores[i];
                 userResultsDataGridView.Rows.Add(allScores.Name, allScores.Score);
                 }
         }

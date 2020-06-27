@@ -176,20 +176,23 @@ namespace _2048WindowsFormsApp
             if (e.KeyCode == Keys.Right)
             {
                 MovingRight();
+                GenerateNumber();
             }
             if (e.KeyCode == Keys.Left)
             {
                 MovingLeft();
+                GenerateNumber();
             }
             if (e.KeyCode == Keys.Up)
             {
                 MovingUp();
+                GenerateNumber();
             }
             if (e.KeyCode == Keys.Down)
             {
                 MovingDown();
+                GenerateNumber();
             }
-            GenerateNumber();
             ShowScore();
             if (bestScore < score)
             {

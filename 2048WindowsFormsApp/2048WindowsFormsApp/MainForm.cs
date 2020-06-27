@@ -503,28 +503,28 @@ namespace _2048WindowsFormsApp
             RulesOfTheGameForm.Show(this);
         }
 
-        private void x4ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mapSize4x4ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             mapSize = 4;
             InitMap();
             GenerateNumber();
         }
 
-        private void x5ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mapSize5x5ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             mapSize = 5;
             InitMap();
             GenerateNumber();
         }
 
-        private void x6ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mapSize6x6ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             mapSize = 6;
             InitMap();
             GenerateNumber();
         }
 
-        private void x8ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mapSize8x8ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             mapSize = 8;
             InitMap();

@@ -61,7 +61,7 @@
             this.Score.Name = "Score";
             this.Score.Width = 150;
             // 
-            // UserResultsForm
+            // AllScoresForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -69,8 +69,8 @@
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(702, 650);
             this.Controls.Add(this.userResultsDataGridView);
-            this.Text = "UserResultsForm";
-            this.Load += new System.EventHandler(this.UserResultsForm_Load);
+            this.Text = "Предыдущие результаты";
+            this.Load += new System.EventHandler(this.AllScoresForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.userResultsDataGridView)).EndInit();
             this.ResumeLayout(false);
 

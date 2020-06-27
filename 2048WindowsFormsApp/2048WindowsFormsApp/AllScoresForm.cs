@@ -19,7 +19,7 @@ namespace _2048WindowsFormsApp
             InitializeComponent();
         }
 
-        private void UserResultsForm_Load(object sender, EventArgs e)
+        private void AllScoresForm_Load(object sender, EventArgs e)
         {
             for (int i = 0; i < allScores.Count; i++)
                 {

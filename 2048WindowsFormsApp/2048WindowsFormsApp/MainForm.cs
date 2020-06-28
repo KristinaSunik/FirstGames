@@ -19,7 +19,7 @@ namespace _2048WindowsFormsApp
         private int bestScore;
         private string bestScorePath = "BestScore.txt";
         private string allScoresPath = "AllScores.json";
-      
+
         public MainForm()
         {
             InitializeComponent();
@@ -76,6 +76,7 @@ namespace _2048WindowsFormsApp
                 }
             }
         }
+
 
         private void GenerateNumber()
         {
@@ -467,12 +468,12 @@ namespace _2048WindowsFormsApp
         {
             allScores = GetAllScoresFromFile();
             var lastResult = allScores.Count;
-            allScores.RemoveAt(lastResult-1);
+            allScores.RemoveAt(lastResult - 1);
             AddNewScore(userScore);
         }
 
 
-       
+
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -505,6 +506,7 @@ namespace _2048WindowsFormsApp
 
         private void mapSize4x4ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CleanMap();
             mapSize = 4;
             InitMap();
             GenerateNumber();
@@ -512,6 +514,7 @@ namespace _2048WindowsFormsApp
 
         private void mapSize5x5ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CleanMap();
             mapSize = 5;
             InitMap();
             GenerateNumber();
@@ -519,6 +522,7 @@ namespace _2048WindowsFormsApp
 
         private void mapSize6x6ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CleanMap();
             mapSize = 6;
             InitMap();
             GenerateNumber();
@@ -526,22 +530,42 @@ namespace _2048WindowsFormsApp
 
         private void mapSize8x8ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CleanMap();
             mapSize = 8;
             InitMap();
             GenerateNumber();
         }
 
+        private void CleanMap()
+        {
+            for (int i = 0; i < mapSize; i++)
+            {
+                for (int j = 0; j < mapSize; j++)
+                {
+                    var Label = map[i, j];
+                    Controls.Remove(Label);
+                }
+            }
+            for (int i = 0; i < mapSize; i++)
+            {
+                for (int j = 0; j < mapSize; j++)
+                {
+                    Array.Clear(map, i, j);
+                }
+            }
+        }
+
         private void ShowPreviousResultsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-                if (!FileProvider.IsExists(allScoresPath))
-                {
-                    var results = new List<UserScore>();
-                    SaveAllScores(results);
-                }
-                allScores = GetAllScoresFromFile();
-                var previousScores = GetAllScores();
-                var allScoresForm = new AllScoresForm(previousScores);
-                allScoresForm.Show();
+            if (!FileProvider.IsExists(allScoresPath))
+            {
+                var results = new List<UserScore>();
+                SaveAllScores(results);
+            }
+            allScores = GetAllScoresFromFile();
+            var previousScores = GetAllScores();
+            var allScoresForm = new AllScoresForm(previousScores);
+            allScoresForm.Show();
         }
     }
 }

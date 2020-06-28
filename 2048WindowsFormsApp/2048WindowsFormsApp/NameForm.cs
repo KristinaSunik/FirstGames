@@ -25,5 +25,6 @@ namespace _2048WindowsFormsApp
             var userScore = new UserScore(userName);
             Close();
         }
+        
     }
 }

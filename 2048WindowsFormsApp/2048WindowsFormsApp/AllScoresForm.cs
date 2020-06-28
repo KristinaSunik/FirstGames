@@ -14,7 +14,7 @@ namespace _2048WindowsFormsApp
     public partial class AllScoresForm : Form
     {
         public List<UserScore> allScores;
-        private List<UserScore> previousScores;
+        public List<UserScore> previousScores;
 
         public AllScoresForm(List<UserScore> previousScores)
         {

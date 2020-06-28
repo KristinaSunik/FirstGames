@@ -8,8 +8,9 @@ namespace _2048WindowsFormsApp
 {
     public partial class MainForm : Form
     {
-        public List<UserScore> allScores;
+
         public UserScore userScore;
+        public List<UserScore> previousScores;
         public int mapSize = 4;
         public Label[,] map;
         public int score = 0;
@@ -20,6 +21,7 @@ namespace _2048WindowsFormsApp
         private string bestScorePath = "BestScore.txt";
         private string allScoresPath = "AllScores.json";
 
+
         public MainForm()
         {
             InitializeComponent();
@@ -29,7 +31,6 @@ namespace _2048WindowsFormsApp
         {
             var NameForm = new NameForm();
             NameForm.Show(this);
-            AddNewScore(userScore);
             InitMap();
             GenerateNumber();
             ShowScore();
@@ -466,11 +467,15 @@ namespace _2048WindowsFormsApp
 
         private void ResaveUserScore(int score)
         {
-            userScore.Score = score; 
-            allScores = GetAllScoresFromFile();
-            var lastResult = allScores.Count;
-            allScores.RemoveAt(lastResult - 1);
-            AddNewScore(userScore);
+         
+            if (FileProvider.IsExists(allScoresPath))
+            {
+
+                previousScores = GetAllScoresFromFile();
+                var lastResult = previousScores.Count;
+                previousScores.RemoveAt(lastResult - 1);
+                AddNewScore(userScore);
+            }
         }
 
 
@@ -481,7 +486,7 @@ namespace _2048WindowsFormsApp
             Close();
         }
 
-        private void AddNewScore(UserScore userScore)
+        public void AddNewScore(UserScore userScore)
         {
             if (!FileProvider.IsExists(allScoresPath))
             {
@@ -563,8 +568,7 @@ namespace _2048WindowsFormsApp
                 var results = new List<UserScore>();
                 SaveAllScores(results);
             }
-            allScores = GetAllScoresFromFile();
-            var previousScores = GetAllScores();
+            previousScores = GetAllScores();
             var allScoresForm = new AllScoresForm(previousScores);
             allScoresForm.Show();
         }

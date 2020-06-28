@@ -8,8 +8,8 @@ namespace _2048WindowsFormsApp
 {
     public partial class MainForm : Form
     {
-        public UserScore userScore;
         public List<UserScore> allScores;
+        public UserScore userScore;
         public int mapSize = 4;
         public Label[,] map;
         public int score = 0;
@@ -261,7 +261,7 @@ namespace _2048WindowsFormsApp
                                     map[k, j].Text = string.Empty;
                                     ChangeColourDueDefenition(k, j);
                                     score += number * 2;
-                                    ResaveUserScore(userScore);
+                                    ResaveUserScore(score);
                                     if (number * 2 == 2048)
                                     {
                                         MessageBox.Show("!!!ВЫ ВЫЙГРАЛИ!!!", "ПОЗДРАВЛЯЕМ ",
@@ -316,7 +316,7 @@ namespace _2048WindowsFormsApp
                                     map[k, j].Text = string.Empty;
                                     ChangeColourDueDefenition(k, j);
                                     score += number * 2;
-                                    ResaveUserScore(userScore);
+                                    ResaveUserScore(score);
                                     if (number * 2 == 2048)
                                     {
                                         MessageBox.Show("!!!ВЫ ВЫЙГРАЛИ!!!", "ПОЗДРАВЛЯЕМ ",
@@ -371,7 +371,7 @@ namespace _2048WindowsFormsApp
                                     map[i, k].Text = string.Empty;
                                     ChangeColourDueDefenition(i, k);
                                     score += number * 2;
-                                    ResaveUserScore(userScore);
+                                    ResaveUserScore(score);
                                     if (number * 2 == 2048)
                                     {
                                         MessageBox.Show("!!!ВЫ ВЫЙГРАЛИ!!!", "ПОЗДРАВЛЯЕМ ",
@@ -425,7 +425,7 @@ namespace _2048WindowsFormsApp
                                     map[i, k].Text = string.Empty;
                                     ChangeColourDueDefenition(i, k);
                                     score += number * 2;
-                                    ResaveUserScore(userScore);
+                                    ResaveUserScore(score);
                                     if (number * 2 == 2048)
                                     {
                                         MessageBox.Show("!!!ВЫ ВЫЙГРАЛИ!!!", "ПОЗДРАВЛЯЕМ ",
@@ -464,8 +464,9 @@ namespace _2048WindowsFormsApp
             Application.Restart();
         }
 
-        private void ResaveUserScore(UserScore userScore)
+        private void ResaveUserScore(int score)
         {
+            userScore.Score = score; 
             allScores = GetAllScoresFromFile();
             var lastResult = allScores.Count;
             allScores.RemoveAt(lastResult - 1);

@@ -10,20 +10,23 @@ using System.Windows.Forms;
 
 namespace _2048WindowsFormsApp
 {
+    
     public partial class AllScoresForm : Form
     {
         public List<UserScore> allScores;
+        private List<UserScore> previousScores;
 
-        public AllScoresForm(List<UserScore> allScores)
+        public AllScoresForm(List<UserScore> previousScores)
         {
             InitializeComponent();
+            this.previousScores = previousScores;
         }
 
         private void AllScoresForm_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < allScores.Count; i++)
+            for (int i = 0; i < previousScores.Count; i++)
             {
-                var allScores = this.allScores[i];
+                var allScores = this.previousScores[i];
                 userResultsDataGridView.Rows.Add(allScores.Name, allScores.Score);
             }
         }

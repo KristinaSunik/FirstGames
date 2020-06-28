@@ -13,6 +13,7 @@ namespace _2048WindowsFormsApp
     public partial class NameForm : Form
     {
         public UserScore userScore;
+        public int score = 0;
         public NameForm()
         {
             InitializeComponent();

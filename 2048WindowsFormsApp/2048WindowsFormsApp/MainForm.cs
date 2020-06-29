@@ -27,6 +27,7 @@ namespace _2048WindowsFormsApp
             InitializeComponent();
         }
 
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             var NameForm = new NameForm();
@@ -468,6 +469,7 @@ namespace _2048WindowsFormsApp
 
         private void ResaveUserScore(UserScore userScore)
         {
+            userScore.Score = score;
             if (FileProvider.IsExists(allScoresPath))
             {
 

@@ -514,6 +514,8 @@ namespace _2048WindowsFormsApp
         private void mapSize4x4ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CleanMap();
+            score = 0;
+            ShowScore();
             mapSize = 4;
             InitMap();
             GenerateNumber();
@@ -522,6 +524,8 @@ namespace _2048WindowsFormsApp
         private void mapSize5x5ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CleanMap();
+            score = 0;
+            ShowScore();
             mapSize = 5;
             InitMap();
             GenerateNumber();
@@ -530,6 +534,9 @@ namespace _2048WindowsFormsApp
         private void mapSize6x6ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CleanMap();
+            score = 0;
+            ShowScore();
+            cubeSize = 60;
             mapSize = 6;
             InitMap();
             GenerateNumber();
@@ -538,6 +545,9 @@ namespace _2048WindowsFormsApp
         private void mapSize8x8ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CleanMap();
+            score = 0;
+            ShowScore();
+            cubeSize = 50;
             mapSize = 8;
             InitMap();
             GenerateNumber();

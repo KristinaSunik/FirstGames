@@ -7,10 +7,10 @@ namespace _2048WindowsFormsApp
         public string Name;
         public int Score;
 
-        public UserScore(string name)
+        public UserScore(string name, int score)
         {
             Name = name;
-            Score = 0;
+            Score = score;
         }
 
     }

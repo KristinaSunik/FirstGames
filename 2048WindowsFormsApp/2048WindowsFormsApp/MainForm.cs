@@ -35,6 +35,8 @@ namespace _2048WindowsFormsApp
             GenerateNumber();
             ShowScore();
             ShowBestScore();
+            AddNewScore(userScore);
+
 
         }
 
@@ -175,6 +177,7 @@ namespace _2048WindowsFormsApp
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
+
             if (e.KeyCode == Keys.Right)
             {
                 MovingRight();
@@ -207,8 +210,6 @@ namespace _2048WindowsFormsApp
             {
                 MessageBox.Show("ВЫ ПРОИГРАЛИ!", "Сожалеем, но ",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                AddNewScore(userScore);
-
             }
 
 
@@ -262,7 +263,7 @@ namespace _2048WindowsFormsApp
                                     map[k, j].Text = string.Empty;
                                     ChangeColourDueDefenition(k, j);
                                     score += number * 2;
-                                    ResaveUserScore(score);
+                                    ResaveUserScore(userScore);
                                     if (number * 2 == 2048)
                                     {
                                         MessageBox.Show("!!!ВЫ ВЫЙГРАЛИ!!!", "ПОЗДРАВЛЯЕМ ",
@@ -317,7 +318,7 @@ namespace _2048WindowsFormsApp
                                     map[k, j].Text = string.Empty;
                                     ChangeColourDueDefenition(k, j);
                                     score += number * 2;
-                                    ResaveUserScore(score);
+                                    ResaveUserScore(userScore);
                                     if (number * 2 == 2048)
                                     {
                                         MessageBox.Show("!!!ВЫ ВЫЙГРАЛИ!!!", "ПОЗДРАВЛЯЕМ ",
@@ -372,7 +373,7 @@ namespace _2048WindowsFormsApp
                                     map[i, k].Text = string.Empty;
                                     ChangeColourDueDefenition(i, k);
                                     score += number * 2;
-                                    ResaveUserScore(score);
+                                    ResaveUserScore(userScore);
                                     if (number * 2 == 2048)
                                     {
                                         MessageBox.Show("!!!ВЫ ВЫЙГРАЛИ!!!", "ПОЗДРАВЛЯЕМ ",
@@ -426,7 +427,7 @@ namespace _2048WindowsFormsApp
                                     map[i, k].Text = string.Empty;
                                     ChangeColourDueDefenition(i, k);
                                     score += number * 2;
-                                    ResaveUserScore(score);
+                                    ResaveUserScore(userScore);
                                     if (number * 2 == 2048)
                                     {
                                         MessageBox.Show("!!!ВЫ ВЫЙГРАЛИ!!!", "ПОЗДРАВЛЯЕМ ",
@@ -465,9 +466,8 @@ namespace _2048WindowsFormsApp
             Application.Restart();
         }
 
-        private void ResaveUserScore(int score)
+        private void ResaveUserScore(UserScore userScore)
         {
-         
             if (FileProvider.IsExists(allScoresPath))
             {
 
@@ -483,6 +483,7 @@ namespace _2048WindowsFormsApp
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ResaveUserScore(userScore);
             Close();
         }
 
@@ -563,14 +564,23 @@ namespace _2048WindowsFormsApp
 
         private void ShowPreviousResultsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ResaveUserScore(userScore);
             if (!FileProvider.IsExists(allScoresPath))
             {
                 var results = new List<UserScore>();
                 SaveAllScores(results);
             }
-            previousScores = GetAllScores();
-            var allScoresForm = new AllScoresForm(previousScores);
-            allScoresForm.Show();
+            else if (previousScores.Count <= 0)
+            {
+                MessageBox.Show("Вы первый игрок", "ПОЗДРАВЛЯЕМ ",
+                                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                previousScores = GetAllScores();
+                var allScoresForm = new AllScoresForm(previousScores);
+                allScoresForm.Show();
+            }
         }
     }
 }

@@ -9,7 +9,7 @@ namespace _2048WindowsFormsApp
     public partial class MainForm : Form
     {
 
-        public UserScore userScore;
+        public UserScore currentUserScore;
         public List<UserScore> previousScores;
         public int mapSize = 4;
         public Label[,] map;
@@ -20,6 +20,7 @@ namespace _2048WindowsFormsApp
         private int bestScore;
         private string bestScorePath = "BestScore.txt";
         private string allScoresPath = "AllScores.json";
+        
 
 
         public MainForm()
@@ -28,16 +29,15 @@ namespace _2048WindowsFormsApp
         }
 
 
-        private void MainForm_Load(object sender, EventArgs e)
+        public void MainForm_Load(object sender, EventArgs e)
         {
             var NameForm = new NameForm();
             NameForm.Show(this);
+            currentUserScore = NameForm.userScore;
             InitMap();
             GenerateNumber();
             ShowScore();
             ShowBestScore();
-            AddNewScore(userScore);
-
 
         }
 
@@ -264,7 +264,16 @@ namespace _2048WindowsFormsApp
                                     map[k, j].Text = string.Empty;
                                     ChangeColourDueDefenition(k, j);
                                     score += number * 2;
-                                    ResaveUserScore(userScore);
+                                    currentUserScore.Score = score;
+                                    if (!FileProvider.IsExists(allScoresPath))
+                                    {
+                                        AddNewScore(currentUserScore);
+                                        
+                                    }
+                                    else
+                                    {
+                                        ResaveUserScore(currentUserScore);
+                                    }
                                     if (number * 2 == 2048)
                                     {
                                         MessageBox.Show("!!!ВЫ ВЫЙГРАЛИ!!!", "ПОЗДРАВЛЯЕМ ",
@@ -319,7 +328,16 @@ namespace _2048WindowsFormsApp
                                     map[k, j].Text = string.Empty;
                                     ChangeColourDueDefenition(k, j);
                                     score += number * 2;
-                                    ResaveUserScore(userScore);
+                                    currentUserScore.Score = score;
+                                    if (!FileProvider.IsExists(allScoresPath))
+                                    {
+                                        AddNewScore(currentUserScore);
+
+                                    }
+                                    else
+                                    {
+                                        ResaveUserScore(currentUserScore);
+                                    }
                                     if (number * 2 == 2048)
                                     {
                                         MessageBox.Show("!!!ВЫ ВЫЙГРАЛИ!!!", "ПОЗДРАВЛЯЕМ ",
@@ -374,7 +392,16 @@ namespace _2048WindowsFormsApp
                                     map[i, k].Text = string.Empty;
                                     ChangeColourDueDefenition(i, k);
                                     score += number * 2;
-                                    ResaveUserScore(userScore);
+                                    currentUserScore.Score = score;
+                                    if (!FileProvider.IsExists(allScoresPath))
+                                    {
+                                        AddNewScore(currentUserScore);
+
+                                    }
+                                    else
+                                    {
+                                        ResaveUserScore(currentUserScore);
+                                    }
                                     if (number * 2 == 2048)
                                     {
                                         MessageBox.Show("!!!ВЫ ВЫЙГРАЛИ!!!", "ПОЗДРАВЛЯЕМ ",
@@ -428,7 +455,15 @@ namespace _2048WindowsFormsApp
                                     map[i, k].Text = string.Empty;
                                     ChangeColourDueDefenition(i, k);
                                     score += number * 2;
-                                    ResaveUserScore(userScore);
+                                    currentUserScore.Score = score;
+                                    if (!FileProvider.IsExists(allScoresPath))
+                                    {
+                                        AddNewScore(currentUserScore);
+                                    }
+                                    else
+                                    {
+                                        ResaveUserScore(currentUserScore);
+                                    }
                                     if (number * 2 == 2048)
                                     {
                                         MessageBox.Show("!!!ВЫ ВЫЙГРАЛИ!!!", "ПОЗДРАВЛЯЕМ ",
@@ -467,16 +502,16 @@ namespace _2048WindowsFormsApp
             Application.Restart();
         }
 
-        private void ResaveUserScore(UserScore userScore)
+        private void ResaveUserScore(UserScore currentUserScore)
         {
-            userScore.Score = score;
+
             if (FileProvider.IsExists(allScoresPath))
             {
 
                 previousScores = GetAllScoresFromFile();
                 var lastResult = previousScores.Count;
                 previousScores.RemoveAt(lastResult - 1);
-                AddNewScore(userScore);
+                AddNewScore(currentUserScore);
             }
         }
 
@@ -485,19 +520,20 @@ namespace _2048WindowsFormsApp
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ResaveUserScore(userScore);
+            ResaveUserScore(currentUserScore);
             Close();
         }
 
-        public void AddNewScore(UserScore userScore)
+        public void AddNewScore(UserScore currentUserScore)
         {
+
             if (!FileProvider.IsExists(allScoresPath))
             {
                 var results = new List<UserScore>();
                 SaveAllScores(results);
             }
             var allScores = GetAllScoresFromFile();
-            allScores.Add(userScore);
+            allScores.Add(currentUserScore);
             SaveAllScores(allScores);
         }
 
@@ -576,7 +612,7 @@ namespace _2048WindowsFormsApp
 
         private void ShowPreviousResultsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ResaveUserScore(userScore);
+            ResaveUserScore(currentUserScore);
             if (!FileProvider.IsExists(allScoresPath))
             {
                 var results = new List<UserScore>();

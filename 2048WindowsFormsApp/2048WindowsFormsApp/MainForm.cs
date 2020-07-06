@@ -33,12 +33,10 @@ namespace _2048WindowsFormsApp
         {
             var NameForm = new NameForm();
             NameForm.Show(this);
-            currentUserScore = NameForm.userScore;
             InitMap();
             GenerateNumber();
             ShowScore();
             ShowBestScore();
-
         }
 
         private int GetBestScoreFromFile()

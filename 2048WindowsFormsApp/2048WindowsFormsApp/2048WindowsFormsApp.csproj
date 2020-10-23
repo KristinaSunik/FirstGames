@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C09BF50D-B617-43B2-9B87-0DC00D7591CF}</ProjectGuid>
+    <ProjectGuid>{561E7A93-D222-4CBD-ABC0-59C70E8B74ED}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>_2048WindowsFormsApp</RootNamespace>
     <AssemblyName>2048WindowsFormsApp</AssemblyName>
@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,16 +49,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="FileProvider.cs" />
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NameForm.Designer.cs">
+      <DependentUpon>NameForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="RulesOfTheGameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RulesOfTheGameForm.Designer.cs">
+      <DependentUpon>RulesOfTheGameForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserScore.cs" />
+    <Compile Include="AllScoresForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllScoresForm.Designer.cs">
+      <DependentUpon>AllScoresForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NameForm.resx">
+      <DependentUpon>NameForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -66,6 +92,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AllScoresForm.resx">
+      <DependentUpon>AllScoresForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RulesOfTheGameForm.resx">
+      <DependentUpon>RulesOfTheGameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

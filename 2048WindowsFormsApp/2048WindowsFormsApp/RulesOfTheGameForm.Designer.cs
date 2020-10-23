@@ -1,6 +1,6 @@
 ﻿namespace _2048WindowsFormsApp
 {
-    partial class Form1
+    partial class RulesOfTheGameForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,34 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.RulesichTextBox = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
-            // label1
+            // RulesichTextBox
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(516, 197);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.RulesichTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RulesichTextBox.Location = new System.Drawing.Point(-1, 1);
+            this.RulesichTextBox.Name = "RulesichTextBox";
+            this.RulesichTextBox.Size = new System.Drawing.Size(453, 130);
+            this.RulesichTextBox.TabIndex = 0;
+            this.RulesichTextBox.Text = "Используйте клавиши ваши стрелками, чтобы переместить плитки. Когда два плитки с " +
+    "тем же номером ощупь, они слияния в один!";
             // 
-            // Form1
+            // RulesOfTheGameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(448, 125);
+            this.Controls.Add(this.RulesichTextBox);
+            this.Name = "RulesOfTheGameForm";
+            this.Text = "Правила игры";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RichTextBox RulesichTextBox;
     }
 }
-

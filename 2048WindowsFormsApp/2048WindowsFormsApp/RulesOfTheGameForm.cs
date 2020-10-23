@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace _2048WindowsFormsApp
 {
-    public partial class Form1 : Form
+    public partial class RulesOfTheGameForm : Form
     {
-        public Form1()
+        public RulesOfTheGameForm()
         {
             InitializeComponent();
         }
